@@ -1,0 +1,53 @@
+<section class="content-header">
+
+	<h1>
+		<a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a>
+	</h1>
+
+</section>
+
+<section class="content">
+
+	<div class="row">
+
+    	<div class="col-md-5 col-lg-4">
+
+			<div class="box box-solid">
+
+				<div class="box-header with-border">
+
+					<h3 class="box-title">Applications</h3>
+
+					<div class="box-tools">
+
+						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+					</div>
+
+				</div>
+
+				<div class="box-body no-padding">
+
+					<ul class="nav nav-pills nav-stacked">
+
+						<li ui-sref-active="active" ng-repeat="application in applications" >
+
+							<a href="" ui-sref="project.application({applicationId: application.id})">
+								<i class="fa fa-inbox"></i> {{application.name}} <span class="label label-primary pull-right">{{application.versions}}</span>
+							</a>
+
+						</li>
+
+					</ul>
+
+				</div><!-- /.box-body -->
+
+			</div><!-- /. box -->
+
+        </div><!-- /.col -->
+
+        <div ui-view></div>
+		
+	</div><!-- /.row -->
+
+</section>

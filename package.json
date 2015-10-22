@@ -1,0 +1,16 @@
+{
+  "name": "quilt4",
+  "version": "2.0.0",
+  "description": "Web for Quilt4",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "ui-router": "^0.2.15"
+  },
+  "devDependencies": {
+    "local-web-server": "^0.5.23"
+  },
+  "scripts": {
+  },
+  "author": "Pelle Tyrefors Branden",
+  "license": "ISC"
+}
