@@ -1,9 +1,14 @@
 <section class="content-header">
 
 	<h1>
-		<a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a>
+		{{project.name}}
 	</h1>
-
+	
+	<ol class="breadcrumb">
+		<li><a href="" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="" ui-sref="project({projectId: project.id})" class="active">{{project.name}}</a></li>
+	</ol>
+	
 </section>
 
 <section class="content">
