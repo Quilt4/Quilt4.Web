@@ -23,7 +23,9 @@ app.controller('issueTypeController', ['$scope', '$stateParams', 'versionService
 		
 	})
 	
-	$scope.issues = issueService.getIssues($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId);
+	issueService.getIssues($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId, function(issues){
+		$scope.issues = issues;
+	});
 	
 	
 }]);

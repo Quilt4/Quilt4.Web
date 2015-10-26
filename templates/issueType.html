@@ -79,7 +79,7 @@
 								
 								<tr ng-repeat-start="issue in issues | orderBy:orderByField:reverseSort" ng-click="issue.expanded = !issue.expanded" class="clickable-row">
 									
-									<td>{{issue.time}}</td>
+									<td time="{{issue.time}}"></td>
 									<td>{{issue.user}}</td>
 									<td><span class="label label-primary">{{issue.enviroment}}</span></td>
 									
@@ -87,7 +87,9 @@
 								
 								<tr ng-if="issue.expanded" ng-repeat-end="" class="alt-bg">
 									
-									<td colspan="3">{{issue.data}}</td>
+									<td colspan="3">
+										<p ng-repeat="(key, value) in issue.data">{{key}}: {{value}}</p>
+									</td>
 									
 								</tr>
 								
