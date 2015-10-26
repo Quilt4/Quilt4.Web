@@ -5,6 +5,10 @@ app.controller('applicationController', ['$scope', '$stateParams', 'versionServi
 	$scope.projectId = $stateParams.projectId;
 	$scope.applicationId = $stateParams.applicationId;
 
-	$scope.versions = versionService.getVersions($scope.applicationId);
+	versionService.getVersions($stateParams.projectId, $stateParams.applicationId, function(versions){
+		
+		$scope.versions = versions;
+		
+	});
 
 }]);

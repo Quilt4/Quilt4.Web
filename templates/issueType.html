@@ -8,7 +8,7 @@
 		<li><a href="" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a></li>
 		<li><a href="" ui-sref="project.application({projectId: project.id, applicationId: application.id})">{{application.name}}</a></li>
-		<li><a href="" ui-sref="version({projectId: project.id, applicationId: application.id, versionId: version.id})">{{version.version}}</a></li>
+		<li><a href="" ui-sref="version({projectId: project.id, applicationId: application.id, versionId: version.id})">{{version.name}}</a></li>
 		<li><a href="" ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})" class="active">{{issueType.type}}</a></li>
 	</ol>
 
@@ -24,7 +24,7 @@
 			
 				<div class="box-header with-border">
 				
-					<span class="label vcenter label-{{issueType.level == 'warning' ? 'warning' : (issueType.level == 'error' ? 'danger' : 'primary')}}" >{{issueType.level}}</span>
+					<span class="label vcenter label-{{issueType.level == 'Warning' ? 'warning' : (issueType.level == 'Error' ? 'danger' : 'primary')}}" >{{issueType.level}}</span>
 					
 					<h3 class="box-title">
 						{{issueType.message}}

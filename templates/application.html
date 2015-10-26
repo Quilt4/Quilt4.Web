@@ -18,7 +18,7 @@
 
             <tr>
 
-              <th><a href="" ng-click="orderByField='version'; reverseSort = !reverseSort">Version</a></th>
+              <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Version</a></th>
               <th><a href="" ng-click="orderByField='sessions'; reverseSort = !reverseSort">Sessions</a></th>
               <th><a href="" ng-click="orderByField='issueTypes'; reverseSort = !reverseSort">Issue types</a></th>
               <th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
@@ -33,14 +33,15 @@
 
             <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="version({projectId: projectId, applicationId: applicationId, versionId: version.id})" >
               
-              <td>{{version.version}}</td>
+              <td>{{version.name}}</td>
               <td>{{version.sessions}}</td>
               <td>{{version.issueTypes}}</td>
               <td>{{version.issues}}</td>
-              <td>{{version.last}}</td>
+              <!--<td>{{version.last | timeAgo}}</td>-->
+              <td time="{{version.last}}"></td>
               <td>
-                  <span class="label label-primary enviroment" ng-repeat="env in version.env | orderBy:env" >
-                    {{env}}
+                  <span class="label label-primary enviroment" ng-repeat="enviroment in version.enviroments | orderBy:env" >
+                    {{enviroment}}
                   </span>
               </td>
 

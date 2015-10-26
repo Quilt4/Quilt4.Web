@@ -10,8 +10,19 @@ app.controller('issueTypeController', ['$scope', '$stateParams', 'versionService
 		$scope.application = application;
 	});
 	
-	$scope.version = versionService.getVersion($stateParams.applicationId, $stateParams.versionId);
-	$scope.issueType = issueTypeService.getIssueType($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId);
+	
+	versionService.getVersion($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, function(version){
+		
+		$scope.version = version;
+		
+	});
+	
+	issueTypeService.getIssueType($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId, function(issueType){
+		
+		$scope.issueType = issueType;
+		
+	})
+	
 	$scope.issues = issueService.getIssues($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId);
 	
 	

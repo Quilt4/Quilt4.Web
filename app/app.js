@@ -38,3 +38,85 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     
 });
+
+app.filter('timeAgo', function() {
+  
+  return function(date) {
+    
+    var seconds = Math.floor((new Date() - new Date(date)) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval == 1) {
+        return interval + " year ago";
+    }
+    if (interval > 1) {
+        return interval + " years ago";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval == 1) {
+        return interval + " month ago";
+    }
+    if (interval > 1) {
+        return interval + " months ago";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval == 1) {
+        return interval + " day ago";
+    }
+    if (interval > 1) {
+        return interval + " days ago";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval == 1) {
+        return interval + " hour ago";
+    } 
+    if (interval > 1) {
+        return interval + " hours ago";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval == 1) {
+        return interval + " minute ago";
+    }
+    if (interval > 1) {
+        return interval + " minutes ago";
+    }
+    return Math.floor(seconds) + " seconds ago";
+    
+  };
+
+});
+
+app.directive('time', 
+  [
+    '$timeout',
+    '$filter',
+    function($timeout, $filter) {
+
+      return function(scope, element, attrs) {
+        var time = attrs.time;
+        var intervalLength = 1000 * 1; // 10 seconds
+        var filter = $filter('timeAgo');
+
+        function updateTime() {
+          element.text(filter(time));
+        }
+
+        function updateLater() {
+          timeoutId = $timeout(function() {
+            updateTime();
+            updateLater();
+          }, intervalLength);
+        }
+
+        element.bind('$destroy', function() {
+          $timeout.cancel(timeoutId);
+        });
+
+        updateTime();
+        updateLater();
+      };
+
+    }  
+  ]
+);
