@@ -17,37 +17,83 @@
 
     	<div class="col-md-5 col-lg-4">
 
-			<div class="box box-solid">
-
-				<div class="box-header with-border">
-
-					<h3 class="box-title">Applications</h3>
-
-					<div class="box-tools">
-
-						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
+			<div class="col-lg-12">
+				
+				<div class="box box-solid">
+	
+					<div class="box-header with-border">
+	
+						<h3 class="box-title">Applications</h3>
+	
+						<div class="box-tools">
+	
+							<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	
+						</div>
+	
 					</div>
-
+	
+					<div class="box-body no-padding">
+	
+						<ul class="nav nav-pills nav-stacked">
+	
+							<li ui-sref-active="active" ng-repeat="application in applications" >
+	
+								<a href="" ui-sref="project.application({applicationId: application.id})">
+									<i class="fa fa-inbox"></i> {{application.name}} <span class="label label-primary pull-right">{{application.versions}}</span>
+								</a>
+	
+							</li>
+	
+						</ul>
+	
+					</div><!-- /.box-body -->
+	
+				</div><!-- /. box -->
+				
+			</div>
+			
+			<div class="col-lg-12">
+				
+				<div class="box box-primary">
+					
+					<div class="box-header with-border">
+						
+						<h3 class="box-title">Settings</h3>
+						
+					</div>
+					
+					<div class="box-body">
+						
+						<div class="form-group">
+							
+							<label>Name</label>
+							
+							<input ng-model="project.name" class="form-control" />
+							
+						</div>
+						
+						<div class="form-group">
+							
+							<label>Dashboard color</label>
+							
+							<select ng-model="project.dashboardColor" class="form-control">
+								
+								<option value="blue">Blue</option>
+								<option value="red">Red</option>
+								<option value="yellow">Yellow</option>
+								<option value="green">Green</option>
+								<option value="purple">Purple</option>
+								
+							</select>
+							
+						</div>
+						
+					</div>
+					
 				</div>
-
-				<div class="box-body no-padding">
-
-					<ul class="nav nav-pills nav-stacked">
-
-						<li ui-sref-active="active" ng-repeat="application in applications" >
-
-							<a href="" ui-sref="project.application({applicationId: application.id})">
-								<i class="fa fa-inbox"></i> {{application.name}} <span class="label label-primary pull-right">{{application.versions}}</span>
-							</a>
-
-						</li>
-
-					</ul>
-
-				</div><!-- /.box-body -->
-
-			</div><!-- /. box -->
+				
+			</div>
 
         </div><!-- /.col -->
 

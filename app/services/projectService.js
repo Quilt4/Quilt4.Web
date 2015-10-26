@@ -11,7 +11,8 @@ app.service('projectService', function () {
 			versions: 4,
 			sessions: 4302,
 			exceptions: 31,
-			errors: 342
+			errors: 342,
+			dashboardColor: "red"
 		},
 		{
 			id: 2,
@@ -19,7 +20,8 @@ app.service('projectService', function () {
 			versions: 4,
 			sessions: 302,
 			exceptions: 12,
-			errors: 1
+			errors: 1,
+			dashboardColor: "blue"
 		},
 		{
 			id: 3,
@@ -27,7 +29,8 @@ app.service('projectService', function () {
 			versions: 1,
 			sessions: 3,
 			exceptions: 1,
-			errors: 2
+			errors: 2,
+			dashboardColor: "green"
 		},
 		{
 			id: 4,
@@ -35,7 +38,8 @@ app.service('projectService', function () {
 			versions: 34,
 			sessions: 32,
 			exceptions: 122,
-			errors: 311
+			errors: 311,
+			dashboardColor: "yellow"
 		},
 		{
 			id: 5,
@@ -43,7 +47,8 @@ app.service('projectService', function () {
 			versions: 43,
 			sessions: 1312,
 			exceptions: 132,
-			errors: 1231
+			errors: 1231,
+			dashboardColor: "purple"
 		}
 	];
 
