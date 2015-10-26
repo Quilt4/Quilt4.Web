@@ -1,4 +1,4 @@
-var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
+var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap']);
 
 app.constant("quilt4Config", {
   
@@ -81,42 +81,94 @@ app.filter('timeAgo', function() {
     if (interval > 1) {
         return interval + " minutes ago";
     }
+    
     return Math.floor(seconds) + " seconds ago";
     
   };
 
 });
 
-app.directive('time', 
-  [
-    '$timeout',
-    '$filter',
-    function($timeout, $filter) {
+app.directive('time', ['$timeout', '$filter', function($timeout, $filter) {
 
-      return function(scope, element, attrs) {
-        var time = attrs.time;
-        var intervalLength = 1000 * 1; // 10 seconds
-        var filter = $filter('timeAgo');
-
-        function updateTime() {
-          element.text(filter(time));
-        }
-
-        function updateLater() {
-          timeoutId = $timeout(function() {
-            updateTime();
-            updateLater();
-          }, intervalLength);
-        }
-
-        element.bind('$destroy', function() {
-          $timeout.cancel(timeoutId);
-        });
-
+  return function(scope, element, attrs) {
+    
+    var time = attrs.time;
+    var intervalLength = 1000 * 1; // 1 second
+    var filter = $filter('timeAgo');
+    
+    function updateTime() {
+      
+      element.text(filter(time));
+      
+    }
+    
+    function updateLater() {
+      
+      timeoutId = $timeout(function() {
+        
         updateTime();
         updateLater();
-      };
+        
+      }, intervalLength);
+    }
+    
+    element.bind('$destroy', function() {
+      
+      $timeout.cancel(timeoutId);
+      
+    });
+    
+    updateTime();
+    updateLater();
+    
+  };
 
-    }  
-  ]
-);
+}]);
+
+app.directive('loading', function() {
+  
+   function link(scope, element, attrs) {
+     
+     var display ="block";
+          
+      // scope.$watch(function(value) {
+      //       console.log(value);
+      //       console.log(attrs.isloading);
+      // }, function()
+      // {
+      //       console.log(attrs.isloading);
+      //   
+      // });
+      
+      attrs.$observe('isloading', function(val){
+        if(val == "true")
+        {          
+          element.removeClass("hide");
+          element.addClass("show")
+        } else {
+          element.removeClass("show");
+          element.addClass("hide")
+        }
+      });
+     
+     element.html('<div style="display:'+display+'" class="loading-container"><div id="loading"></div><div id="loading2" margin-top></div></div>')
+     
+     
+   }
+   
+   return {link:link}
+  
+});
+
+
+// return {
+//     template: function(elem, attr) {
+//       console.log(attr.isloading);
+//       var visibility = "none";
+//       if(attr.isloading == "true")
+//       {
+//         console.log("YAY");
+//         visibility = "block";
+//       }
+//       return '<div style="display:'+visibility+'" class="loading-container"><div id="loading"></div><div id="loading2" margin-top></div></div>'}
+//   };

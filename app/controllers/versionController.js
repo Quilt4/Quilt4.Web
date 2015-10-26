@@ -16,9 +16,12 @@ app.controller('versionController', ['$scope', '$stateParams', 'versionService',
 		
 	});
 	
+	$scope.loading = true;
+	
 	issueTypeService.getIssueTypes($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, function(issueTypes){
 		
 		$scope.issueTypes = issueTypes;
+		$scope.loading = false;
 		
 	})
 

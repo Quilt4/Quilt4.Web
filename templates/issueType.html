@@ -33,11 +33,18 @@
 					
 				</div>
 				
-				<div class="box-body">
-								
-					<h4>Stack Trace</h4>
 					
-					<pre>{{issueType.stackTrace}}</pre>
+				<div class="box-body" >
+								
+					<loading isLoading="{{issueTypeLoading}}"></loading>
+					
+					<div ng-class="issueTypeLoading ? 'hide' : ''">
+						
+						<h4>Stack Trace</h4>
+						
+						<pre>{{issueType.stackTrace}}</pre>
+						
+					</div>
 					
 				</div>
 				
@@ -58,15 +65,17 @@
 				</div>
 				
 				<div class="box-body">
-				
-					<div class="table-responsive">
+							
+					<loading isLoading="{{loading}}"></loading>
+						
+					<div class="table-responsive" ng-class="loading ? 'hide' : ''">
 					
-						<table class="table table-hover ">
+						<table class="table table-hover">
 							
 							<thead>
 								
 								<tr>
-																	
+									<th></th>							
 									<th><a href="" ng-click="orderByField='time'; reverseSort = !reverseSort">Time</a></th>
 									<th><a href="" ng-click="orderByField='user'; reverseSort = !reverseSort">User</a></th>
 									<th><a href="" ng-click="orderByField='enviroment'; reverseSort = !reverseSort">Enviroment</a></th>
@@ -77,17 +86,17 @@
 							
 							<tbody>
 								
-								<tr ng-repeat-start="issue in issues | orderBy:orderByField:reverseSort"  ng-click="issue.expanded = !issue.expanded" class="clickable-row">
-									
+								<tr ng-repeat-start="issue in issues | orderBy:orderByField:reverseSort"  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ''">
+									<td style="width:5px;"><i class="fa fa-info" ng-if="issue.data != null"></i></td>
 									<td time="{{issue.time}}"></td>
 									<td>{{issue.user}}</td>
 									<td><span class="label label-primary">{{issue.enviroment}}</span></td>
 									
 								</tr>
 								
-								<tr ng-if="issue.expanded" ng-repeat-end="" class="alt-bg">
+								<tr ng-if="issue.expanded" ng-repeat-end="" class="alt-bg" ng-if="issue.data != null">
 									
-									<td colspan="3">
+									<td colspan="4">
 										<p ng-repeat="(key, value) in issue.data">{{key}}: {{value}}</p>
 									</td>
 									

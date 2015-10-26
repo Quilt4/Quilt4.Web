@@ -10,7 +10,9 @@
 
     <div class="box-body no-padding">
 
-      <div class="table-responsive">
+      <loading isLoading="{{loading}}"></loading>
+          
+      <div class="table-responsive" ng-class="loading ? 'hide' : ''">
 
         <table class="table table-hover table-striped" ng-init="orderByField='version'">
 

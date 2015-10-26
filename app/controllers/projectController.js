@@ -6,9 +6,11 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
 		$scope.project = project;
 	});
 
+	$scope.loading = true;
 	applicationService.getApplications($stateParams.projectId, function(applications)
 	{
 		$scope.applications = applications;
+		$scope.loading = false;
 	});
 
 }]);

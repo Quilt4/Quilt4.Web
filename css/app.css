@@ -23,3 +23,92 @@
    padding: 0 !important;
    margin: 0 !important;
 }
+
+#loading {
+  margin: 50px auto;
+  background: #0070B0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  
+  animation: scale 2.5s forwards;
+  -webkit-animation: scale 2.5s forwards;
+  -moz-animation: scale 2.5s forwards;
+  -o-animation: scale 2.5s forwards;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;  
+  -o-animation-iteration-count: infinite;
+    opacity: 0.5;
+    filter: alpha(opacity=50)
+  
+}
+
+#loading2 {
+  margin: 50px auto;
+  background: #0070B0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: -150px;
+  
+  animation: scale2 2.5s forwards;
+  -webkit-animation: scale2 2.5s forwards;
+  -moz-animation: scale2 2.5s forwards;
+  -o-animation: scale2 2.5s forwards;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;  
+  -o-animation-iteration-count: infinite;
+    opacity: 0.5;
+    filter: alpha(opacity=50)
+  
+}
+
+@keyframes scale {
+0%   {transform: scale(0,0);}
+50%   {transform: scale(1,1);}
+100% {transform: scale(0,0);}
+}
+
+@-webkit-keyframes scale {
+0%   {-webkit-transform: scale(0,0);}
+50%   {-webkit-transform: scale(1,1);}
+100% {-webkit-transform: scale(0,0);}
+}
+
+@-moz-keyframes scale {
+0%   {-moz-transform: scale(0,0);}
+50%   {-moz-transform: scale(1,1);}
+100% {-moz-transform: scale(0,0);}
+}
+
+@-o-keyframes scale {
+0%   {-o-transform: scale(0,0);}
+50%   {-o-transform: scale(1,1);}
+100% {-o-transform: scale(0,0);}
+}
+
+@keyframes scale2 {
+0%   {transform: scale(1,1);}
+50%   {transform: scale(0,0);}
+100% {transform: scale(1,1);}
+}
+
+@-webkit-keyframes scale2 {
+0%   {-webkit-transform: scale(1,1);}
+50%   {-webkit-transform: scale(0,0);}
+100% {-webkit-transform: scale(1,1);}
+}
+
+@-moz-keyframes scale2 {
+0%   {-moz-transform: scale(1,1);}
+50%   {-moz-transform: scale(0,0);}
+100% {-moz-transform: scale(1,1);}
+}
+
+@-o-keyframes scale2 {
+0%   {-o-transform: scale(1,1);}
+50%   {-o-transform: scale(0,0);}
+100% {-o-transform: scale(1,1);}
+}
