@@ -18,3 +18,8 @@
 .alt-bg {
 	background-color: #f4f4f4;
 }
+
+.without-padding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
