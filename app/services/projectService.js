@@ -8,12 +8,10 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
 		
 		apiFactory.apiGet("project", function(response){
 			
-			console.log(response);
 			callback(response);
 			
 		}, function(response){
 			
-			console.log(response)
 			callback(null);
 			
 		})
@@ -24,12 +22,10 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
 		
 		apiFactory.apiGet("project/" + projectId, function(response){
 			
-			console.log(response);
 			callback(response);
 			
 		}, function(response){
 			
-			console.log(response)
 			callback(null);
 		})
 

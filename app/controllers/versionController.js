@@ -6,7 +6,10 @@ app.controller('versionController', ['$scope', '$stateParams', 'versionService',
 		$scope.project = project;
 	});
 	
-	$scope.application = applicationService.getApplication($stateParams.projectId, $stateParams.applicationId);
+	applicationService.getApplication($stateParams.projectId, $stateParams.applicationId, function(application){
+		$scope.application = application;
+	});
+	
 	$scope.version = versionService.getVersion($stateParams.applicationId, $stateParams.versionId);
 	$scope.issueTypes = issueTypeService.getIssueTypes($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId)
 

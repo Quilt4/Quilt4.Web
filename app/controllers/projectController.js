@@ -6,6 +6,9 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
 		$scope.project = project;
 	});
 
-	$scope.applications = applicationService.getApplications($stateParams.projectId);
+	applicationService.getApplications($stateParams.projectId, function(applications)
+	{
+		$scope.applications = applications;
+	});
 
 }]);

@@ -1,61 +1,33 @@
 var app = angular.module('quiltApp');
 
-app.service('applicationService', function () {
+app.service('applicationService', ['apiFactory', function (apiFactory) {
 	
-	
-	//Mock data
-	//Replace with real data from server
-	var applications = [
-		{
-			projectId: 1,
-			id: 1,
-			name: "Eplicta.MediaMapper.Web",
-			versions: 3,
-			sessions: 4302,
-			exceptions: 31,
-			errors: 343
-		},
-		{
-			projectId: 1,
-			id: 2,
-			name: "Eplicat.Cruiser.Web",
-			versions: 4,
-			sessions: 302,
-			exceptions: 12,
-			errors: 1
-		},
-		{
-			projectId: 1,
-			id: 3,
-			name: "Eplicta.MediaMapper.Console",
-			versions: 1,
-			sessions: 3,
-			exceptions: 1,
-			errors: 2
-		}
-	];
+	//Use cache?
 
-	this.getApplications = function(projectId) {
-
-		//Fetch from server
-
-		return applications;
+	this.getApplications = function(projectId, callback) {
+		
+		apiFactory.apiGet("application/" + projectId, function(response){
+			
+			callback(response);
+			
+		}, function(response){
+			
+			callback(null);
+		})
 
 	}
 
-	this.getApplication = function(projectId, applicationId) {
+	this.getApplication = function(projectId, applicationId, callback) {
 
-		for(var i in applications){
-
-		    if(applications[i].projectId == projectId && applications[i].id == applicationId) {
-
-		        return applications[i];
-		        
-	        }
-		}
-
-		return null;
+		apiFactory.apiGet("application/" + projectId + "/" + applicationId, function(response){
+			
+			callback(response);
+			
+		}, function(response){
+			
+			callback(null);
+		})
 
 	}
 
-});
+}]);
