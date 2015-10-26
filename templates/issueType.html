@@ -1,0 +1,101 @@
+<section class="content-header">
+
+	<h1>
+		<a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a>
+		<small>
+			<a href="" ui-sref="project.application({projectId: project.id, applicationId: application.id})">{{application.name}}</a> <a href="" ui-sref="version({projectId: project.id, applicationId: application.id, versionId: version.id})">v{{version.version}}</a>
+		</small>
+	</h1>
+
+</section>
+
+<section class="content">
+	
+	<div class="row">
+	
+		<div class="col-lg-12">
+		
+			<div class="box box-primary">
+			
+				<div class="box-header with-border">
+				
+					<h3 class="box-title">
+						{{issueType.type}}
+					</h3>
+					
+				</div>
+				
+				<div class="box-body">
+				
+					<h4>Message</h4>
+					
+					<p>{{issueType.message}}</p>
+					
+					<h4>Stack Trace</h4>
+					
+					<pre>{{issueType.stackTrace}}</pre>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="col-lg-12">
+		
+			<div class="box box-primary">
+			
+				<div class="box-header with-border">
+				
+					<h3 class="box-title">
+						Issues
+					</h3>
+					
+				</div>
+				
+				<div class="box-body">
+				
+					<div class="table-responsive">
+					
+						<table class="table table-hover table-striped">
+							
+							<thead>
+								
+								<tr>
+																	
+									<th><a href="" ng-click="orderByField='time'; reverseSort = !reverseSort">Time</a></th>
+									<th><a href="" ng-click="orderByField='user'; reverseSort = !reverseSort">User</a></th>
+									<th><a href="" ng-click="orderByField='enviroment'; reverseSort = !reverseSort">Enviroment</a></th>
+									
+								</tr>
+								
+							</thead>
+							
+							<tbody>
+								
+								<tr ng-repeat-start="issue in issues" ng-click="issue.expanded = !issue.expanded" class="clickable-row">
+									
+									<td>{{issue.time}}</td>
+									<td>{{issue.user}}</td>
+									<td><span class="label label-primary">{{issue.enviroment}}</span></td>
+									
+								</tr>
+								<tr ng-if="issue.expanded" ng-repeat-end="">
+									<td colspan="3">{{issue.data}}</td>
+								</tr>
+								
+							</tbody>
+							
+						</table>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</section>

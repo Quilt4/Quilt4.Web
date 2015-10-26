@@ -8,12 +8,11 @@ app.service('versionService', function () {
 		{
 			id: 1,
 			applicationId: 1,
-			version: "1.0.1",
+			version: "1.0.2",
 			sessions: 4302,
 			issueTypes: 31,
 			issues: 342,
 			last: "1 day ago",
-			first: "3 weeks ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -24,7 +23,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 day ago",
-			first: "3 weeks ago",
 			env: ["prod", "dev"]
 		},
 		{
@@ -35,7 +33,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "5 day ago",
-			first: "3 weeks ago",
 			env: ["prod", "ci"]
 		},
 		{
@@ -46,7 +43,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -57,7 +53,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "5 hours ago",
-			first: "1 month ago",
 			env: ["dev", "ci"]
 		},
 		{
@@ -68,7 +63,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev"]
 		},
 		{
@@ -79,7 +73,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod"]
 		},
 		{
@@ -90,7 +83,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -101,7 +93,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -112,7 +103,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -123,7 +113,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -134,7 +123,6 @@ app.service('versionService', function () {
 			issueTypes: 12,
 			issues: 1313,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 		{
@@ -145,7 +133,6 @@ app.service('versionService', function () {
 			issueTypes: 1,
 			issues: 23322,
 			last: "2 hours ago",
-			first: "1 month ago",
 			env: ["prod", "dev", "ci"]
 		},
 	];

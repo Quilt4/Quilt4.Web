@@ -2,8 +2,80 @@
 
 	<h1>
 		<a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a>
+		<small>
+			<a href="" ui-sref="project.application({projectId: project.id, applicationId: application.id})"> {{application.name}}</a> v{{version.version}}
+		</small>
 	</h1>
 
 </section>
 
-{{version.version}}
+<section class="content">
+
+	<div class="row">
+	
+		<div class="col-lg-12">
+		
+			<div class="box box-primary">
+			
+				<div class="box-header with-border">
+					
+					<h3 class="box-title">Issue Types</h3>
+					
+				</div>
+				
+				<div class="box-body">
+							
+					<div class="table-responsive">
+					
+						<table class="table table-hover table-striped">
+							
+							<thead>
+		
+								<tr>
+									
+									<th></th>
+									<th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Ticket</a></th>
+									<th><a href="" ng-click="orderByField='type'; reverseSort = !reverseSort">Type</a></th>
+									<th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
+									<th><a href="" ng-click="orderByField='level'; reverseSort = !reverseSort">Level</a></th>
+									<th><a href="" ng-click="orderByField='last'; reverseSort = !reverseSort">Last Issue</a></th>
+									<th><a href="" ng-click="orderByField='enviroment'; reverseSort = !reverseSort">Enviroment</a></th>
+																	
+								</tr>
+								
+							</thead>
+								
+							<tbody>
+								
+								<tr ng-repeat="issueType in issueTypes | orderBy:orderByField:reverseSort" class="clickable-row">
+								
+									<td style="width:56px;">
+										
+    									<button popover-placement="right" uib-popover="{{issueType.message}}" popover-trigger="focus" type="button" class="btn btn-primary fa fa-comment"></button>
+										
+									</td>									
+									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.id}}</td>									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.type}}</td>									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.issues}}</td>									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.level}}</td>									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.last}}</td>
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})"><span class="label label-primary">{{issueType.enviroment}}</span></td>			
+								
+								</tr>
+								
+							</tbody>
+							
+						</table>
+						
+					</div>			
+			
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+</div>

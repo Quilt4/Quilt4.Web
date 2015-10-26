@@ -22,7 +22,6 @@
               <th><a href="" ng-click="orderByField='sessions'; reverseSort = !reverseSort">Sessions</a></th>
               <th><a href="" ng-click="orderByField='issueTypes'; reverseSort = !reverseSort">Issue types</a></th>
               <th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
-              <th><a href="" ng-click="orderByField='first'; reverseSort = !reverseSort">First</a></th>
               <th><a href="" ng-click="orderByField='last'; reverseSort = !reverseSort">Last</a></th>
               <th>Enviroments</th>
 
@@ -38,12 +37,13 @@
               <td>{{version.sessions}}</td>
               <td>{{version.issueTypes}}</td>
               <td>{{version.issues}}</td>
-              <td>{{version.first}}</td>
               <td>{{version.last}}</td>
               <td>
-                <span ng-repeat="env in version.env">
-                  {{env}},
-                </span>
+                <div ng-repeat="env in version.env" style="float:left;">
+                  <span class="label label-primary">
+                    {{env}}
+                  </span>
+                </div>
               </td>
 
             </tr>

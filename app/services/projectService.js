@@ -8,7 +8,7 @@ app.service('projectService', function () {
 		{
 			id: 1,
 			name: "Eplicta",
-			versions: 3,
+			versions: 4,
 			sessions: 4302,
 			exceptions: 31,
 			errors: 342

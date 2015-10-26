@@ -1,4 +1,4 @@
-var app = angular.module('quiltApp', ['ui.router', 'ngAnimate']);
+var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -24,6 +24,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: "/project/:projectId/application/:applicationId/version/:versionId",
       templateUrl: "templates/version.html",
       controller: "versionController"
-    })    
+    })
+    .state('issueType', {
+      url: "/project/:projectId/application/:applicationId/version/:versionId/issueType/:issueTypeId",
+      templateUrl: "templates/issueType.html",
+      controller: "issueTypeController"
+    })
     
 });
