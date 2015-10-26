@@ -16,9 +16,9 @@
 
 <loading isLoading="{{projectLoading || applicationLoading || versionLoading}}"></loading>
 
-<section class="content"  ng-class="(projectLoading || applicationLoading || versionLoading) ? 'hide' : ''">
+<section class="content">
 	
-	<div class="row">
+	<div class="row" ng-class="(projectLoading || applicationLoading || versionLoading) ? 'hide' : ''">
 	
 		<div class="col-lg-12">
 		
