@@ -25,7 +25,7 @@ app.service('issueService', function () {
 			enviroment: "prod",
 			user: "Pelle-PC",
 			time: "3 days ago",
-			data: "Message: Error code 130"
+			data: "Message: Error code 1330"
 		},
 		{
 			projectId: 1,
@@ -36,7 +36,7 @@ app.service('issueService', function () {
 			user: "Pelle-PC",
 			enviroment: "dev",
 			time: "4 days ago",
-			data: "Message: Error code 130"
+			data: "Message: Error code 131"
 		},
 	];
 
@@ -53,7 +53,7 @@ app.service('issueService', function () {
 	        }
 		}
 
-		return filteredIssueTypes;
+		return issues;
 
 	}
 
