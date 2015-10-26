@@ -1,5 +1,10 @@
 var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
 
+app.constant("quilt4Config", {
+  'apiBaseUrl': 'http://localhost:5004/api/',
+        "port": "80"
+    })
+
 app.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");

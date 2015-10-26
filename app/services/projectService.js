@@ -1,77 +1,32 @@
 var app = angular.module('quiltApp');
 
-app.service('projectService', function () {
+app.service('projectService', ['apiFactory', function (apiFactory) {
 	
-	//Mock data
-	//Replace with real data from server
-	var projects = [
-		{
-			id: 1,
-			name: "Eplicta",
-			versions: 4,
-			sessions: 4302,
-			exceptions: 31,
-			errors: 342,
-			dashboardColor: "red"
-		},
-		{
-			id: 2,
-			name: "Florida",
-			versions: 4,
-			sessions: 302,
-			exceptions: 12,
-			errors: 1,
-			dashboardColor: "blue"
-		},
-		{
-			id: 3,
-			name: "Tharga-Console",
-			versions: 1,
-			sessions: 3,
-			exceptions: 1,
-			errors: 2,
-			dashboardColor: "green"
-		},
-		{
-			id: 4,
-			name: "Tharga-Reporter",
-			versions: 34,
-			sessions: 32,
-			exceptions: 122,
-			errors: 311,
-			dashboardColor: "yellow"
-		},
-		{
-			id: 5,
-			name: "Tharga-Toolkit",
-			versions: 43,
-			sessions: 1312,
-			exceptions: 132,
-			errors: 1231,
-			dashboardColor: "purple"
-		}
-	];
-
-	this.getProjects = function() {
-
-		return projects;
+	this.getProjects = function(callback) {
+		
+		//Use cache?
+		
+		apiFactory.apiGet("project", function(response){
+			console.log(response);
+			callback(response);
+		}, function(response){
+			console.log(response)
+			callback(null);
+		})
 
 	}
 
-	this.getProject = function(projectId) {
+	this.getProject = function(projectId, callback) {
 
-		for(var i in projects){
-
-
-		    if(projects[i].id == projectId) {
-
-		        return projects[i];
-		        
-	        }
-		}
-
-		return null;
+		
+		apiFactory.apiGet("project/" + projectId, function(response){
+			console.log(response);
+			callback(response);
+		}, function(response){
+			console.log(response)
+			callback(null);
+		})
 
 	}
 
-});
+}]);
