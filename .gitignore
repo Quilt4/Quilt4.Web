@@ -20,7 +20,8 @@ Obj
 Generated_Code
 # Projects can also have user settings so this ignores those files as well 
 *.user
- 
+node_modules
+
 # Compiled source #
 ###################
 *.com
