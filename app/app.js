@@ -151,7 +151,7 @@ app.directive('loading', function() {
         }
       });
      
-     element.html('<div style="display:'+display+'" class="loading-container"><div id="loading"></div><div id="loading2" margin-top></div></div>')
+     element.html('<div class="loading-container"><div class="loading"></div><div class="loading2" margin-top></div></div>')
      
      
    }
