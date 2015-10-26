@@ -44,7 +44,7 @@
 									<th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
 									<th><a href="" ng-click="orderByField='level'; reverseSort = !reverseSort">Level</a></th>
 									<th><a href="" ng-click="orderByField='last'; reverseSort = !reverseSort">Last Issue</a></th>
-									<th><a href="" ng-click="orderByField='enviroment'; reverseSort = !reverseSort">Enviroment</a></th>
+									<th>Enviroments</th>
 																	
 								</tr>
 								
@@ -68,7 +68,7 @@
 									</td>									
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.last}}</td>
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">
-										<span class="label label-primary">{{issueType.enviroment}}</span>
+										<span class="label label-primary enviroment" ng-repeat="enviroment in issueType.enviroments | orderBy:enviroment">{{enviroment}}</span>
 									</td>			
 								
 								</tr>
