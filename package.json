@@ -8,10 +8,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.9.11",
-    "gulp": "^3.9.0",
-    "gulp-tsc": "^1.1.1",
-    "gulp-tslint": "^3.4.0",
-    "local-web-server": "^0.5.23"
+    "gulp": "^3.9.0"
   },
   "scripts": {},
   "author": "Pelle Tyrefors Branden",
