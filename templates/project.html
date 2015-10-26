@@ -4,14 +4,17 @@
 		{{project.name}}
 	</h1>
 	
-	<ol class="breadcrumb">
+	<ol class="breadcrumb" ng-class="projectLoading ? 'hide' : ''">
 		<li><a href="" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="" ui-sref="project({projectId: project.id})" class="active">{{project.name}}</a></li>
 	</ol>
 	
 </section>
 
-<section class="content">
+
+<loading isLoading="{{projectLoading}}"></loading>
+
+<section class="content" ng-class="projectLoading ? 'hide' : ''">
 
 	<div class="row">
 
