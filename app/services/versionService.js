@@ -143,7 +143,10 @@ app.service('versionService', function () {
 			version: "1.0.0",
 			sessions: 3,
 			issueTypes: 1,
-			issues: 23322
+			issues: 23322,
+			last: "2 hours ago",
+			first: "1 month ago",
+			env: ["prod", "dev", "ci"]
 		},
 	];
 
