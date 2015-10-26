@@ -6,3 +6,7 @@
 .clickable-row {
 	cursor: pointer;
 }
+
+.vcenter {
+    font-size: 100%;
+}

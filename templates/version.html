@@ -58,9 +58,13 @@
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.id}}</td>									
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.type}}</td>									
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.issues}}</td>									
-									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.level}}</td>									
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">
+										<span class="label label-{{issueType.level == 'warning' ? 'warning' : (issueType.level == 'error' ? 'danger' : 'primary')}}" >{{issueType.level}}</span>
+									</td>									
 									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.last}}</td>
-									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})"><span class="label label-primary">{{issueType.enviroment}}</span></td>			
+									<td  ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">
+										<span class="label label-primary">{{issueType.enviroment}}</span>
+									</td>			
 								
 								</tr>
 								

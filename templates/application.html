@@ -39,11 +39,9 @@
               <td>{{version.issues}}</td>
               <td>{{version.last}}</td>
               <td>
-                <div ng-repeat="env in version.env" style="float:left;">
-                  <span class="label label-primary">
+                  <span class="label label-primary" ng-repeat="env in version.env">
                     {{env}}
                   </span>
-                </div>
               </td>
 
             </tr>
