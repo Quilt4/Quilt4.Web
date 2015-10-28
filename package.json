@@ -4,6 +4,8 @@
   "description": "Web for Quilt4",
   "dependencies": {
     "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
+    "angular-ui-bootstrap": "^0.14.3",
     "ui-router": "^0.2.15"
   },
   "devDependencies": {
