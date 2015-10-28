@@ -1,11 +1,5 @@
 var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap']);
 
-app.constant("quilt4Config", {
-  
-  'apiBaseUrl': 'http://localhost:5004/api/'
-  
-})
-
 app.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");
