@@ -14,13 +14,13 @@
           
       <div class="table-responsive" ng-class="loading ? 'hide' : ''">
 
-        <table class="table table-hover table-striped" ng-init="orderByField='version'">
+        <table class="table table-hover table-striped" ng-init="orderByField='version'; reverseSort=true;">
 
           <thead>
 
             <tr>
 
-              <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Version</a></th>
+              <th><a href="" ng-click="orderByField='version'; reverseSort = !reverseSort">Version</a></th>
               <th><a href="" ng-click="orderByField='sessions'; reverseSort = !reverseSort">Sessions</a></th>
               <th><a href="" ng-click="orderByField='issueTypes'; reverseSort = !reverseSort">Issue types</a></th>
               <th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
@@ -35,7 +35,7 @@
 
             <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="version({projectId: projectId, applicationId: applicationId, versionId: version.id})" >
               
-              <td>{{version.name}}</td>
+              <td>{{version.version}}</td>
               <td>{{version.sessions}}</td>
               <td>{{version.issueTypes}}</td>
               <td>{{version.issues}}</td>

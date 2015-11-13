@@ -1,24 +1,24 @@
 <section class="content-header" >
 		
-	<h1 ng-class="(projectLoading || applicationLoading || versionLoading) ? 'hide' : ''">
-		{{application.name}}
-		<small>v{{version.name}}</small>
+	<h1 ng-class="loading ? 'hide' : ''">
+		{{version.applicationName}}
+		<small>v{{version.version}}</small>
 	</h1>
 
-	<ol class="breadcrumb" ng-class="(projectLoading || applicationLoading || versionLoading) ? 'hide' : ''">
+	<ol class="breadcrumb" ng-class="loading ? 'hide' : ''">
 		<li><a href="" ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="" ui-sref="project({projectId: project.id})">{{project.name}}</a></li>
-		<li><a href="" ui-sref="project.application({projectId: project.id, applicationId: application.id})">{{application.name}}</a></li>
-		<li><a href="" ui-sref="version({projectId: project.id, applicationId: application.id, versionId: version.id})" class="active">{{version.name}}</a></li>
+		<li><a href="" ui-sref="project({projectId: version.projectId})">{{version.projectName}}</a></li>
+		<li><a href="" ui-sref="project.application({projectId: version.projectId, applicationId: version.applicationId})">{{version.applicationName}}</a></li>
+		<li><a href="" ui-sref="version({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id})" class="active">{{version.version}}</a></li>
 	</ol>
 		
 </section>
 
-<loading isLoading="{{projectLoading || applicationLoading || versionLoading}}"></loading>
+<loading isLoading="{{loading}}"></loading>
 
 <section class="content">
 
-	<div class="row" ng-class="(projectLoading || applicationLoading || versionLoading) ? 'hide' : ''">
+	<div class="row" ng-class="loading ? 'hide' : ''">
 	
 		<div class="col-lg-12">
 		
@@ -31,10 +31,8 @@
 				</div>
 				
 				<div class="box-body">
-							
-					<loading isLoading="{{loading}}"></loading>
 						
-					<div class="table-responsive" ng-class="loading ? 'hide' : ''">
+					<div class="table-responsive">
 					
 						<table class="table table-hover table-striped">
 							
@@ -43,11 +41,11 @@
 								<tr>
 									
 									<th></th>
-									<th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Ticket</a></th>
+									<th><a href="" ng-click="orderByField='ticket'; reverseSort = !reverseSort">Ticket</a></th>
 									<th><a href="" ng-click="orderByField='type'; reverseSort = !reverseSort">Type</a></th>
 									<th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
 									<th><a href="" ng-click="orderByField='level'; reverseSort = !reverseSort">Level</a></th>
-									<th><a href="" ng-click="orderByField='last'; reverseSort = !reverseSort">Last Issue</a></th>
+									<th><a href="" ng-click="orderByField='lastIssue'; reverseSort = !reverseSort">Last Issue</a></th>
 									<th>Enviroments</th>
 																	
 								</tr>
@@ -56,7 +54,7 @@
 								
 							<tbody>
 								
-								<tr ng-repeat="issueType in issueTypes | orderBy:orderByField:reverseSort" class="clickable-row">
+								<tr ng-repeat="issueType in version.issueTypes | orderBy:orderByField:reverseSort" class="clickable-row">
 								
 									<td style="width:56px;">
 										
@@ -64,14 +62,14 @@
 										
 									</td>									
 									
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.id}}</td>									
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.type}}</td>									
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">{{issueType.issues}}</td>									
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.ticket}}</td>									
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.type}}</td>									
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.issues}}</td>									
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">
 										<span class="label label-{{issueType.level == 'Warning' ? 'warning' : (issueType.level == 'Error' ? 'danger' : 'primary')}}">{{issueType.level}}</span>
 									</td>									
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})" time="{{issueType.last}}"></td>
-									<td ui-sref="issueType({projectId: project.id, applicationId: application.id, versionId: version.id, issueTypeId: issueType.id})">
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})" time="{{issueType.lastIssue}}"></td>
+									<td ui-sref="issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">
 										<span class="label label-primary enviroment" ng-repeat="enviroment in issueType.enviroments | orderBy:enviroment">{{enviroment}}</span>
 									</td>			
 								

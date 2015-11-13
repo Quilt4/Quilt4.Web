@@ -2,25 +2,22 @@ var app = angular.module('quiltApp');
 
 app.service('projectService', ['apiFactory', function (apiFactory) {
 	
-	//Use cache?
+	this.getProject = function(projectId, callback) {
 		
-	this.getProjects = function(callback) {
-		
-		apiFactory.apiGet("project", function(response){
+		apiFactory.apiGet("project/" + projectId, function(response){
 			
 			callback(response);
 			
 		}, function(response){
 			
 			callback(null);
-			
 		})
 
 	}
+	
+	this.getVersions = function(projectId, applicationId, callback) {
 
-	this.getProject = function(projectId, callback) {
-		
-		apiFactory.apiGet("project/" + projectId, function(response){
+		apiFactory.apiGet("project/" + projectId + "/application/" + applicationId + "/version", function(response){
 			
 			callback(response);
 			
