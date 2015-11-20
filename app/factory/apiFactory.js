@@ -23,9 +23,31 @@ app.factory('apiFactory', function ($http, quilt4Config) {
 		
 	};
 	
+	function apiPost(methodName, data, success, error) {
+				
+		//TODO: Handle auth
+		$http.post(quilt4Config.apiBaseUrl + methodName, data)
+		
+		.success(function(response)	{
+			
+			console.log(response);
+			success(response);		
+				
+		})
+		.error(function(response)
+		{
+			
+			console.log("Error: " + response);
+			error(response);
+			
+		});
+		
+	};
+	
 	return {
 		
-		apiGet: apiGet
+		apiGet: apiGet,
+		apiPost: apiPost
 		
 	};
 	

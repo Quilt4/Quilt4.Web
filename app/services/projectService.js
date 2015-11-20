@@ -27,5 +27,31 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
 		})
 
 	}
+	
+	this.createProject = function(project, callback) {
+		
+		apiFactory.apiPost("project/create", project, function(response){
+			
+			callback(response.projectId);
+			
+		}, function(response){
+			
+			callback(null);
+		});
+		
+	}
+	
+	this.updateProject = function(project, callback) {
+		
+		apiFactory.apiPost("project/update", project, function(response){
+			
+			callback(response.projectId);
+			
+		}, function(response){
+			
+			callback(null);
+		});
+		
+	}
 
 }]);

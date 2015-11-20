@@ -10,6 +10,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/dashboard.html",
       controller: "dashboardController"
     })
+    .state('createProject', {
+      url: "/project/new",
+      templateUrl: "templates/createProject.html",
+      controller: "createProjectController"
+    })
     .state('project', {
       url: "/project/:projectId",
       templateUrl: "templates/project.html",

@@ -1,6 +1,6 @@
 var app = angular.module('quiltApp');
 
-app.controller('projectController', ['$scope', 'projectService', '$stateParams', function($scope, projectService, $stateParams) {
+app.controller('projectController', ['$scope', 'projectService', '$stateParams', '$state', function($scope, projectService, $stateParams,$state) {
 	
 	$scope.loading = true;
 	
@@ -8,5 +8,36 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
 		$scope.project = project;
 		$scope.loading = false;
 	});
+	
+	$scope.updateProject = function (project){
+				
+		$scope.projectSavedSuccess = false;
+		
+		if(project === null || project === undefined)
+			return;
+			
+		if(project.name === null || project.name === undefined || project.name.length === 0 || project.name.length > 50)
+		{
+			return;
+		}
+					
+		$scope.settingsLoading = true;
+			
+		projectService.updateProject(project, function(projectId){
+			
+			$scope.settingsLoading = false;
+			
+			if(projectId != null)
+			{
+				$scope.projectSavedSuccess = true;
+			}
+			
+		});
+	}
+	
+	$scope.hideProjectSavedSuccessAlert = function()
+	{		
+		$scope.projectSavedSuccess = false;
+	}
 
 }]);
