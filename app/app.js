@@ -36,7 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.filter('timeAgo', function() {
   
   return function(date) {
-    
+        
     var seconds = Math.floor((new Date() - new Date(date)) / 1000);
 
     var interval = Math.floor(seconds / 31536000);
@@ -124,15 +124,6 @@ app.directive('loading', function() {
    function link(scope, element, attrs) {
      
      var display ="block";
-          
-      // scope.$watch(function(value) {
-      //       console.log(value);
-      //       console.log(attrs.isloading);
-      // }, function()
-      // {
-      //       console.log(attrs.isloading);
-      //   
-      // });
       
       attrs.$observe('isloading', function(val){
         if(val == "true")
@@ -153,16 +144,3 @@ app.directive('loading', function() {
    return {link:link}
   
 });
-
-
-// return {
-//     template: function(elem, attr) {
-//       console.log(attr.isloading);
-//       var visibility = "none";
-//       if(attr.isloading == "true")
-//       {
-//         console.log("YAY");
-//         visibility = "block";
-//       }
-//       return '<div style="display:'+visibility+'" class="loading-container"><div id="loading"></div><div id="loading2" margin-top></div></div>'}
-//   };
