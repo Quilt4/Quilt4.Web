@@ -92,7 +92,6 @@ app.directive('time', ['$timeout', '$filter', function($timeout, $filter) {
   return function(scope, element, attrs) {
     
     var time = attrs.time;
-    var intervalLength = 1000 * 1; // 1 second
     var filter = $filter('timeAgo');
     
     function updateTime() {
@@ -101,24 +100,7 @@ app.directive('time', ['$timeout', '$filter', function($timeout, $filter) {
       
     }
     
-    function updateLater() {
-      
-      timeoutId = $timeout(function() {
-        
-        updateTime();
-        updateLater();
-        
-      }, intervalLength);
-    }
-    
-    element.bind('$destroy', function() {
-      
-      $timeout.cancel(timeoutId);
-      
-    });
-    
     updateTime();
-    updateLater();
     
   };
 
