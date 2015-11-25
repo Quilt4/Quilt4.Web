@@ -83,7 +83,7 @@
 							
 							<tbody>
 								
-								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort"  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ''">
+								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort | startFrom:(currentPage-1)*20 | limitTo: 20 "  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ''">
 									<td style="width:5px;"><i class="fa fa-info" ng-if="issue.data != null"></i></td>
 									<td time="{{issue.time}}"></td>
 									<td>{{issue.user}}</td>
@@ -104,6 +104,12 @@
 						</table>
 						
 					</div>
+					
+				</div>
+					
+				<div class="box-footer">
+					
+					<uib-pagination total-items="issueType.issues.length" items-per-page="20" ng-model="currentPage" max-size="5" ></uib-pagination>
 					
 				</div>
 				

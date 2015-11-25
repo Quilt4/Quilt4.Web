@@ -106,6 +106,13 @@ app.directive('time', ['$timeout', '$filter', function($timeout, $filter) {
 
 }]);
 
+app.filter('startFrom', function () {
+    return function (input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    };
+});
+
 app.directive('loading', function() {
   
    function link(scope, element, attrs) {
