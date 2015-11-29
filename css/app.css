@@ -146,3 +146,11 @@
 .content-wrapper {
   margin-top: 50px;
 }
+
+@media (max-width: 767px)
+{
+    
+  .content-wrapper {
+      margin-top: 100;
+  }
+}
