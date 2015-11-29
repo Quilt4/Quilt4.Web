@@ -146,23 +146,6 @@
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
-    
-    <script>
-      var xStart, yStart = 0;
-      
-      document.addEventListener('touchstart',function(e) {
-          xStart = e.touches[0].screenX;
-          yStart = e.touches[0].screenY;
-      });
-      
-      document.addEventListener('touchmove',function(e) {
-          var xMovement = Math.abs(e.touches[0].screenX - xStart);
-          var yMovement = Math.abs(e.touches[0].screenY - yStart);
-          if((yMovement * 3) > xMovement) {
-              e.preventDefault();
-          }
-      });
-    </script>
 
     <!-- jQuery 2.1.4 -->
     <script src="scripts/jQuery-2.1.4.min.js"></script>
