@@ -133,3 +133,12 @@
 50%   {-o-transform: scale(0,0);}
 100% {-o-transform: scale(1,1);}
 }
+
+.main-header {
+  position: fixed;
+  width: 100%;
+}
+
+.main-sidebar {
+  position: fixed;
+}
