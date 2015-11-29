@@ -142,3 +142,7 @@
 .main-sidebar {
   position: fixed;
 }
+
+.content-wrapper {
+  margin-top: 50px;
+}
