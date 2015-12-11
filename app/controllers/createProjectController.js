@@ -1,6 +1,6 @@
 var app = angular.module('quiltApp');
 
-app.controller('createProjectController', ['$scope', 'projectService', '$stateParams','$state', function($scope, projectService, $stateParams, $state) {
+app.controller('createProjectController', ['$scope', 'projectService', '$stateParams','$state', 'uuid', function($scope, projectService, $stateParams, $state, uuid) {
 	
 	$scope.project = {
 		dashboardColor: "blue"
@@ -16,13 +16,15 @@ app.controller('createProjectController', ['$scope', 'projectService', '$statePa
 			return;
 		}
 					
+		project.projectKey = uuid.v4();
+					
 		$scope.loading = true;
 			
-		projectService.createProject(project, function(projectId){
+		projectService.createProject(project, function(){
 			
 			$scope.loading = false;
 			
-			$state.transitionTo('main.project', {projectId:projectId});
+			$state.transitionTo('main.project', {projectId:project.projectKey});
 			
 		});
 	}

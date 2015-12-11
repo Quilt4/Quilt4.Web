@@ -20,14 +20,16 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
 		{
 			return;
 		}
+		
+		project.projectKey = project.id;
 					
 		$scope.settingsLoading = true;
 			
-		projectService.updateProject(project, function(projectId){
+		projectService.updateProject(project, function(success){
 			
 			$scope.settingsLoading = false;
 			
-			if(projectId != null)
+			if(success)
 			{
 				$scope.projectSavedSuccess = true;
 			}

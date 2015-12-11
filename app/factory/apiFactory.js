@@ -8,7 +8,6 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 				
 		if(authToken == null || authToken == undefined || authToken.length == 0)
 		{
-			console.log("Not logged in!");
 			setToken(null);
 			error("Not logged in!");
 			return;
@@ -39,7 +38,6 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 					
 		if(authToken == null || authToken == undefined || authToken.length == 0)
 		{
-			console.log("Not logged in!");
 			setToken(null);
 			error("Not logged in!");
 			return;
@@ -92,13 +90,11 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 		
 		.success(function(response)	{
 			
-			console.log(response);
 			callback(true);		
 				
 		})
 		.error(function(response)
 		{
-			console.log(response);
 			callback(false);
 			
 		});
@@ -106,7 +102,6 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 	};
 	
 	function setToken(token){
-		console.log("New token is set: " + token);
 		authToken = token;		
     	$rootScope.$broadcast('authTokenChanged');
 	}

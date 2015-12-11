@@ -45,11 +45,11 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
 		
 		apiFactory.apiPost("project/update", project, function(response){
 			
-			callback(response.projectId);
+			callback(true);
 			
 		}, function(response){
 			
-			callback(null);
+			callback(false);
 		});
 		
 	}

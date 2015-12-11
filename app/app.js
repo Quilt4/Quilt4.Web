@@ -1,4 +1,4 @@
-var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap', 'angular-uuid']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
