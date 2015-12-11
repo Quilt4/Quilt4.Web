@@ -16,8 +16,13 @@ app.service('accountService', ['apiFactory', function (apiFactory) {
 	
 	this.logout = function(){
 		
-		console.log("Logging out");
-		apiFactory.logout();
+		this.isLoggedIn(function(result)
+		{
+			if(result)
+			{
+				apiFactory.logout();				
+			}
+		})
 		
 	}
 	
