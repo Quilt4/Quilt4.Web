@@ -75,8 +75,6 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		
 		.success(function(response)	{
 			
-			console.log(response);
-			
 			setToken(response.token_type + " " + response.access_token);
 			callback(true);		
 				
@@ -113,8 +111,7 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 			} else {
 				
 				console.log("Failed to logout");
-			}
-			
+			}			
 			
 		});
 		
@@ -126,6 +123,7 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		
 		.success(function(response)	{
 			
+			console.log(response);
 			callback(true);		
 				
 		})

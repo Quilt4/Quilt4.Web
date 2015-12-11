@@ -12,10 +12,10 @@ app.controller('registerController', ['$scope', '$stateParams', 'accountService'
 				$scope.message = null;
 				
 				accountService.logout(function(){
-					
-					$state.transitionTo('login');
-					
+										
 				});
+								
+				$state.transitionTo('login');
 				
 			} else {
 				

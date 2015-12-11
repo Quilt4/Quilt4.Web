@@ -3,7 +3,8 @@ var app = angular.module('quiltApp');
 app.controller('createProjectController', ['$scope', 'projectService', '$stateParams','$state', 'uuid', function($scope, projectService, $stateParams, $state, uuid) {
 	
 	$scope.project = {
-		dashboardColor: "blue"
+		dashboardColor: "blue",
+		name: "New Project"
 	}	
 
 	$scope.createProject = function (project){
