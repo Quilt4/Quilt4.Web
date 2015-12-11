@@ -75,6 +75,8 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		
 		.success(function(response)	{
 			
+			console.log(response);
+			
 			setToken(response.token_type + " " + response.access_token);
 			callback(true);		
 				
@@ -90,7 +92,11 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 	
 	function apiLogout() {
 				
-		$http.post(quilt4Config.apiBaseUrl + 'account/logout')
+		var token = getToken();
+				
+		var config = {headers: {'Authorization': token}};
+				
+		$http.post(quilt4Config.apiBaseUrl + 'account/logout', null, config)
 		
 		.success(function(response)	{
 			
