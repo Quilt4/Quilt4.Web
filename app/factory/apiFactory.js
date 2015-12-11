@@ -1,19 +1,21 @@
 var app = angular.module('quiltApp');
 
-app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
+app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 	
 	var authToken = "";
 	
 	function apiGet(methodName, success, error) {
 				
-		if(authToken == null || authToken == undefined || authToken.length == 0)
+		var token = getToken();
+		
+		if(token == null || token == undefined || token.length == 0)
 		{
 			setToken(null);
 			error("Not logged in!");
 			return;
 		}
 				
-		var config = {headers: {'Authorization': authToken}};
+		var config = {headers: {'Authorization': token}};
 		
 		$http.get(quilt4Config.apiBaseUrl + methodName, config)
 		
@@ -36,14 +38,16 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 	
 	function apiPost(methodName, data, success, error) {
 					
-		if(authToken == null || authToken == undefined || authToken.length == 0)
+		var token = getToken();
+		
+		if(token == null || token == undefined || token.length == 0)
 		{
 			setToken(null);
 			error("Not logged in!");
 			return;
 		}
 				
-		var config = {headers: {'Authorization': authToken}};
+		var config = {headers: {'Authorization': token}};
 		
 		$http.post(quilt4Config.apiBaseUrl + methodName, data, config)
 		
@@ -102,11 +106,33 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 	};
 	
 	function setToken(token){
+		
 		authToken = token;		
+		
+  		$window.sessionStorage.setItem('authToken', token);
+		  
     	$rootScope.$broadcast('authTokenChanged');
 	}
 	
-	function getToken(callback)
+	function getToken(){
+		
+		if(authToken != null && authToken != undefined && authToken.length > 0)
+		{
+			return authToken;
+		}
+		
+		var sessionToken = $window.sessionStorage.getItem('authToken');
+		
+		if(sessionToken != null && sessionToken != undefined && sessionToken.length > 0)
+		{
+			authToken = sessionToken;
+			return authToken;
+		}
+		
+		return null;
+	}
+	
+	function apiGetToken(callback)
 	{
 		callback(authToken);
 	}
@@ -117,7 +143,7 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope) {
 		apiPost: apiPost,
 		login: apiLogin,
 		register: apiRegister,
-		getToken: getToken
+		getToken: apiGetToken
 		
 	};
 	
