@@ -2,6 +2,15 @@ var app = angular.module('quiltApp');
 
 app.controller('loginController', ['$scope', '$stateParams', 'accountService', '$state', '$rootScope', function($scope, $stateParams, accountService, $state, $rootScope) {
 	
+	
+	accountService.isLoggedIn(function(isLoggedIn)
+	{
+		if(isLoggedIn)
+		{
+			$state.transitionTo('main.dashboard');              
+		}
+	});
+	  
 	$scope.login = function()
 	{
 		$scope.message = null;

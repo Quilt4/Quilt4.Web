@@ -1,6 +1,6 @@
 var app = angular.module('quiltApp');
 
-app.controller('mainController', ['$rootScope', '$state', 'accountService', function($rootScope, $state, accountService) {
+app.controller('mainController', ['$rootScope', '$state', 'accountService', '$scope', function($rootScope, $state, accountService, $scope) {
 	
 
     $rootScope.$on('authTokenChanged', function(event, mass) { 
@@ -13,5 +13,9 @@ app.controller('mainController', ['$rootScope', '$state', 'accountService', func
       })
       
     });
+    
+    $scope.logout = function(){
+        accountService.logout();
+    }
 	
 }]);

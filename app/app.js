@@ -2,13 +2,18 @@ var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap', 'angular-uuid
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/login");
 
   $stateProvider
     .state('login', {
       url: "/login",
       templateUrl: "templates/login.html",
       controller: "loginController"
+    })
+    .state('register', {
+      url: "/register",
+      templateUrl: "templates/register.html",
+      controller: "registerController"
     })
     .state('main', {
       templateUrl: "templates/mainTemplate.html",

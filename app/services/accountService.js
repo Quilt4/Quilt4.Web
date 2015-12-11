@@ -2,21 +2,23 @@ var app = angular.module('quiltApp');
 
 app.service('accountService', ['apiFactory', function (apiFactory) {
 	
-	//Use cache?
-
-	this.register = function(username, email, password, confirmPassword) {
+	this.register = function(username, email, password, confirmPassword, callback) {
 		
-		apiFactory.register(username, email, password, confirmPassword, function(result){
-			console.log(result);
-		});
+		apiFactory.register(username, email, password, confirmPassword, callback);
 
-	}
-	
+	}	
 	
 	this.login = function(username, password, callback) {
 		
 		apiFactory.login(username, password, callback);
 
+	}
+	
+	this.logout = function(){
+		
+		console.log("Logging out");
+		apiFactory.logout();
+		
 	}
 	
 	this.isLoggedIn = function(callback){

@@ -87,6 +87,32 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		});
 		
 	};
+	
+	function apiLogout() {
+				
+		$http.post(quilt4Config.apiBaseUrl + 'account/logout')
+		
+		.success(function(response)	{
+			
+			setToken(null);
+				
+		})
+		.error(function(response, status)
+		{
+			
+			if(status == 401)
+			{
+				setToken(null);
+				
+			} else {
+				
+				console.log("Failed to logout");
+			}
+			
+			
+		});
+		
+	};
 		
 	function apiRegister(username, email, password, confirmPassword, callback) {
 				
@@ -142,6 +168,7 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		apiGet: apiGet,
 		apiPost: apiPost,
 		login: apiLogin,
+		logout: apiLogout,
 		register: apiRegister,
 		getToken: apiGetToken
 		
