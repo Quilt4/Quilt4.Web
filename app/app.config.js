@@ -1,6 +1,6 @@
 
 app.constant("quilt4Config", {
   
-  'apiBaseUrl': 'http://localhost:59779/api/'
+  'apiBaseUrl': 'http://localhost:29660/api/'
   
 })

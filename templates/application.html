@@ -33,7 +33,7 @@
 
           <tbody>
 
-            <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="version({projectId: projectId, applicationId: applicationId, versionId: version.id})" >
+            <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="main.version({projectId: projectId, applicationId: applicationId, versionId: version.id})" >
               
               <td>{{version.version}}</td>
               <td>{{version.sessions}}</td>

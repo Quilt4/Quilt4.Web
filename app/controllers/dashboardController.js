@@ -1,7 +1,7 @@
 var app = angular.module('quiltApp');
 
-app.controller('dashboardController', ['$scope', 'dashboardService', function($scope, dashboardService) {
-	
+app.controller('dashboardController', ['$scope', 'dashboardService','accountService', function($scope, dashboardService, accountService) {
+		
 	$scope.loading = true;
 	dashboardService.getProjects(function(projects){
 		$scope.projects = projects;

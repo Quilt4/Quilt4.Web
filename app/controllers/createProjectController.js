@@ -22,7 +22,7 @@ app.controller('createProjectController', ['$scope', 'projectService', '$statePa
 			
 			$scope.loading = false;
 			
-			$state.transitionTo('project', {projectId:projectId});
+			$state.transitionTo('main.project', {projectId:projectId});
 			
 		});
 	}

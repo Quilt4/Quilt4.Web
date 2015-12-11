@@ -5,32 +5,41 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-    .state('dashboard', {
+    .state('login', {
+      url: "/login",
+      templateUrl: "templates/login.html",
+      controller: "loginController"
+    })
+    .state('main', {
+      templateUrl: "templates/mainTemplate.html",
+      controller: "mainController"
+    })
+    .state('main.dashboard', {
       url: "/",
       templateUrl: "templates/dashboard.html",
       controller: "dashboardController"
     })
-    .state('createProject', {
+    .state('main.createProject', {
       url: "/project/new",
       templateUrl: "templates/createProject.html",
       controller: "createProjectController"
     })
-    .state('project', {
+    .state('main.project', {
       url: "/project/:projectId",
       templateUrl: "templates/project.html",
       controller: "projectController"
     })
-    .state('project.application', {
+    .state('main.project.application', {
       url: "/application/:applicationId",
       templateUrl: "templates/application.html",
       controller: "applicationController"
     })
-    .state('version', {
+    .state('main.version', {
       url: "/project/:projectId/application/:applicationId/version/:versionId",
       templateUrl: "templates/version.html",
       controller: "versionController"
     })
-    .state('issueType', {
+    .state('main.issueType', {
       url: "/project/:projectId/application/:applicationId/version/:versionId/issueType/:issueTypeId",
       templateUrl: "templates/issueType.html",
       controller: "issueTypeController"
@@ -92,22 +101,58 @@ app.directive('time', ['$timeout', '$filter', function($timeout, $filter) {
   return function(scope, element, attrs) {
     
     var time = attrs.time;
+    var seconds = Math.floor((new Date() - new Date(time)) / 1000);
+    console.log(getInterval(seconds));
+    var intervalLength = getInterval(seconds); // 1 second
     var filter = $filter('timeAgo');
+    
+    function getInterval(time)
+    {
+      var interval = Math.floor(seconds / 3600);
+      if (interval >= 1) {
+          return 60 * 60 * 1000;
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval >= 1) {
+          return 60 * 1000;
+      }
+      
+      return 1000;
+    };
     
     function updateTime() {
       
       element.text(filter(time));
       
     }
+    function updateLater() {
+      
+      timeoutId = $timeout(function() {
+        
+        updateTime();
+        updateLater();
+        
+      }, intervalLength);
+    }
     
+    element.bind('$destroy', function() {
+      
+      $timeout.cancel(timeoutId);
+      
+    });
     updateTime();
     
+    updateLater();
   };
 
 }]);
 
 app.filter('startFrom', function () {
     return function (input, start) {
+        if(input === undefined)
+        {
+          return null;
+        }
         start = +start; //parse to int
         return input.slice(start);
     };
