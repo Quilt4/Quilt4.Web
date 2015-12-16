@@ -4,6 +4,7 @@ app.controller('registerController', ['$scope', '$stateParams', 'accountService'
 	
 	$scope.register = function()
 	{
+		$scope.loading = true;
 		$scope.message = null;
 		
 		accountService.register($scope.username, $scope.email, $scope.password, $scope.confirmPassword, function(result){
@@ -21,6 +22,8 @@ app.controller('registerController', ['$scope', '$stateParams', 'accountService'
 				
 				$scope.message = "Failed to register new account.";
 			}
+			
+			$scope.loading = false;
 		})
 	}
 	

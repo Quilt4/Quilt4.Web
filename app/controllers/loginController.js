@@ -13,6 +13,7 @@ app.controller('loginController', ['$scope', '$stateParams', 'accountService', '
 	  
 	$scope.login = function()
 	{
+		$scope.loading = true;
 		$scope.message = null;
 		
 		accountService.login($scope.username, $scope.password, function(result){
@@ -24,6 +25,8 @@ app.controller('loginController', ['$scope', '$stateParams', 'accountService', '
 				
 				$scope.message = "Username and password didn't match.";
 			}
+			
+			$scope.loading = false;
 		})
 	}
 	

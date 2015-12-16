@@ -6,7 +6,9 @@
 		
 	</div>
 	
-	<div class="register-box-body">
+	<loading isLoading="{{loading}}"></loading>
+
+	<div class="register-box-body" ng-class="loading ? 'hide' : ''">
 		
 		<p class="login-box-msg">Register new account</p>
 		
