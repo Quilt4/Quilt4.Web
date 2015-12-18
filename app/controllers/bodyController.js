@@ -4,7 +4,7 @@ app.controller('bodyController', ['$rootScope', '$scope', function($rootScope, $
 	
 	$rootScope.$on('collapsedChanged', function(event, mass) { 
       
-	$scope.collapsed = $rootScope.collapsed;
+		$scope.collapsed = $rootScope.collapsed;
       
     });
 	
