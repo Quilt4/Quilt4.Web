@@ -6,7 +6,10 @@
     
   </div><!-- /.login-logo -->
   
-  <div class="login-box-body">
+  
+  <loading isLoading="{{loading}}"></loading>
+
+  <div class="login-box-body" ng-class="loading ? 'hide' : ''">
     
     <p class="login-box-msg">Sign in</p>
     
