@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="quiltApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition skin-blue sidebar-mini" ng-app="quiltApp">
+  <body class="hold-transition skin-blue sidebar-mini" ng-controller="bodyController" ng-class="collapsed ? 'sidebar-collapse' : ''" >
     <!-- Site wrapper -->
 
       <div ui-view></div>
@@ -74,6 +74,9 @@
     <script src="app/controllers/loginController.js"></script>
     <script src="app/controllers/mainController.js"></script>
     <script src="app/controllers/registerController.js"></script>
+    <script src="app/controllers/bodyController.js"></script>
+
+
 
     <!-- Factories -->
     <script src="app/factory/apiFactory.js"></script>
