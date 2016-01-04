@@ -53,5 +53,19 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
 		});
 		
 	}
+    
+    this.getMembers = function(projectId, callback) {
+        
+        apiFactory.apiGet("project/" + projectId + "/members", function(response){
+            
+            callback(response);
+            
+        }, function(response){
+            
+            callback(null);
+            
+        })
+        
+    }
 
 }]);

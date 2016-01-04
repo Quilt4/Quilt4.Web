@@ -3,11 +3,18 @@ var app = angular.module('quiltApp');
 app.controller('projectController', ['$scope', 'projectService', '$stateParams', '$state', function($scope, projectService, $stateParams,$state) {
 	
 	$scope.loading = true;
+	$scope.userLoading = true;
 	
 	projectService.getProject($stateParams.projectId, function(project){
 		$scope.project = project;
 		$scope.loading = false;
 	});
+    
+    projectService.getMembers($stateParams.projectId, function(users){
+        $scope.users = users;
+        $scope.userLoading = false;
+        console.log(users);
+    });
 	
 	$scope.updateProject = function (project){
 				
