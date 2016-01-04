@@ -38,5 +38,16 @@ app.service('accountService', ['apiFactory', function (apiFactory) {
 			callback(true);
 		})
 	}
+	
+	this.getUser = function(callback){
+		apiFactory.apiGet("Account/UserInfo", function(response){
+			
+			callback(response);
+			
+		}, function(response){
+			
+			callback(null);
+		})
+	}
 
 }]);

@@ -1,6 +1,11 @@
 var app = angular.module('quiltApp');
 
 app.controller('mainController', ['$rootScope', '$state', 'accountService', '$scope', function($rootScope, $state, accountService, $scope) {
+ 
+    accountService.getUser(function(user){
+        $scope.user = user; 
+        console.log("Updating user");
+    });
 
     $rootScope.$on('authTokenChanged', function(event, mass) { 
       
@@ -8,6 +13,11 @@ app.controller('mainController', ['$rootScope', '$state', 'accountService', '$sc
           if(!isLoggedIn)
           {
                 $state.transitionTo('login');              
+          } else {
+              accountService.getUser(function(user){
+                 $scope.user = user; 
+                 console.log("Updating user");
+              });
           }
       })
       
