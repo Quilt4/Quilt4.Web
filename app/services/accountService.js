@@ -2,9 +2,9 @@ var app = angular.module('quiltApp');
 
 app.service('accountService', ['apiFactory', function (apiFactory) {
 	
-	this.register = function(username, email, password, confirmPassword, callback) {
+	this.register = function(username, firstName, lastName, email, password, confirmPassword, callback) {
 		
-		apiFactory.register(username, email, password, confirmPassword, callback);
+		apiFactory.register(username, firstName, lastName, email, password, confirmPassword, callback);
 
 	}	
 	

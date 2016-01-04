@@ -7,7 +7,7 @@ app.controller('registerController', ['$scope', '$stateParams', 'accountService'
 		$scope.loading = true;
 		$scope.message = null;
 		
-		accountService.register($scope.username, $scope.email, $scope.password, $scope.confirmPassword, function(result){
+		accountService.register($scope.username, $scope.firstName, $scope.lastName, $scope.email, $scope.password, $scope.confirmPassword, function(result){
 			if(result)
 			{			
 				$scope.message = null;

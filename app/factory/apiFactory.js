@@ -117,9 +117,9 @@ app.factory('apiFactory', function ($http, quilt4Config, $rootScope, $window) {
 		
 	};
 		
-	function apiRegister(username, email, password, confirmPassword, callback) {
+	function apiRegister(username, firstName, lastName, email, password, confirmPassword, callback) {
 				
-		$http.post(quilt4Config.apiBaseUrl + 'account/register', {username:username, email:email, password:password, confirmPassword:confirmPassword})
+		$http.post(quilt4Config.apiBaseUrl + 'account/register', {username:username, firstName:firstName, lastName:lastName, email:email, password:password, confirmPassword:confirmPassword})
 		
 		.success(function(response)	{
 			

@@ -13,7 +13,6 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
     projectService.getMembers($stateParams.projectId, function(users){
         $scope.users = users;
         $scope.userLoading = false;
-        console.log(users);
     });
 	
 	$scope.updateProject = function (project){
