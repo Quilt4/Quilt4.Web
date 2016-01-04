@@ -67,5 +67,19 @@ app.service('projectService', ['apiFactory', function (apiFactory) {
         })
         
     }
+    
+    this.getUsers = function(email, callback) {
+        
+        apiFactory.apiPost("project/getUsers", {email:email}, function(response){
+            
+            callback(response);
+            
+        }, function(response){
+            
+            callback(null);
+            
+        })
+        
+    }
 
 }]);

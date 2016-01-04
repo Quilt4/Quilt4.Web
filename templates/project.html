@@ -74,7 +74,6 @@
                     
                     <div class="box-body no-padding">
                     
-                        
                         <loading isLoading="{{userLoading}}"></loading>
                         
                         <ul class="users-list clearfix" ng-class="userLoading ? 'hide' : ''">
@@ -82,13 +81,19 @@
                             <li ng-repeat="user in users">
                                 
                                 <img src="{{user.avatarUrl}}" height="128px" width="128px" alt="{{user.firstName}} {{user.lastName}}">
-                                <a class="users-list-name" href="#">{{user.firstName}} {{user.lastName}}</a>
+                                <a class="users-list-name" href="">{{user.firstName}} {{user.lastName}}</a>
                                 <span class="users-list-date">@{{user.userName}}</span>
                                 
                             </li>
                             
+                            <li>
+                                <a class="users-list-name" href="" ng-click="inviteMember()"><img src="images/add.png" height="128px" width="128px" alt="Add members"></a>
+                                <a class="users-list-name" href="" ng-click="inviteMember()">Add members</a>
+                                
+                            </li>
+                            
                         </ul>
-                    <!-- /.users-list -->
+                        
                     </div>
                     
                 </div>

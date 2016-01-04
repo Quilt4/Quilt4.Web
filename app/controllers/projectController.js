@@ -1,6 +1,6 @@
 var app = angular.module('quiltApp');
 
-app.controller('projectController', ['$scope', 'projectService', '$stateParams', '$state', function($scope, projectService, $stateParams,$state) {
+app.controller('projectController', ['$scope', 'projectService', '$stateParams', '$state', '$uibModal', function($scope, projectService, $stateParams, $state, $uibModal) {
 	
 	$scope.loading = true;
 	$scope.userLoading = true;
@@ -47,5 +47,24 @@ app.controller('projectController', ['$scope', 'projectService', '$stateParams',
 	{		
 		$scope.projectSavedSuccess = false;
 	}
+    
+     $scope.inviteMember = function()
+     {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: './templates/inviteModel.html',
+            controller: 'inviteController'
+        });
+        
+        modalInstance.result.then(function (addModel) {
+           console.log(addModel);
+           
+        }, function () 
+        {
+            console.log("Cancelled");
+        });
+        
+     }
 
 }]);
+
