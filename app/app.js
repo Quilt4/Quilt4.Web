@@ -24,6 +24,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/dashboard.html",
       controller: "dashboardController"
     })
+    .state('main.help', {
+      url: "/help/:section",
+      templateUrl: "templates/help.html",
+      controller: "helpController"
+    })
     .state('main.createProject', {
       url: "/project/new",
       templateUrl: "templates/createProject.html",
