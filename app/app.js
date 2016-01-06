@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "dashboardController"
     })
     .state('main.help', {
-      url: "/help/:section",
+      url: "/help/:section/:detail",
       templateUrl: "templates/help.html",
       controller: "helpController"
     })

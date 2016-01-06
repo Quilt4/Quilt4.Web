@@ -3,45 +3,104 @@
 </section>
 
 <section class="content">
-    
-    <div section="main">
-        <h2>Main</h2>
+
+    <div class="row" ng-class="section.name == 'main' ? '' : 'hide'">
+        <!--<h1>Help</h1>-->
         <p>
             On this page there is general help
             Then there are sub-pages with categories (Platforms, Service, Troubleshoot, Error) and under that detail pages.
         </p>
             
         <h3>Troubleshoot</h3>
+        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
         <ul>
             <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'A'})">A</a></li>
             <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'B'})">B</a></li>
         </ul>
     </div>
     
-    <div section="platforms">
+    <div class="row" ng-class="section.name == 'platforms' ? '' : 'hide'">
         <h2>Platforms</h2>
-        <p>
-            
-        </p>
+        <p>P: {{platforms}}</p>
+        
+        <p>Select what platforms you are working with.</p>        
+        <ul>            
+            <li><a href="" ng-click="togglePlatform('net')">.Net</a></li>
+            <li><a href="" ng-click="togglePlatform('node')">NodeJs</a></li>
+            <li><a href="" ng-click="togglePlatform('unity')">Unity</a></li>
+            <li><a href="" ng-click="togglePlatform('angular')">Angular</a></li>
+            <li><a href="" ng-click="togglePlatform('ruby')">Ruby</a></li>
+            <li><a href="" ng-click="togglePlatform('python')">Python</a></li>
+            <li><a href="" ng-click="togglePlatform('java')">Java</a></li>
+        </ul>
+        
+        <!-- Click here to call a function in the controller, or in the service. -->
+        
+        <!--<ul>
+            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'net'})">.Net</a></li>
+            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'node'})">Node</a></li>
+            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'unity'})">Unity</a></li>
+        </ul>-->
+        
+        
+        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
+        <!--<div class="row" ng-class="section.detail == '' ? '' : 'hide'">
+            <ul>
+                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'net'})">.Net</a></li>
+                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'node'})">Node</a></li>
+                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'unity'})">Unity</a></li>
+            </ul>
+        </div>
+
+        <div class="row" ng-class="section.detail == 'net' ? '' : 'hide'">
+            <h3>.Net</h3>
+            <p>
+                
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == 'node' ? '' : 'hide'">
+            <h3>Node</h3>
+            <p>
+                
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == 'unity' ? '' : 'hide'">
+            <h3>Unity</h3>
+            <p>
+                
+            </p>
+        </div>-->
+
     </div>
     
-    <div section="service">
+    <div class="row" ng-class="section.name == 'service' ? '' : 'hide'">
         <h2>Service</h2>
         <p>
         
         </p>
     </div>
     
-    <div section="troubleshoot">
+    <div class="row" ng-class="section.name == 'troubleshoot' ? '' : 'hide'">
         <h2>Troubleshoot</h2>
-        <div detail="A">
+        
+        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
+        <div class="row" ng-class="section.detail == '' ? '' : 'hide'">
+            <ul>
+                <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'A'})">A</a></li>
+                <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'B'})">B</a></li>
+            </ul>
+        </div>
+
+        <div class="row" ng-class="section.detail == 'A' ? '' : 'hide'">
             <h3>A</h3>
             <p>
                 
             </p>
         </div>
         
-        <div detail="B">
+        <div class="row" ng-class="section.detail == 'B' ? '' : 'hide'">
             <h3>B</h3>
             <p>
                 
