@@ -4,26 +4,31 @@
 
 <section class="content">
 
-    <div class="row" ng-class="section.name == 'main' ? '' : 'hide'">
-        <!--<h1>Help</h1>-->
+    <link rel="stylesheet" type="text/css" href="css/csharp.css" >
+
+    <div class="row" ng-class="section.name == 'about' ? '' : 'hide'">
+
+        <h2>About</h2>
         <p>
-            On this page there is general help
-            Then there are sub-pages with categories (Platforms, Service, Troubleshoot, Error) and under that detail pages.
+            This quilt4 web communicates with a quilt4 service using a public <a href="http://localhost:29660/" target="_blank">WebAPI</a>.
+            In the same way the client toolkits are communicating with the service, sending information bout sessions and issues (ie. exceptions and messages).           
+        </p>
+        
+        <p>
+            If you like to you can host the service and the web on your own server, or you can use this server at quilt4.com for free.
+            We are supporters of EFF and do not expose any of your traffic or data to anyone else. If we did, the hole purpose of this project would soon fall apart.
+            The reason we do this is to help developers and operations to increase the quality of software.
+            To finanse this project you are free to donate.
         </p>
             
-        <h3>Troubleshoot</h3>
-        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
-        <ul>
-            <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'A'})">A</a></li>
-            <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'B'})">B</a></li>
-        </ul>
     </div>
     
     <div class="row" ng-class="section.name == 'platforms' ? '' : 'hide'">
-        <h2>Platforms</h2>
-        <p>P: {{platforms}}</p>
         
-        <p>Select what platforms you are working with.</p>        
+        <h2>Platforms</h2>
+
+        <!--<p>Select what platforms you are working with.</p>        
+        <p>Selected platforms: {{platforms}}</p>
         <ul>            
             <li><a href="" ng-click="togglePlatform('net')">.Net</a></li>
             <li><a href="" ng-click="togglePlatform('node')">NodeJs</a></li>
@@ -32,35 +37,219 @@
             <li><a href="" ng-click="togglePlatform('ruby')">Ruby</a></li>
             <li><a href="" ng-click="togglePlatform('python')">Python</a></li>
             <li><a href="" ng-click="togglePlatform('java')">Java</a></li>
-        </ul>
-        
-        <!-- Click here to call a function in the controller, or in the service. -->
-        
-        <!--<ul>
-            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'net'})">.Net</a></li>
-            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'node'})">Node</a></li>
-            <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'unity'})">Unity</a></li>
         </ul>-->
-        
-        
-        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
-        <!--<div class="row" ng-class="section.detail == '' ? '' : 'hide'">
+
+        <div class="row" ng-class="section.detail == '' ? '' : 'hide'">
             <ul>
                 <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'net'})">.Net</a></li>
-                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'node'})">Node</a></li>
-                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'unity'})">Unity</a></li>
+                <!--<li><a href="" ui-sref="main.help({section: 'platforms', detail: 'xamarin'})">Xamarin</a></li>
+                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'node'})">Node JS</a></li>
+                <li><a href="" ui-sref="main.help({section: 'platforms', detail: 'unity'})">Unity</a></li>-->
             </ul>
+            
+            <p>If you cannot find the platform you are working on here, please <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us or feel free to <a href="" ui-sref="main.help({section: 'contribute', detail: ''})">Contribute</a>.</p>
         </div>
-
+        
         <div class="row" ng-class="section.detail == 'net' ? '' : 'hide'">
             <h3>.Net</h3>
+            <p>
+                The toolkit for .Net is called Quilt4Net and can be downloaded as a <a href="">nuget package</a>. 
+                You can also get the source code from <a href="https://github.com/Quilt4/Quilt4Net">GitHub</a>. 
+            </p>
+            
+            <h4>The simple basic Singleton way</h4>
+            <p>To get started you only need add three lines of code in your project.</p>
+            <ol>
+                <li>One line of configuration.</li>
+                <p>
+<pre class="csharpcode">
+Singleton.Configuration.Instance.ProjectApiKey = <span class="str">"9XG02ZE0BR1OI75IVX446B59M13RKBR2"</span>; <span class="rem">//TODO: Replace with your own ProjectApiKey.</span></pre>
+                </p>
+                <p>Here you have to place your own <i>project Api Key</i> that you get when you create a project at quilt4.com</p>
+                
+                <li>One line to register a session.</li>
+                <p>
+<pre class="csharpcode">
+Singleton.Session.Instance.Register();</pre>                    
+                </p>
+                <p>This will tell quilt4 that your application was started. From that you can get some nice data and statistics.</p>
+                
+                <li>One line to register an issue.</li>
+                <p>
+<pre class="csharpcode">
+Singleton.Issue.Instance.Register(<span class="str">"Hello quilt4Net!"</span>, MessageIssueLevel.Information);</pre>                    
+                </p>
+                <p>
+                    You can log issues of different types <i>Error</i>, <i>Warning</i> or <i>Information</i>. 
+                    With this method you can log exceptions and get a picture of the quality of your project
+                </p>
+            </ol>
+
+            <p>Once you know how the basics works there are many many other things you can do with quilt4Net!</p>
+            <!--<p>This simple example uses the <i>singleton</i> version of quilt4Net. You can also use a normal instance version that works together with your favorite IOC.</p>-->
+            
+            <h4>The instance way</h4>
+            <p>If you do not want to use singleton, which you probably wont because you are writing unit tests.</p>
+            <ol>
+                <li>Configuration.</li>
+                <p>
+<pre class="csharpcode">
+<span class="kwrd">var</span> configuration = <span class="kwrd">new</span> Configuration();
+configuration.ProjectApiKey = <span class="str">"9XG02ZE0BR1OI75IVX446B59M13RKBR2"</span>; <span class="rem">//TODO: Replace with your own ProjectApiKey.</span></pre>
+                </p>
+                
+                <li>Register a session.</li>
+                <p>
+<pre class="csharpcode">
+<span class="kwrd">var</span> client = <span class="kwrd">new</span> Quilt4NetClient(configuration);
+client.Session.Register();</pre>
+                </p>
+                
+                <li>Register an issue.</li>
+                <p>
+<pre class="csharpcode">
+client.Issue.Register(<span class="str">"Hello quilt4Net instance!"</span>, MessageIssueLevel.Information);</pre>
+                </p>
+            </ol>
+            
+            <p>
+                Be sure to use the same instance of the <i>Quilt4NetClient</i> object.
+                If more than one new <i>Quilt4NetClient</i> object is created there will be new sessions registered, one for each client.
+            </p>
+            
+            <h4>Synchronous or Asynchronous</h4>
+            <p>
+                There are actually three ways of reggistering sessions and issues.
+                <ul>
+                    <li>Synchronous</li>
+                    <p>
+                        client.Session.Register();                        
+                    </p>
+                    
+                    <li>Asynchronous in the background</li>
+                    <p>
+                        client.Session.RegisterStart();
+                    </p>
+                    
+                    <li>The .Net async pattern</li>
+                    <p>
+                        client.Session.RegisterAsync();
+                    </p>
+                    
+                </ul>
+            </p>
+            
+            <p>
+                There are events fired when registering sessions or issues, one is fired just before execution, and another on completion.
+                In the completion event you can check if the registration went well or not.
+                The synchronous and async methods will return the result, and throw an exception when things go wrong.
+                We recommend to use <i>RegisterStart</i> since that will have a minimal effect on your program execution.
+            </p>
+            
+            <h3>Configuration</h3>
+            <p>
+                The only configuration really needed is the <i>ProjectApiKey</i>, all other configuration settions are optional.
+            </p>
+            
+            <h4>Configuration using code</h4>
+            <p>
+<pre class="csharpcode">
+<span class="kwrd">var</span> configuration = <span class="kwrd">new</span> Configuration();
+configuration.Enabled = <span class="kwrd">true</span>; <span class="rem">//Turn the entire quilt4Net feature on or off. (Default is true)</span>
+configuration.ProjectApiKey = <span class="str">"9XG02ZE0BR1OI75IVX446B59M13RKBR2"</span>; <span class="rem">//TODO: Replace with your own ProjectApiKey. (Mandatory)</span>
+configuration.ApplicationName = <span class="str">"MyOverrideApplication"</span>; <span class="rem">//Overrides the name of the assembly. (Default is null)</span>
+configuration.ApplicationVersion = <span class="str">"MyOverrideVersion"</span>; <span class="rem">//Overrides the version of the assembly. (Default is null)</span>
+configuration.UseBuildTime = <span class="kwrd">false</span>; <span class="rem">//If true, separate 'versions' for each build of the assembly will be logged, even though the version number have not changed. (Default false)</span>
+configuration.Session.Environment = <span class="str">"Test"</span>; <span class="rem">//Use dev, test, qa, prod, production or any other verb you like to filter on. (Default is null)</span>
+configuration.Target.Location = <span class="str">"https://service.quilt4.com"</span>; <span class="rem">//Address to the target service. (Default is https://service.quilt4.com)</span>
+configuration.Target.Timeout = <span class="kwrd">new</span> TimeSpan(0, 0, 60); //(Default is 60 seconds)
+</pre>
+            </p>
+            
+            <h4>Configuration using .config file</h4>
+            <p>
+<pre class="csharpcode">
+&lt;configuration&gt;
+  &lt;configSections&gt;
+    &lt;sectionGroup name=<span class="str">"Quilt4"</span>&gt;
+      &lt;section name=<span class="str">"Quilt4Net"</span> type=<span class="str">"Quilt4Net.ConfigSection, Quilt4Net"</span> /&gt;
+    &lt;/sectionGroup&gt;
+  &lt;/configSections&gt;
+
+  &lt;Quilt4&gt;
+    &lt;Quilt4Net Enabled=<span class="str">"true"</span> ProjectApiKey=<span class="str">"9XG02ZE0BR1OI75IVX446B59M13RKBR2"</span> ApplicationName=<span class="str">"MyOverrideApplication"</span> ApplicationVersion=<span class="str">"MyOverrideVersion"</span> UseBuildTime=<span class="str">"false"</span>&gt;
+      &lt;Session Environment=<span class="str">"Test"</span> /&gt;
+      &lt;Target Location=<span class="str">"http://ci.quilt4.com/master/service/"</span> Timeout=<span class="str">"60"</span>/&gt;
+    &lt;/Quilt4Net&gt;
+  &lt;/Quilt4&gt;
+
+&lt;/configuration&gt;</pre>
+            </p>
+            
+            <h3>Sessions</h3>
+            <p>
+                Registering a session when the application starts and ending the session just before the application closes will give you a good idea of the usage.
+            </p>
+            
+            <h4>Registering sessions on web projects</h4>
+            <p>
+                Since your assembly cannot be found using <i>entry assembly</i> for projects hosted in IIS, this information needs to be explicitly provided.
+            </p>
+<pre class="csharpcode">
+client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(WebApiApplication)));</pre>            
+            
+            <h4>Issues</h4>
+            <p>
+                The most common way of registering is to place one line of code in the <i>catch</i> part.                
+            </p>
+<pre class="csharpcode">
+<span class="kwrd">try</span>
+{
+
+}
+<span class="kwrd">catch</span> (Exception exception)
+{
+    client.Issue.Register(exception);
+    <span class="kwrd">throw</span>;
+}
+</pre>
+
+            <h3>Using IOC</h3>
+            <p>
+                Inject <i>IIssueHandler</i> in your business classes where you want to log issues.
+                For this to work you will have to register the followin...
+                <ul>
+                    <li>Quilt4Net.Configuration class that implements the IConfiguration interface and have a default constructor.</li>
+                    <li>Quilt4Net.Quilt4NetClient class that implements the IQuilt4NetClient interface and takes IConfiguration in the constructor.</li>
+                    <li>Quilt4Net.IssueHandler class that implements the IIssueHandler interface and takes IQuilt4NetClient in the constructor.</li>
+                </ul>
+                The class <i>Quilt4NetClient</i> should be created as a singleton.
+            </p>
+            
+            <!--<h4>Castle Windsor</h4>
+            <p><i>Example here...</i></p>
+            
+            <h4>Simple Injector</h4>
+            <p><i>Example here...</i></p>-->
+
+            <h3>What data is sent?</h3>
+            <p>
+                Read about what data is sent from the client under the 
+                <a href="" ui-sref="main.help({section: 'service', detail: ''})">Service</a>
+                section.  
+            </p>
+
+        </div>
+
+        <div class="row" ng-class="section.detail == 'xamarin' ? '' : 'hide'">
+            <h3>Xamarin</h3>
             <p>
                 
             </p>
         </div>
 
         <div class="row" ng-class="section.detail == 'node' ? '' : 'hide'">
-            <h3>Node</h3>
+            <h3>Node JS</h3>
             <p>
                 
             </p>
@@ -71,15 +260,144 @@
             <p>
                 
             </p>
-        </div>-->
+        </div>
+
+    </div>
+
+    <div class="row" ng-class="section.name == 'gettingStarted' ? '' : 'hide'">
+        <h2>Getting Started</h2>
+        <p>
+            Theease are the steps to get started.
+        </p>
+        <ol>
+            <li>Create an <a href="">account</a> and a <a href="">project</a>.</li>
+            <li><a href="">Download</a> a <i>client toolkit</i> for the platform of your choise, and start using it in your project.</li>
+            <li><a href="">Invite</a> your co-developers.</li>
+        </ol>
+        <p>After that it is just a matter of monitoring.</p>
+
+        <p>
+            <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us if you want to host the service on your own server.
+        </p>
+
+        <h3>Troubleshoot</h3>
+        <!-- TODO: Load this dynamically, and have it in one place (not in two as of now.) -->
+        <ul>
+            <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'A'})">A</a></li>
+            <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: 'B'})">B</a></li>
+        </ul>
 
     </div>
     
     <div class="row" ng-class="section.name == 'service' ? '' : 'hide'">
         <h2>Service</h2>
         <p>
-        
+            The service part of quilt4 is located <a href="http://localhost:29660/" target="_blank">here</a>.
+            The web uses the service with an open Web API, in the same way as the client toolkits does.
         </p>
+        
+        <p>
+            Here is a more detailed description of what data is beeing sent when using the toolkits.
+            Different platforms provides different information depending on implementation.
+        </p>
+        
+        <h3>Sessions</h3>
+        <p>
+            This is an example of what the json can look like when registering a session.
+        </p>
+<pre class="csharpcode">{
+	"Session":
+	{
+		"ProjectApiKey":"7EDIAJYLJDY9ZKA1KNAK1MYG9NX6RLVC",
+		"Environment":"Test",
+		"Application":
+		{
+			"Fingerprint":"AI1:558815A41053A507B3346BED6E874947",
+			"Name":"Quilt4NetSample",
+			"Version":"1.0.5249.27679",
+			"SupportToolkitNameVersion":"Quilt4Net 2.0.0.44",
+			"BuildTime":null
+		},
+		"Machine":
+		{
+			"Fingerprint":"MI1:B9DBA3EC4A941D61F8E957F367FDB7F0",
+			"Name":"WIN7-ABIT4416",
+			"Data":
+			{
+				"OsName":"Microsoft Windows NT 6.1.7601 Service Pack 1",
+				"ScreenRes":"1920x1080",
+			},
+		},
+		"User":
+		{
+			"Fingerprint":"UI1:F08D204353D3EC132F9B481FFFA93106",
+			"UserName":"WORKGROUP\\ADMIN"
+		},
+	},
+	"ClientTime":"2014-05-16T14:22:41.0990443Z"
+}</pre>
+
+        <p>
+            As you can see there is data about the <i>Application</i>, <i>Machine</i> and <i>User</i>.
+        </p>
+        <p>
+            The application part is used to trace the different versions within an application so that we can measure the quality of that specific version.
+        </p>
+        <p>
+            The machine makes it possible to se on how many different types of machines the application has ran.
+            We can also track if more applications has been ran on the same machine.
+            There is also metadata that makes it possible to see how the machines are equiped and what kind they are, so that developers better can focus on the right equipment.  
+        </p>
+        <p>
+            The user part will make it possible to se how many users are or have been running the application, and if some have more problems than others.
+        </p>
+
+        <p>
+            In response the server will return a <i>SessionToken</i> that is to be used when communicating regarding this session, as registering issues or ending it.                        
+        </p>
+<pre class="csharpcode">
+{
+    Example of response here...
+}</pre>
+        
+        <h3>Issues</h3>
+        <p>
+            This is what the json could look like when registering an issue.    
+        </p>
+<pre class="csharpcode">{
+	"IssueKey":"7D2E9467-4E9A-4177-B7E8-386761EA6018",
+	"SessionKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+	"ClientTime":"2014-05-16T14:22:41.0990443Z",
+	"Data":
+	{
+		"Key1":"Data1",
+		"Key2":"Data2",
+		"IssueThreadGuid":"afa100e9-b669-4f14-83cb-59bff17bcedd"
+	},
+	"IssueType":
+	{
+		"Message":"Some warning message",
+		"StackTrace":"",
+		"IssueLevel":"MessageWarning",
+		"ExceptionTypeName":null,
+		"Inner":null
+	},
+	"IssueThreadGuid":"6A96A95A-6F93-4DB5-9EB7-B9F38B603810",
+	"UserHandle":"Bob Loblaw",
+}</pre>
+
+        <p>
+            <i>Description here...</i>    
+        </p>
+        
+        <p>
+            <i>Something about the response here...</i>                        
+        </p>
+<pre class="csharpcode">
+{
+    Example of response here...
+}</pre>
+        
     </div>
     
     <div class="row" ng-class="section.name == 'troubleshoot' ? '' : 'hide'">
@@ -96,16 +414,187 @@
         <div class="row" ng-class="section.detail == 'A' ? '' : 'hide'">
             <h3>A</h3>
             <p>
-                
+                <i>Info here...</i>
             </p>
         </div>
         
         <div class="row" ng-class="section.detail == 'B' ? '' : 'hide'">
             <h3>B</h3>
             <p>
-                
+                <i>Info here...</i>
             </p>
         </div>
     </div>
+
+    <div class="row" ng-class="section.name == 'contribute' ? '' : 'hide'">
+        <h2>Contribute</h2>
+        <p>
+            The best way of contributing is to help adding deatures to the project.
+            <a href="https://github.com/Quilt4" target="_blank">GitHub</a>
+        </p>
+        
+        <h3>Is the platform you are working on missing?</h3>
+        <p>
+             Feel free to create a new GitHub project with your platform. All data sent to the service is WebAPI Json.
+             You can read about how it works in the under <a href="" ui-sref="main.help({section: 'service', detail: ''})">Service</a>.
+             If you have any questions, please <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us. 
+        </p>
+        
+        <h3>Donate</h3>
+        <p>
+            To help support the development of the quilt4 platform and to continue to keep the platform to be free of charge we are happy for your donations. 
+        </p>
+        <!-- Replace the "Terra Tactica Backer" keys with "quilt4 backer" -->
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="VW36RT8FJF8DG">
+            <input type="image" src="https://www.paypalobjects.com/en_US/SE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
     
+    <div class="row" ng-class="section.name == 'contact' ? '' : 'hide'">
+        <h2>Contact</h2>
+        <p>
+            For support questions send us an email to <a href="mailto:support@quilt4.com">support@quilt4.com</a> or create a post on <a href="https://github.com/Quilt4" target="_blank">GitHub</a>.
+        </p>
+    </div>
+
+    <div class="row" ng-class="section.name == 'error' ? '' : 'hide'">
+        <h2>Error</h2>
+        <p>
+            Show error info depending on error code here...
+        </p>
+        <!--Error Code: {{section.detail}}-->
+        
+        <div class="row" ng-class="section.detail == '' ? '' : 'hide'">
+            No error code provided.    
+        </div>
+        
+        <div class="row" ng-class="section.detail == '1001' ? '' : 'hide'">
+            <h3>ProjectApiKey not set</h3>
+            <p>
+                You have to configure a <i>ProjectApiKey</i> in your client toolkit, otherwise you cannot communicate with the service. 
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1002' ? '' : 'hide'">
+            <h3>Unknown type</h3>
+            <p>
+                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1003' ? '' : 'hide'">
+            <h3>Cannot set ProjectApiKey</h3>
+            <p>
+                You cannot assign the <i>ProjectApiKey</i> to the value you are trying to.
+                If you want to clear out the <i>ProjectApiKey</i> set in code so that it is read from the config file instead, set it to an empty string.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1004' ? '' : 'hide'">
+            <h3>Cannot set Environment</h3>
+            <p>
+                If you want to clear out the environment, do not use null, set it to an empty string.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1005' ? '' : 'hide'">
+            <h3>Service call Error</h3>
+            <p>
+                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1006' ? '' : 'hide'">
+            <h3>Cannot set Location</h3>
+            <p>
+                If you want to clear out the target location so that default or config is used, do not use null, set it to an empty string.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1007' ? '' : 'hide'">
+            <h3>Cannot automatically retrieve assembly</h3>
+            <p>
+                There are different scenarios where the toolkit cannot find the correct assembly by it self.
+                For instance when hosting a web in IIS.
+                In this cases you have to provide the first assembly to the toolkit.
+                Normally you do this when registering the session.
+                <!--You can also use the override configuration for <i>ApplicationName</i> and <i>ApplicationVersion</i> so that the <i>first assembly</i> will not be needed.-->
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1008' ? '' : 'hide'">
+            <h3>Cannot change first assembly</h3>
+            <p>
+                Once the first assembly has been set, it cannot be changed.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1009' ? '' : 'hide'">
+            <h3>Failed to execute post</h3>
+            <p>
+                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1010' ? '' : 'hide'">
+            <h3>Cannot parse issue level exception</h3>
+            <p>
+                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1011' ? '' : 'hide'">
+            <h3>Cannot parse issue level message</h3>
+            <p>
+                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1012' ? '' : 'hide'">
+            <h3>Cannot set timeout</h3>
+            <p>
+                You cannot explicitly set the time out value to null. 
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1013' ? '' : 'hide'">
+            <h3>Timeout</h3>
+            <p>
+                The WebAPI call to the service timed out.  
+            </p>
+        </div>
+
+        <div class="row" ng-class="section.detail == '1014' ? '' : 'hide'">
+            <h3>Call terminated by server</h3>
+            <p>
+                The server did not respons as expected.
+                One reason could be that the server encountered an error and could not handle it properly.   
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="row" ng-class="section.name == 'welcome' ? '' : 'hide'">
+        <h2>Welcome</h2>
+        <p>
+            So you just installed the toolkit! Show more info on what to do next here...            
+        </p>
+        <!--platform: {{section.detail}}-->
+        
+        <div class="row" ng-class="section.detail == '' ? '' : 'hide'">
+            No platform was provided.    
+        </div>
+        
+        <div class="row" ng-class="section.detail == 'net' ? '' : 'hide'">
+            <h3>.NET</h3>
+            <p>
+                <i>Info here...</i>
+            </p>
+        </div>
+
+    </div>
+
 </section>

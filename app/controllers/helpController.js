@@ -7,18 +7,19 @@ app.controller('helpController', ['$scope', '$stateParams', 'helpService', funct
         detail: $stateParams.detail,
 	}
 
-    $scope.platforms = [];
-    
-    $scope.togglePlatform = function(platform) {
-        
-        if($scope.platforms.indexOf(platform) == -1)
-        {
-            $scope.platforms.push(platform);
-        }
-        else
-        {
-            $scope.platforms.splice($scope.platforms.indexOf(platform),1);
-        }
-    };
+    //TODO: This should be stored in some global context
+    // $scope.platforms = [];
+    // 
+    // $scope.togglePlatform = function(platform) {
+    //     
+    //     if($scope.platforms.indexOf(platform) == -1)
+    //     {
+    //         $scope.platforms.push(platform);
+    //     }
+    //     else
+    //     {
+    //         $scope.platforms.splice($scope.platforms.indexOf(platform),1);
+    //     }
+    // };
 
 }]);
