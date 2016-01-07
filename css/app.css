@@ -158,3 +158,11 @@
 body {
   background: #ecf0f5;
 }
+
+.help-text {
+    font-size: 16px;
+}
+
+.help-header {
+    font-size: 30px !important;
+}

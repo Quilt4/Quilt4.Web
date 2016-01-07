@@ -17,21 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <ul class="nav navbar-nav">
-              <li>
-                    <a href="" ui-sref="main.help({section: 'about', detail: ''})">Help</a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="" ui-sref="main.help({section: 'gettingStarted', detail: ''})">Getting Started</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'platforms', detail: ''})">Platforms</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'service', detail: ''})">Service</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'troubleshoot', detail: ''})">Troubleshoot</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'contribute', detail: ''})">Contribute</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a></li>
-                        <!--<li><a href="" ui-sref="main.help({section: 'error', detail: ''})">Error</a></li>
-                        <li><a href="" ui-sref="main.help({section: 'welcome', detail: ''})">Welcome</a></li>-->
-                    </ul>
-              </li>
-          </ul>
+          
 
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -93,6 +79,7 @@
             </div>
           </form>
           <!-- /.search form -->
+          
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
@@ -102,6 +89,67 @@
                 <i class="fa fa-th"></i> <span>Dashboard</span> 
               </a>
             </li>
+            
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Help</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'about', detail: ''})">
+                        <i class="fa fa-th"></i> <span>About</span> 
+                    </a>
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'gettingStarted', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Getting Started</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'platforms', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Platforms</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'service', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Service</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'troubleshoot', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Troubleshoot</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'contribute', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Contribute</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'contact', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Contact</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'error', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Error</span> 
+                    </a>
+                    </li>
+                
+                    <li ui-sref-active="active">
+                    <a href ui-sref="main.help({section: 'welcome', detail: ''})">
+                        <i class="fa fa-th"></i> <span>Welcome</span> 
+                    </a>
+                    </li>
+                </ul>
+            </li>
+           
+            
             
           </ul>
         </section>
