@@ -462,9 +462,6 @@ client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(We
 
     <div class="row" ng-class="section.name == 'error' ? '' : 'hide'">
         <h2>Error</h2>
-        <p>
-            Show error info depending on error code here...
-        </p>
         <!--Error Code: {{section.detail}}-->
         
         <div class="row" ng-class="section.detail == '' ? '' : 'hide'">
@@ -480,8 +477,7 @@ client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(We
 
         <div class="row" ng-class="section.detail == '1002' ? '' : 'hide'">
             <h3>Unknown type</h3>
-            <p>
-                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            <p>               
             </p>
         </div>
 
@@ -502,8 +498,7 @@ client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(We
 
         <div class="row" ng-class="section.detail == '1005' ? '' : 'hide'">
             <h3>Service call Error</h3>
-            <p>
-                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            <p>                
             </p>
         </div>
 
@@ -535,21 +530,18 @@ client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(We
         <div class="row" ng-class="section.detail == '1009' ? '' : 'hide'">
             <h3>Failed to execute post</h3>
             <p>
-                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
             </p>
         </div>
 
         <div class="row" ng-class="section.detail == '1010' ? '' : 'hide'">
             <h3>Cannot parse issue level exception</h3>
             <p>
-                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
             </p>
         </div>
 
         <div class="row" ng-class="section.detail == '1011' ? '' : 'hide'">
             <h3>Cannot parse issue level message</h3>
-            <p>
-                <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+            <p>                
             </p>
         </div>
 
@@ -575,6 +567,10 @@ client.Session.Register(Assembly.GetAssembly(<span class="kwrd">typeof</span>(We
             </p>
         </div>
         
+        <p>
+            <a href="" ui-sref="main.help({section: 'contact', detail: ''})">Contact</a> us for more information about this error.
+        </p>
+
     </div>
 
     <div class="row" ng-class="section.name == 'welcome' ? '' : 'hide'">
