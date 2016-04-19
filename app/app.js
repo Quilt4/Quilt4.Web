@@ -70,7 +70,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "applicationController"
     })
     .state('main.version', {
-      url: "/project/:projectId/application/:applicationId/version/:versionId",
+      url: "/version/:versionId",
       templateUrl: "templates/version.html",
       controller: "versionController"
     })

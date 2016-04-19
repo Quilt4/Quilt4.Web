@@ -3,10 +3,10 @@ var app = angular.module('quiltApp');
 app.service('versionService', ['apiFactory', function (apiFactory) {
 	
 
-	this.getVersion = function(projectId, applicationId, versionId, callback) {
+	this.getVersion = function(versionId, callback) {
 
 		
-		apiFactory.apiGet("project/" + projectId + "/application/" + applicationId + "/version/" + versionId, function(response){
+		apiFactory.apiGet("version/" + versionId, function(response){
 			
 			callback(response);
 			

@@ -8,7 +8,7 @@
 		<li><a href="" ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="" ui-sref="main.project({projectId: issueType.projectId})">{{issueType.projectName}}</a></li>
 		<li><a href="" ui-sref="main.project.application({projectId: issueType.projectId, applicationId: issueType.applicationId})">{{issueType.applicationName}}</a></li>
-		<li><a href="" ui-sref="main.version({projectId: issueType.projectId, applicationId: issueType.applicationId, versionId: issueType.versionId})">{{issueType.version}}</a></li>
+		<li><a href="" ui-sref="main.version({versionId: issueType.versionId})">{{issueType.version}}</a></li>
 		<li><a href="" ui-sref="main.issueType({issueTypeKey: issueType.id})" class="active">{{issueType.type}}</a></li>
 	</ol>
 
