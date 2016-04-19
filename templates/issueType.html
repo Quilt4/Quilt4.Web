@@ -9,7 +9,7 @@
 		<li><a href="" ui-sref="main.project({projectId: issueType.projectId})">{{issueType.projectName}}</a></li>
 		<li><a href="" ui-sref="main.project.application({projectId: issueType.projectId, applicationId: issueType.applicationId})">{{issueType.applicationName}}</a></li>
 		<li><a href="" ui-sref="main.version({projectId: issueType.projectId, applicationId: issueType.applicationId, versionId: issueType.versionId})">{{issueType.version}}</a></li>
-		<li><a href="" ui-sref="main.issueType({projectId: issueType.projectId, applicationId: issueType.applicationId, versionId: issueType.versionId, issueTypeId: issueType.id})" class="active">{{issueType.type}}</a></li>
+		<li><a href="" ui-sref="main.issueType({issueTypeKey: issueType.id})" class="active">{{issueType.type}}</a></li>
 	</ol>
 
 </section>

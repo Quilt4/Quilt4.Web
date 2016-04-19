@@ -5,7 +5,7 @@ app.controller('issueTypeController', ['$scope', '$stateParams', 'issueTypeServi
 	$scope.currentPage = 1;
 	
 	$scope.loading = true;
-	issueTypeService.getIssueType($stateParams.projectId, $stateParams.applicationId, $stateParams.versionId, $stateParams.issueTypeId, function(issueType){
+	issueTypeService.getIssueType($stateParams.issueTypeKey, function(issueType){
 		
 		$scope.issueType = issueType;
 		$scope.loading = false;

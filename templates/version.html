@@ -62,14 +62,14 @@
 										
 									</td>									
 									
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.ticket}}</td>									
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.type}}</td>									
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">{{issueType.issues}}</td>									
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})">{{issueType.ticket}}</td>									
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})">{{issueType.type}}</td>									
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})">{{issueType.issues}}</td>									
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})">
 										<span class="label label-{{issueType.level == 'Warning' ? 'warning' : (issueType.level == 'Error' ? 'danger' : 'primary')}}">{{issueType.level}}</span>
 									</td>									
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})" time="{{issueType.lastIssue}}"></td>
-									<td ui-sref="main.issueType({projectId: version.projectId, applicationId: version.applicationId, versionId: version.id, issueTypeId: issueType.id})">
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})" time="{{issueType.lastIssue}}"></td>
+									<td ui-sref="main.issueType({issueTypeKey: issueType.id})">
 										<span class="label label-primary enviroment" ng-repeat="enviroment in issueType.enviroments | orderBy:enviroment">{{enviroment}}</span>
 									</td>			
 								

@@ -75,7 +75,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "versionController"
     })
     .state('main.issueType', {
-      url: "/project/:projectId/application/:applicationId/version/:versionId/issueType/:issueTypeId",
+      url: "/issueType/:issueTypeKey",
       templateUrl: "templates/issueType.html",
       controller: "issueTypeController"
     })

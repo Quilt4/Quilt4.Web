@@ -3,9 +3,9 @@ var app = angular.module('quiltApp');
 app.service('issueTypeService', ['apiFactory', function (apiFactory) {
 	
 		
-	this.getIssueType = function(projectId, applicationId, versionId, issueTypeId, callback) {
+	this.getIssueType = function(issueTypeKey, callback) {
 
-		apiFactory.apiGet("project/" + projectId + "/application/" + applicationId + "/version/" + versionId + "/issueType/" + issueTypeId, function(response){
+		apiFactory.apiGet("issueType/" + issueTypeKey, function(response){
 			
 			callback(response);
 			
