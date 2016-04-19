@@ -33,13 +33,13 @@
 
           <tbody>
 
-            <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="main.version({projectId: projectId, applicationId: applicationId, versionId: version.id})" >
+            <tr ng-repeat="version in versions | orderBy:orderByField:reverseSort" class="clickable-row" ui-sref="main.version({projectId: projectId, applicationId: applicationId, versionId: version.versionKey})" >
               
-              <td>{{version.version}}</td>
-              <td>{{version.sessions}}</td>
-              <td>{{version.issueTypes}}</td>
-              <td>{{version.issues}}</td>
-              <td time="{{version.last}}"></td>
+              <td>{{version.versionNumber}}</td>
+              <td>{{version.sessionCount}}</td>
+              <td>{{version.issueTypeCount}}</td>
+              <td>{{version.issueCount}}</td>
+              <td time="{{version.lastSession}}"></td>
               <td>
                   <span class="label label-primary enviroment" ng-repeat="enviroment in version.enviroments | orderBy:env" >
                     {{enviroment}}
