@@ -1,5 +1,30 @@
 var app = angular.module('quiltApp', ['ui.router', 'ui.bootstrap', 'angular-uuid']);
 
+app.factory('AuthInterceptor', function ($rootScope) {
+  return {
+    responseError: function (response) { 
+      
+      if(response.status >= 300)
+      {
+        console.log(response);
+        alert(response.status + ": " + response.statusText);
+      }
+      
+      
+      return true;
+    }
+  };
+});
+
+app.config(function ($httpProvider) {
+  $httpProvider.interceptors.push([
+    '$injector',
+    function ($injector) {
+      return $injector.get('AuthInterceptor');
+    }
+  ]);
+});
+    
 app.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/login");
