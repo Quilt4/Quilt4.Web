@@ -24,19 +24,19 @@
 					<h3>{{project.name}}</h3>
 
 					<div class="col-xs-6"> 
-						<p>{{project.versions}} Versions</p>
-						<p>{{project.sessions}} Sessions</p>
+						<p>{{project.versionCount}} Versions</p>
+						<p>{{project.sessionCount}} Sessions</p>
 					</div>
 					<div class="col-xs-6"> 
-						<p>{{project.issueTypes}} Issue Types</p>
-						<p>{{project.issues}} Issues</p>
+						<p>{{project.issueTypeCount}} Issue Types</p>
+						<p>{{project.issueCount}} Issues</p>
 					</div>
 
 				</div>
 
 				<div style="clear:both;"></div>
 
-				<a href="" ui-sref="main.project({projectId: project.id})" class="small-box-footer">
+				<a href="" ui-sref="main.project({projectId: project.projectKey})" class="small-box-footer">
 
 					View project <i class="fa fa-arrow-circle-right"></i>
 

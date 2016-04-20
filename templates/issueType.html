@@ -81,6 +81,7 @@
 							<thead>
 								
 								<tr>
+									<th></th>
 									<th></th>							
 									<th><a href="" ng-click="orderByField='time'; reverseSort = !reverseSort">Time</a></th>
 									<th><a href="" ng-click="orderByField='user'; reverseSort = !reverseSort">User</a></th>
@@ -92,12 +93,12 @@
 							
 							<tbody>
 								
-								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort | startFrom:((currentPage-1)*20) | limitTo: 20 "  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ''">
+								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort | startFrom:((currentPage-1)*20) | limitTo: 20 "  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ">
 									<td style="width:5px;"><i class="fa fa-info" ng-if="issue.data != null"></i></td>
+                                    <td>...</td>
 									<td time="{{issue.time}}"></td>
 									<td>{{issue.user}}</td>
-									<td><span class="label label-primary">{{issue.enviroment}}</span></td>
-									
+									<td><span class="label label-primary">{{issue.enviroment}}</span></td>									
 								</tr>
 								
 								<tr ng-if="issue.expanded" ng-repeat-end="" class="alt-bg" ng-if="issue.data != null">

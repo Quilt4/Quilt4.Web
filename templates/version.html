@@ -43,7 +43,7 @@
 									<th></th>
 									<th><a href="" ng-click="orderByField='ticket'; reverseSort = !reverseSort">Ticket</a></th>
 									<th><a href="" ng-click="orderByField='type'; reverseSort = !reverseSort">Type</a></th>
-									<th><a href="" ng-click="orderByField='issues'; reverseSort = !reverseSort">Issues</a></th>
+									<th><a href="" ng-click="orderByField='issueCount'; reverseSort = !reverseSort">Issues</a></th>
 									<th><a href="" ng-click="orderByField='level'; reverseSort = !reverseSort">Level</a></th>
 									<th><a href="" ng-click="orderByField='lastIssue'; reverseSort = !reverseSort">Last Issue</a></th>
 									<th>Enviroments</th>
@@ -64,7 +64,7 @@
 									
 									<td ui-sref="main.issueType({issueTypeKey: issueType.issueTypeKey})">{{issueType.ticket}}</td>									
 									<td ui-sref="main.issueType({issueTypeKey: issueType.issueTypeKey})">{{issueType.type}}</td>									
-									<td ui-sref="main.issueType({issueTypeKey: issueType.issueTypeKey})">{{issueType.issues}}</td>									
+									<td ui-sref="main.issueType({issueTypeKey: issueType.issueTypeKey})">{{issueType.issueCount}}</td>									
 									<td ui-sref="main.issueType({issueTypeKey: issueType.issueTypeKey})">
 										<span class="label label-{{issueType.level == 'Warning' ? 'warning' : (issueType.level == 'Error' ? 'danger' : 'primary')}}">{{issueType.level}}</span>
 									</td>									
@@ -109,7 +109,7 @@
 								<tr>
 									
                                     <th><a href="" ng-click="orderByField='serverStartTime'; reverseSort = !reverseSort">Start</a></th>
-                                    <th><a href="" ng-click="orderByField='lastUsedServerTime'; reverseSort = !reverseSort">End</a></th>
+                                    <th><a href="" ng-click="orderByField='lastUsedServerTime'; reverseSort = !reverseSort">Duration</a></th>
                                     <th><a href="" ng-click="orderByField='userName'; reverseSort = !reverseSort">User</a></th>
                                     <th><a href="" ng-click="orderByField='machineName'; reverseSort = !reverseSort">Machine</a></th>
                                     <th><a href="" ng-click="orderByField='environment'; reverseSort = !reverseSort">Environment</a></th>
@@ -124,10 +124,10 @@
 								<tr ng-repeat="session in version.sessions | orderBy:orderByField:reverseSort" class="clickable-row">
 								
                                     <td time="{{session.serverStartTime}}"></td>
-                                    <td time="{{session.lastUsedServerTime}}"></td>
+                                    <td>{{session.duration}}</td>
                                     <td>{{session.userName}}</td>
                                     <td>{{session.machineName}}</td>
-                                    <td>{{session.environment}}</td>
+                                    <td ><span class="label label-primary enviroment">{{session.environment}}</span></td>
                                     <td>{{session.callerIp}}</td>
 								
 								</tr>
