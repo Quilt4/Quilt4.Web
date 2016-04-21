@@ -8,7 +8,7 @@
 		<li><a href="" ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="" ui-sref="main.project({projectId: issueType.projectId})">{{issueType.projectName}}</a></li>
 		<li><a href="" ui-sref="main.project.application({projectId: issueType.projectId, applicationId: issueType.applicationId})">{{issueType.applicationName}}</a></li>
-		<li><a href="" ui-sref="main.version({versionId: issueType.versionId})">{{issueType.version}}</a></li>
+		<li><a href="" ui-sref="main.version({versionId: issueType.versionId})">{{issueType.versionNumber}}</a></li>
 		<li><a href="" ui-sref="main.issueType({issueTypeKey: issueType.id})" class="active">{{issueType.type}}</a></li>
 	</ol>
 
@@ -93,7 +93,7 @@
 							
 							<tbody>
 								
-								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort | startFrom:((currentPage-1)*20) | limitTo: 20 "  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ">
+								<tr ng-repeat-start="issue in issueType.issues | orderBy:orderByField:reverseSort | startFrom:((currentPage-1)*20) | limitTo: 20 "  ng-click="issue.data != null ? (issue.expanded = !issue.expanded) : ('')" class="clickable-row" ng-class="issue.expanded ? 'alt-bg' : ''">
 									<td style="width:5px;"><i class="fa fa-info" ng-if="issue.data != null"></i></td>
                                     <td>...</td>
 									<td time="{{issue.time}}"></td>
@@ -103,7 +103,7 @@
 								
 								<tr ng-if="issue.expanded" ng-repeat-end="" class="alt-bg" ng-if="issue.data != null">
 									
-									<td colspan="4">
+									<td colspan="5">
 										<p ng-repeat="(key, value) in issue.data">{{key}}: {{value}}</p>
 									</td>
 									
