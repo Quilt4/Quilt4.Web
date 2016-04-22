@@ -2,14 +2,16 @@
 		
 	<h1 ng-class="loading ? 'hide' : ''">
 		{{version.applicationName}}
-		<small>v{{version.version}}</small>
+		<small>v{{version.versionNumber}}</small>
 	</h1>
 
 	<ol class="breadcrumb" ng-class="loading ? 'hide' : ''">
+		
 		<li><a href="" ui-sref="main.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="" ui-sref="main.project({projectId: version.projectKey})">{{version.projectName}}</a></li>
 		<li><a href="" ui-sref="main.project.application({projectId: version.projectKey, applicationId: version.applicationKey})">{{version.applicationName}}</a></li>
 		<li><a href="" ui-sref="main.version({projectId: version.projectKey, applicationId: version.applicationKey, versionId: version.versionKey})" class="active">{{version.versionNumber}}</a></li>
+		
 	</ol>
 		
 </section>
@@ -87,8 +89,7 @@
 			
 		</div>
 		
-        
-        		<div class="col-lg-12">
+		<div class="col-lg-12">
 		
 			<div class="box box-primary">
 			
@@ -108,12 +109,12 @@
 		
 								<tr>
 									
-                                    <th><a href="" ng-click="orderByField='serverStartTime'; reverseSort = !reverseSort">Start</a></th>
-                                    <th><a href="" ng-click="orderByField='lastUsedServerTime'; reverseSort = !reverseSort">Duration</a></th>
-                                    <th><a href="" ng-click="orderByField='userName'; reverseSort = !reverseSort">User</a></th>
-                                    <th><a href="" ng-click="orderByField='machineName'; reverseSort = !reverseSort">Machine</a></th>
-                                    <th><a href="" ng-click="orderByField='environment'; reverseSort = !reverseSort">Environment</a></th>
-                                    <th><a href="" ng-click="orderByField='callerIp'; reverseSort = !reverseSort">Caller Ip</a></th>
+                                    <th><a href="" ng-click="orderByField2='serverStartTime'; reverseSort2 = !reverseSort2">Start</a></th>
+                                    <th><a href="" ng-click="orderByField2='lastUsedServerTime'; reverseSort2 = !reverseSort2">Duration</a></th>
+                                    <th><a href="" ng-click="orderByField2='userName'; reverseSort2 = !reverseSort2">User</a></th>
+                                    <th><a href="" ng-click="orderByField2='machineName'; reverseSort2 = !reverseSort2">Machine</a></th>
+                                    <th><a href="" ng-click="orderByField2='environment'; reverseSort2 = !reverseSort2">Environment</a></th>
+                                    <th><a href="" ng-click="orderByField2='callerIp'; reverseSort2 = !reverseSort2">Caller Ip</a></th>
 																	
 								</tr>
 								
@@ -121,7 +122,7 @@
 								
 							<tbody>
 								
-								<tr ng-repeat="session in version.sessions | orderBy:orderByField:reverseSort" class="clickable-row">
+								<tr ng-repeat="session in version.sessions | orderBy:orderByField2:reverseSort2" class="clickable-row">
 								
                                     <td time="{{session.serverStartTime}}"></td>
                                     <td>{{session.duration}}</td>
@@ -143,7 +144,6 @@
 			</div>
 			
 		</div>
-
 
 	</div>
 

@@ -11,18 +11,42 @@
     
     <div class="form-group">
         
-        <label for="email">Email address</label>
+        <label for="email">Search for user</label>
         <input type="text" class="form-control" id="email" ng-model="invite.email" autocomplete="off" placeholder="Enter email">
         
     </div>
     
-    <ul>
+    
+    <ul class="products-list product-list-in-box">
         
-        <li ng-repeat="user in users">
-            {{user.eMail}} (@{{user.userName}})
+        <li class="item" ng-repeat="user in users">
+            
+            <div class="product-img">
+                
+                <img src="{{user.avatarUrl}}" alt="{{user.fullName}}">
+                
+            </div>
+            
+            <a href="javascript:void(0)" class="product-title">
+                <i class="fa fa-play fa-3x" style="float:right; color:#aaa"></i>
+            </a>
+            
+            <div class="product-info">
+                
+                <a href="javascript:void(0)" class="product-title">{{user.fullName}} ({{user.userName}})
+                    
+                    <span class="product-description">
+                        
+                        {{user.eMail}}
+                        
+                    </span>
+                    
+                </a>
+                
+            </div>
             
         </li>
-                        
+        
     </ul>
     
 </div>
