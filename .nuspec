@@ -5,6 +5,7 @@
     <version>1.0.0</version>
     <authors>Pelle Branden</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Quilt4.Web</description>
   </metadata>
   <files>
     <file src="app\*" target="app" />
