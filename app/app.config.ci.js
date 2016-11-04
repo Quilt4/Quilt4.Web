@@ -1,6 +1,6 @@
 
 app.constant("quilt4Config", {
   
-  'apiBaseUrl': 'http://ci.quilt4.com/master/service/api/'
+  'apiBaseUrl': 'http://ci.service.quilt4.com/api/'
   
 })
