@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Quilt4.Web</id>
+    <version>1.0.0</version>
+    <authors>Pelle Branden</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="app\*" target="app" />
+    <file src="css\*" target="css" />
+    <file src="fonts\*" target="fonts" />
+    <file src="images\*" target="images" />
+    <file src="node_modules\*" target="node_modules" />
+    <file src="scripts\*" target="scripts" />
+    <file src="template\*" target="template" />
+    <file src="templates\*" target="templates" />
+    <file src="index.html" target="" />
+  </files>
+</package>
