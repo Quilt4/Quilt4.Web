@@ -8,14 +8,14 @@
     <description>Quilt4.Web</description>
   </metadata>
   <files>
-    <file src="app\*" target="app" />
-    <file src="css\*" target="css" />
-    <file src="fonts\*" target="fonts" />
-    <file src="images\*" target="images" />
-    <file src="node_modules\*" target="node_modules" />
-    <file src="scripts\*" target="scripts" />
-    <file src="template\*" target="template" />
-    <file src="templates\*" target="templates" />
+    <file src="app\**\*" target="app" />
+    <file src="css\**\*" target="css" />
+    <file src="fonts\**\*" target="fonts" />
+    <file src="images\**\*" target="images" />
+    <file src="node_modules\**\*" target="node_modules" />
+    <file src="scripts\**\*" target="scripts" />
+    <file src="template\**\*" target="template" />
+    <file src="templates\**\*" target="templates" />
     <file src="index.html" target="" />
   </files>
 </package>
