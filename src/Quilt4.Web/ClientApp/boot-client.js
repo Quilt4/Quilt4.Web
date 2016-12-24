@@ -1,9 +1,9 @@
 "use strict";
-require('angular2-universal-polyfills/browser');
-var core_1 = require('@angular/core');
-var angular2_universal_1 = require('angular2-universal');
-var app_module_1 = require('./app/app.module');
-require('bootstrap');
+require("angular2-universal-polyfills/browser");
+var core_1 = require("@angular/core");
+var angular2_universal_1 = require("angular2-universal");
+var app_module_1 = require("./app/app.module");
+require("bootstrap");
 // Enable either Hot Module Reloading or production mode
 if (module['hot']) {
     module['hot'].accept();

@@ -8,41 +8,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var angular2_universal_1 = require('angular2-universal');
-var app_component_1 = require('./components/app/app.component');
-var navmenu_component_1 = require('./components/navmenu/navmenu.component');
-var home_component_1 = require('./components/home/home.component');
-var fetchdata_component_1 = require('./components/fetchdata/fetchdata.component');
-var counter_component_1 = require('./components/counter/counter.component');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var angular2_universal_1 = require("angular2-universal");
+var app_component_1 = require("./components/app/app.component");
+var navmenu_component_1 = require("./components/navmenu/navmenu.component");
+var home_component_1 = require("./components/home/home.component");
+var fetchdata_component_1 = require("./components/fetchdata/fetchdata.component");
+var counter_component_1 = require("./components/counter/counter.component");
 var AppModule = (function () {
     function AppModule() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            bootstrap: [app_component_1.AppComponent],
-            declarations: [
-                app_component_1.AppComponent,
-                navmenu_component_1.NavMenuComponent,
-                counter_component_1.CounterComponent,
-                fetchdata_component_1.FetchDataComponent,
-                home_component_1.HomeComponent
-            ],
-            imports: [
-                angular2_universal_1.UniversalModule,
-                router_1.RouterModule.forRoot([
-                    { path: '', redirectTo: 'home', pathMatch: 'full' },
-                    { path: 'home', component: home_component_1.HomeComponent },
-                    { path: 'counter', component: counter_component_1.CounterComponent },
-                    { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
-                    { path: '**', redirectTo: 'home' }
-                ])
-            ]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
     return AppModule;
 }());
+AppModule = __decorate([
+    core_1.NgModule({
+        bootstrap: [app_component_1.AppComponent],
+        declarations: [
+            app_component_1.AppComponent,
+            navmenu_component_1.NavMenuComponent,
+            counter_component_1.CounterComponent,
+            fetchdata_component_1.FetchDataComponent,
+            home_component_1.HomeComponent
+        ],
+        imports: [
+            angular2_universal_1.UniversalModule,
+            router_1.RouterModule.forRoot([
+                { path: '', redirectTo: 'home', pathMatch: 'full' },
+                { path: 'home', component: home_component_1.HomeComponent },
+                { path: 'counter', component: counter_component_1.CounterComponent },
+                { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
+                { path: '**', redirectTo: 'home' }
+            ])
+        ]
+    }),
+    __metadata("design:paramtypes", [])
+], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

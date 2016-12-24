@@ -8,19 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var NavMenuComponent = (function () {
     function NavMenuComponent() {
     }
-    NavMenuComponent = __decorate([
-        core_1.Component({
-            selector: 'nav-menu',
-            template: require('./navmenu.component.html'),
-            styles: [require('./navmenu.component.css')]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], NavMenuComponent);
     return NavMenuComponent;
 }());
+NavMenuComponent = __decorate([
+    core_1.Component({
+        selector: 'nav-menu',
+        template: require('./navmenu.component.html'),
+        styles: [require('./navmenu.component.css')]
+    }),
+    __metadata("design:paramtypes", [])
+], NavMenuComponent);
 exports.NavMenuComponent = NavMenuComponent;
 //# sourceMappingURL=navmenu.component.js.map
