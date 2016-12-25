@@ -3,7 +3,7 @@
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Quilt4.Web</id>
     <version>1.0.0</version>
-    <authors></authors>
+    <authors>poxet</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Quilt4.Web</description>
   </metadata>
