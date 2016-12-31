@@ -9,26 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./app.component");
-var router_1 = require("@angular/router");
-var appRoutes = [
-    { path: 'Home', component: app_component_1.AppComponent },
-    { path: 'Login', component: app_component_1.AppComponent },
-    { path: '**', component: app_component_1.AppComponent }
-];
-var AppModule = (function () {
-    function AppModule() {
+var AppComponent = (function () {
+    function AppComponent() {
     }
-    return AppModule;
+    return AppComponent;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(appRoutes)],
-        declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'angNav',
+        template: "\n    <h1>Angular Router</h1>\n    <nav>\n      <a routerLink=\"/Home\" routerLinkActive=\"active\">Home</a>\n      <a routerLink=\"/Login\" routerLinkActive=\"active\">Login</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AppComponent);
+exports.AppComponent = AppComponent;
+//# sourceMappingURL=NavComponent.component.js.map
