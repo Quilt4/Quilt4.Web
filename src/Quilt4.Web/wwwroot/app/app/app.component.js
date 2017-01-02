@@ -17,7 +17,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<div class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\">Quilt4.Web</a>\n        </div>\n\n\n        <div class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n                <li><a>Home</a></li>\n                <li><a>About</a></li>\n                <li><a>Contact</a></li>\n            </ul>\n\n        </div>\n    </div>\n    </div>\n\n\n    <div class=\"container body-content\">\n        <router-outlet></router-outlet>\n        <hr/>\n        <footer>\n            <p>&copy; 2016 - Quilt4.Web</p>\n        </footer>\n    </div>"
+        template: '<h1>Quilt4.Web<h1>'
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
