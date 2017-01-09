@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'angNavigation',
-    templateUrl: './app/app.template.html'
+    templateUrl: './navigation.template.html'
 })
 export class NavigationComponent { }

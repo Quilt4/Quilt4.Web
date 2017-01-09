@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var NavigationComponent = (function () {
-    function NavigationComponent() {
+var HomeComponent = (function () {
+    function HomeComponent() {
     }
-    return NavigationComponent;
+    return HomeComponent;
 }());
-NavigationComponent = __decorate([
+HomeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'angNavigation',
-        templateUrl: './navigation.template.html'
+        selector: 'angHome',
+        templateUrl: './home.template.html'
     }),
     __metadata("design:paramtypes", [])
-], NavigationComponent);
-exports.NavigationComponent = NavigationComponent;
-//# sourceMappingURL=navigation.component.js.map
+], HomeComponent);
+exports.HomeComponent = HomeComponent;
+//# sourceMappingURL=home.component.js.map

@@ -14,8 +14,8 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/about">About</a></li>
                 <li><a>Contact</a></li>
             </ul>
 
@@ -25,8 +25,9 @@
 
 
 <div class="container body-content">
-    <hr />
-    <footer>
-        <p>&copy; 2016 - Quilt4.Web</p>
-    </footer>
+    <router-outlet></router-outlet>
+            <hr />
+            <footer>
+                <p>&copy; 2016 - Quilt4.Web</p>
+            </footer>
 </div>

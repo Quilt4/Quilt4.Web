@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var NavigationComponent = (function () {
-    function NavigationComponent() {
+var AboutComponent = (function () {
+    function AboutComponent() {
     }
-    return NavigationComponent;
+    return AboutComponent;
 }());
-NavigationComponent = __decorate([
+AboutComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'angNavigation',
-        templateUrl: './navigation.template.html'
+        selector: 'angAbout',
+        templateUrl: './about.template.html'
     }),
     __metadata("design:paramtypes", [])
-], NavigationComponent);
-exports.NavigationComponent = NavigationComponent;
-//# sourceMappingURL=navigation.component.js.map
+], AboutComponent);
+exports.AboutComponent = AboutComponent;
+//# sourceMappingURL=about.component.js.map

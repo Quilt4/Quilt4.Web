@@ -9,18 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var NavigationComponent = (function () {
-    function NavigationComponent() {
+var platform_browser_1 = require("@angular/platform-browser");
+var home_component_1 = require("./home.component");
+var AboutModule = (function () {
+    function AboutModule() {
     }
-    return NavigationComponent;
+    return AboutModule;
 }());
-NavigationComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'angNavigation',
-        templateUrl: './navigation.template.html'
+AboutModule = __decorate([
+    core_1.NgModule({
+        imports: [platform_browser_1.BrowserModule],
+        declarations: [home_component_1.HomeComponent],
+        bootstrap: [home_component_1.HomeComponent]
     }),
     __metadata("design:paramtypes", [])
-], NavigationComponent);
-exports.NavigationComponent = NavigationComponent;
-//# sourceMappingURL=navigation.component.js.map
+], AboutModule);
+exports.AboutModule = AboutModule;
+//# sourceMappingURL=home.module.js.map

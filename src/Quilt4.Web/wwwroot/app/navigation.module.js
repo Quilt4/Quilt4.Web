@@ -10,7 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var navigation_routes_1 = require("./navigation.routes");
+var about_component_1 = require("./About/about.component");
+var home_component_1 = require("./Home/home.component");
 var navigation_component_1 = require("./navigation.component");
+var common_1 = require("@angular/common");
 var NavigationModule = (function () {
     function NavigationModule() {
     }
@@ -18,9 +24,10 @@ var NavigationModule = (function () {
 }());
 NavigationModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [navigation_component_1.NavigationComponent],
-        bootstrap: [navigation_component_1.NavigationComponent]
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(navigation_routes_1.routes)],
+        declarations: [about_component_1.AboutComponent, home_component_1.HomeComponent, navigation_component_1.NavigationComponent],
+        bootstrap: [navigation_component_1.NavigationComponent],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }]
     }),
     __metadata("design:paramtypes", [])
 ], NavigationModule);
