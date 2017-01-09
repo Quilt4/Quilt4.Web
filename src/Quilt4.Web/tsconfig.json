@@ -8,13 +8,10 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "rootDir": "app",
-    "outDir": "wwwroot/app"
+    "rootDir": "app"
   },
   "exclude": [
-    "node_modules",
-    "wwwroot/node_modules"
-
+    "node_modules"
   ],
 
   "compileOnSave": true

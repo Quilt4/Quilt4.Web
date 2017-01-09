@@ -19,20 +19,20 @@
 
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="~/node_modules/core-js/client/shim.min.js"></script>
-    <script src="~/node_modules/zone.js/dist/zone.js"></script>
-    <script src="~/node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="~/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="lib/core-js/shim.min.js"></script>
+    <script src="lib/zone.js/zone.js"></script>
+    <script src="lib/reflect-metadata/Reflect.js"></script>
+    <script src="lib/systemjs/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
-    <script src="~/js/systemjs.config.js"></script>
+    <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+        System.import('app').catch(function (err) { console.error(err); });
     </script>
 
 </head>
 <body>
 <div class="container body-content">
-    <angNav>Here will be loaded the navigationbar from Angular 2</angNav>
+    <angNavigation>Here will be loaded the navigationbar from Angular 2</angNavigation>
     @RenderBody()
 
 </div>

@@ -90,7 +90,13 @@
   },
 
   "scripts": {
-    "prepublish": [ "dotnet bundle" ],
+    "prepublish": [
+      "dotnet bundle",
+      "npm install",
+      "bower install",
+      "gulp clean",
+      "gulp min"
+    ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
