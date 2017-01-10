@@ -5,6 +5,7 @@
 /// <reference path="app/app.component.js" />
 /// <reference path="app/app.module.js" />
 /// <reference path="app/authenticator/_loginpartial.component.js" />
+/// <reference path="app/authenticator/authenticator.component.js" />
 /// <reference path="app/authenticator/login.component.js" />
 /// <reference path="app/authenticator/register.component.js" />
 /// <reference path="app/home/home.component.js" />
