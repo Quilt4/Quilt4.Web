@@ -1,6 +1,6 @@
 "use strict";
 var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
-var navigation_module_1 = require("./navigation.module");
+var app_module_1 = require("./app.module");
 var platform = platform_browser_dynamic_1.platformBrowserDynamic();
-platform.bootstrapModule(navigation_module_1.NavigationModule);
+platform.bootstrapModule(app_module_1.AppModule);
 //# sourceMappingURL=main.js.map

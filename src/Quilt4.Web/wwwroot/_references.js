@@ -9,7 +9,6 @@
 /// <reference path="app/main.js" />
 /// <reference path="app/navigation.component.js" />
 /// <reference path="app/navigation.module.js" />
-/// <reference path="app/navigation.routes.js" />
 /// <reference path="dist/main-client.js" />
 /// <reference path="dist/vendor.js" />
 /// <reference path="js/site.js" />
