@@ -12,9 +12,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var about_component_1 = require("./About/about.component");
 var home_component_1 = require("./Home/home.component");
+var login_component_1 = require("./Authenticator/login.component");
+var register_component_1 = require("./Authenticator/register.component");
 var routes = [
     { path: '', component: home_component_1.HomeComponent },
-    { path: 'about', component: about_component_1.AboutComponent }
+    { path: 'about', component: about_component_1.AboutComponent },
+    { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'register', component: register_component_1.RegisterComponent }
 ];
 var NavigationModule = (function () {
     function NavigationModule() {
