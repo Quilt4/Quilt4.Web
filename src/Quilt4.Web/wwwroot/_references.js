@@ -13,7 +13,6 @@
 /// <reference path="app/main.js" />
 /// <reference path="app/models/applicationuser.js" />
 /// <reference path="app/models/registermodel.js" />
-/// <reference path="app/navigation.component.js" />
 /// <reference path="app/navigation.module.js" />
 /// <reference path="app/services/alert.service.js" />
 /// <reference path="app/services/authentication.service.js" />
