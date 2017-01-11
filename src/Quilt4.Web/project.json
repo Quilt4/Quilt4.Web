@@ -90,6 +90,7 @@
   },
 
   "scripts": {
+    "precompile": [ "dotnet bundle" ],
     "prepublish": [
       "dotnet bundle",
       "npm install",
