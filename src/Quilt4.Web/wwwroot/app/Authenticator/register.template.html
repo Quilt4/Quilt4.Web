@@ -6,8 +6,23 @@
             <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate="">
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" class="form-control" name="email" />
+                    <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required="" />
                     <div *ngIf="f.submitted && !email.valid" class="help-block">E-mail</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <label for="confirmPassword">Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="model.confirmPassword" #confirmPassword="ngModel" required />
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Register</button>
+                    <img *ngIf="loading" />
+                    <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
                 </div>
             </form>
         </section>
