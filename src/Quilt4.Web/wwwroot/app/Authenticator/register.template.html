@@ -3,7 +3,7 @@
         <section>
             <h4>Register</h4>
             <hr />
-            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate="">
+            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required="" />

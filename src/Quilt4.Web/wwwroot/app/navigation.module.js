@@ -14,11 +14,13 @@ var about_component_1 = require("./About/about.component");
 var home_component_1 = require("./Home/home.component");
 var login_component_1 = require("./Authenticator/login.component");
 var register_component_1 = require("./Authenticator/register.component");
+var auth_guard_1 = require("./Guards/auth.guard");
 var routes = [
-    { path: '', component: home_component_1.HomeComponent },
-    { path: 'about', component: about_component_1.AboutComponent },
+    { path: '', component: home_component_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'about', component: about_component_1.AboutComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'register', component: register_component_1.RegisterComponent }
+    { path: 'register', component: register_component_1.RegisterComponent },
+    { path: '**', redirectTo: '' }
 ];
 var NavigationModule = (function () {
     function NavigationModule() {
