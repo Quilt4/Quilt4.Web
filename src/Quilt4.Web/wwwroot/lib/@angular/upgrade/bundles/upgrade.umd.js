@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.0.0
+ * @license Angular v2.0.2
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -338,7 +338,9 @@
                     if (context.hasOwnProperty(name)) {
                         var localName = context[name];
                         var type = localName.charAt(0);
-                        localName = localName.substr(1) || name;
+                        var typeOptions = localName.charAt(1);
+                        localName = typeOptions === '?' ? localName.substr(2) : localName.substr(1);
+                        localName = localName || name;
                         var outputName = 'output_' + name;
                         var outputNameRename = outputName + ': ' + name;
                         var outputNameRenameChange = outputName + ': ' + name + 'Change';
@@ -625,7 +627,7 @@
      * ```
      * var adapter = new UpgradeAdapter(forwardRef(() => MyNg2Module));
      * var module = angular.module('myExample', []);
-     * module.directive('ng2Comp', adapter.downgradeNg2Component(Ng2));
+     * module.directive('ng2Comp', adapter.downgradeNg2Component(Ng2Component));
      *
      * module.directive('ng1Hello', function() {
      *   return {
@@ -799,17 +801,17 @@
          *   };
          * });
          *
-         * module.directive('ng2', adapter.downgradeNg2Component(Ng2));
+         * module.directive('ng2', adapter.downgradeNg2Component(Ng2Component));
          *
          * @Component({
          *   selector: 'ng2',
          *   template: 'ng2 template: <greet salutation="Hello" [name]="world">text</greet>'
          * })
-         * class Ng2 {
+         * class Ng2Component {
          * }
          *
          * @NgModule({
-         *   declarations: [Ng2, adapter.upgradeNg1Component('greet')],
+         *   declarations: [Ng2Component, adapter.upgradeNg1Component('greet')],
          *   imports: [BrowserModule]
          * })
          * class MyNg2Module {}
@@ -959,8 +961,11 @@
                             _angular_platformBrowserDynamic.platformBrowserDynamic()
                                 ._bootstrapModuleWithZone(DynamicNgUpgradeModule, undefined, ngZone, function (componentFactories) {
                                 componentFactories.forEach(function (componentFactory) {
-                                    componentFactoryRefMap[getComponentInfo(componentFactory.componentType)
-                                        .selector] = componentFactory;
+                                    var type = componentFactory.componentType;
+                                    if (_this.upgradedComponents.indexOf(type) !== -1) {
+                                        componentFactoryRefMap[getComponentInfo(type).selector] =
+                                            componentFactory;
+                                    }
                                 });
                             })
                                 .then(function (ref) {
@@ -1030,7 +1035,6 @@
          * var adapter = new UpgradeAdapter();
          * adapter.upgradeNg1Provider('server');
          * adapter.upgradeNg1Provider('login', {asToken: Login});
-         * adapter.addProvider(Example);
          *
          * adapter.bootstrap(document.body, ['myExample']).ready((ref) => {
          *   var example: Example = ref.ng2Injector.get(Example);
@@ -1057,7 +1061,6 @@
          * }
          *
          * var adapter = new UpgradeAdapter();
-         * adapter.addProvider(Example);
          *
          * var module = angular.module('myExample', []);
          * module.factory('example', adapter.downgradeNg2Provider(Example));

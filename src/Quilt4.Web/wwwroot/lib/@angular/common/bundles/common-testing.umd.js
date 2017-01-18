@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.0.0
+ * @license Angular v2.4.3
  * (c) 2010-2016 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -17,9 +17,7 @@
     var SpyLocation = (function () {
         function SpyLocation() {
             this.urlChanges = [];
-            /** @internal */
             this._history = [new LocationState('', '')];
-            /** @internal */
             this._historyIndex = 0;
             /** @internal */
             this._subject = new _angular_core.EventEmitter();
@@ -100,7 +98,7 @@
             { type: _angular_core.Injectable },
         ];
         /** @nocollapse */
-        SpyLocation.ctorParameters = [];
+        SpyLocation.ctorParameters = function () { return []; };
         return SpyLocation;
     }());
     var LocationState = (function () {
@@ -182,7 +180,7 @@
             { type: _angular_core.Injectable },
         ];
         /** @nocollapse */
-        MockLocationStrategy.ctorParameters = [];
+        MockLocationStrategy.ctorParameters = function () { return []; };
         return MockLocationStrategy;
     }(_angular_common.LocationStrategy));
     var _MockPopStateEvent = (function () {

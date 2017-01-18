@@ -5,10 +5,14 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { StringMapWrapper } from '../facade/collection';
 import { isBlank, isPresent } from '../facade/lang';
 import { ViewType } from './view_type';
 export var StaticNodeDebugInfo = (function () {
+    /**
+     * @param {?} providerTokens
+     * @param {?} componentToken
+     * @param {?} refTokens
+     */
     function StaticNodeDebugInfo(providerTokens, componentToken, refTokens) {
         this.providerTokens = providerTokens;
         this.componentToken = componentToken;
@@ -16,7 +20,21 @@ export var StaticNodeDebugInfo = (function () {
     }
     return StaticNodeDebugInfo;
 }());
+function StaticNodeDebugInfo_tsickle_Closure_declarations() {
+    /** @type {?} */
+    StaticNodeDebugInfo.prototype.providerTokens;
+    /** @type {?} */
+    StaticNodeDebugInfo.prototype.componentToken;
+    /** @type {?} */
+    StaticNodeDebugInfo.prototype.refTokens;
+}
 export var DebugContext = (function () {
+    /**
+     * @param {?} _view
+     * @param {?} _nodeIndex
+     * @param {?} _tplRow
+     * @param {?} _tplCol
+     */
     function DebugContext(_view, _nodeIndex, _tplRow, _tplCol) {
         this._view = _view;
         this._nodeIndex = _nodeIndex;
@@ -24,6 +42,9 @@ export var DebugContext = (function () {
         this._tplCol = _tplCol;
     }
     Object.defineProperty(DebugContext.prototype, "_staticNodeInfo", {
+        /**
+         * @return {?}
+         */
         get: function () {
             return isPresent(this._nodeIndex) ? this._view.staticNodeDebugInfos[this._nodeIndex] : null;
         },
@@ -31,13 +52,19 @@ export var DebugContext = (function () {
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "context", {
+        /**
+         * @return {?}
+         */
         get: function () { return this._view.context; },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "component", {
+        /**
+         * @return {?}
+         */
         get: function () {
-            var staticNodeInfo = this._staticNodeInfo;
+            var /** @type {?} */ staticNodeInfo = this._staticNodeInfo;
             if (isPresent(staticNodeInfo) && isPresent(staticNodeInfo.componentToken)) {
                 return this.injector.get(staticNodeInfo.componentToken);
             }
@@ -47,25 +74,31 @@ export var DebugContext = (function () {
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "componentRenderElement", {
+        /**
+         * @return {?}
+         */
         get: function () {
-            var componentView = this._view;
-            while (isPresent(componentView.declarationAppElement) &&
-                componentView.type !== ViewType.COMPONENT) {
-                componentView = componentView.declarationAppElement.parentView;
+            var /** @type {?} */ componentView = this._view;
+            while (isPresent(componentView.parentView) && componentView.type !== ViewType.COMPONENT) {
+                componentView = (componentView.parentView);
             }
-            return isPresent(componentView.declarationAppElement) ?
-                componentView.declarationAppElement.nativeElement :
-                null;
+            return componentView.parentElement;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "injector", {
+        /**
+         * @return {?}
+         */
         get: function () { return this._view.injector(this._nodeIndex); },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "renderNode", {
+        /**
+         * @return {?}
+         */
         get: function () {
             if (isPresent(this._nodeIndex) && this._view.allNodes) {
                 return this._view.allNodes[this._nodeIndex];
@@ -78,14 +111,20 @@ export var DebugContext = (function () {
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "providerTokens", {
+        /**
+         * @return {?}
+         */
         get: function () {
-            var staticNodeInfo = this._staticNodeInfo;
+            var /** @type {?} */ staticNodeInfo = this._staticNodeInfo;
             return isPresent(staticNodeInfo) ? staticNodeInfo.providerTokens : null;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "source", {
+        /**
+         * @return {?}
+         */
         get: function () {
             return this._view.componentType.templateUrl + ":" + this._tplRow + ":" + this._tplCol;
         },
@@ -93,14 +132,18 @@ export var DebugContext = (function () {
         configurable: true
     });
     Object.defineProperty(DebugContext.prototype, "references", {
+        /**
+         * @return {?}
+         */
         get: function () {
             var _this = this;
-            var varValues = {};
-            var staticNodeInfo = this._staticNodeInfo;
+            var /** @type {?} */ varValues = {};
+            var /** @type {?} */ staticNodeInfo = this._staticNodeInfo;
             if (isPresent(staticNodeInfo)) {
-                var refs = staticNodeInfo.refTokens;
-                StringMapWrapper.forEach(refs, function (refToken, refName) {
-                    var varValue;
+                var /** @type {?} */ refs_1 = staticNodeInfo.refTokens;
+                Object.keys(refs_1).forEach(function (refName) {
+                    var /** @type {?} */ refToken = refs_1[refName];
+                    var /** @type {?} */ varValue;
                     if (isBlank(refToken)) {
                         varValue = _this._view.allNodes ? _this._view.allNodes[_this._nodeIndex] : null;
                     }
@@ -117,4 +160,14 @@ export var DebugContext = (function () {
     });
     return DebugContext;
 }());
+function DebugContext_tsickle_Closure_declarations() {
+    /** @type {?} */
+    DebugContext.prototype._view;
+    /** @type {?} */
+    DebugContext.prototype._nodeIndex;
+    /** @type {?} */
+    DebugContext.prototype._tplRow;
+    /** @type {?} */
+    DebugContext.prototype._tplCol;
+}
 //# sourceMappingURL=debug_context.js.map

@@ -11,13 +11,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 import { DomAdapter } from '../dom/dom_adapter';
-import { StringMapWrapper } from '../facade/collection';
-import { isFunction, isPresent } from '../facade/lang';
+import { isPresent } from '../facade/lang';
 /**
- * Provides DOM operations in any browser environment.
- *
- * @security Tread carefully! Interacting with the DOM directly is dangerous and
- * can introduce XSS risks.
+ *  Provides DOM operations in any browser environment.
+  * *
+  * can introduce XSS risks.
+ * @abstract
  */
 export var GenericBrowserDomAdapter = (function (_super) {
     __extends(GenericBrowserDomAdapter, _super);
@@ -27,28 +26,28 @@ export var GenericBrowserDomAdapter = (function (_super) {
         this._animationPrefix = null;
         this._transitionEnd = null;
         try {
-            var element = this.createElement('div', this.defaultDoc());
-            if (isPresent(this.getStyle(element, 'animationName'))) {
+            var element_1 = this.createElement('div', this.defaultDoc());
+            if (isPresent(this.getStyle(element_1, 'animationName'))) {
                 this._animationPrefix = '';
             }
             else {
                 var domPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
                 for (var i = 0; i < domPrefixes.length; i++) {
-                    if (isPresent(this.getStyle(element, domPrefixes[i] + 'AnimationName'))) {
+                    if (isPresent(this.getStyle(element_1, domPrefixes[i] + 'AnimationName'))) {
                         this._animationPrefix = '-' + domPrefixes[i].toLowerCase() + '-';
                         break;
                     }
                 }
             }
-            var transEndEventNames = {
+            var transEndEventNames_1 = {
                 WebkitTransition: 'webkitTransitionEnd',
                 MozTransition: 'transitionend',
                 OTransition: 'oTransitionEnd otransitionend',
                 transition: 'transitionend'
             };
-            StringMapWrapper.forEach(transEndEventNames, function (value, key) {
-                if (isPresent(_this.getStyle(element, key))) {
-                    _this._transitionEnd = value;
+            Object.keys(transEndEventNames_1).forEach(function (key) {
+                if (isPresent(_this.getStyle(element_1, key))) {
+                    _this._transitionEnd = transEndEventNames_1[key];
                 }
             });
         }
@@ -57,21 +56,50 @@ export var GenericBrowserDomAdapter = (function (_super) {
             this._transitionEnd = null;
         }
     }
-    GenericBrowserDomAdapter.prototype.getDistributedNodes = function (el) { return el.getDistributedNodes(); };
+    /**
+     * @param {?} el
+     * @return {?}
+     */
+    GenericBrowserDomAdapter.prototype.getDistributedNodes = function (el) { return ((el)).getDistributedNodes(); };
+    /**
+     * @param {?} el
+     * @param {?} baseUrl
+     * @param {?} href
+     * @return {?}
+     */
     GenericBrowserDomAdapter.prototype.resolveAndSetHref = function (el, baseUrl, href) {
         el.href = href == null ? baseUrl : baseUrl + '/../' + href;
     };
+    /**
+     * @return {?}
+     */
     GenericBrowserDomAdapter.prototype.supportsDOMEvents = function () { return true; };
+    /**
+     * @return {?}
+     */
     GenericBrowserDomAdapter.prototype.supportsNativeShadowDOM = function () {
-        return isFunction(this.defaultDoc().body.createShadowRoot);
+        return typeof ((this.defaultDoc().body)).createShadowRoot === 'function';
     };
-    GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () {
-        return isPresent(this._animationPrefix) ? this._animationPrefix : '';
-    };
-    GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return isPresent(this._transitionEnd) ? this._transitionEnd : ''; };
+    /**
+     * @return {?}
+     */
+    GenericBrowserDomAdapter.prototype.getAnimationPrefix = function () { return this._animationPrefix ? this._animationPrefix : ''; };
+    /**
+     * @return {?}
+     */
+    GenericBrowserDomAdapter.prototype.getTransitionEnd = function () { return this._transitionEnd ? this._transitionEnd : ''; };
+    /**
+     * @return {?}
+     */
     GenericBrowserDomAdapter.prototype.supportsAnimation = function () {
         return isPresent(this._animationPrefix) && isPresent(this._transitionEnd);
     };
     return GenericBrowserDomAdapter;
 }(DomAdapter));
+function GenericBrowserDomAdapter_tsickle_Closure_declarations() {
+    /** @type {?} */
+    GenericBrowserDomAdapter.prototype._animationPrefix;
+    /** @type {?} */
+    GenericBrowserDomAdapter.prototype._transitionEnd;
+}
 //# sourceMappingURL=generic_browser_adapter.js.map

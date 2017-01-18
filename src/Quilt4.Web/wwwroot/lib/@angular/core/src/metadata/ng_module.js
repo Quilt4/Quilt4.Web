@@ -8,13 +8,13 @@
 import { makeDecorator } from '../util/decorators';
 /**
  * Defines a schema that will allow:
- * - any non-angular elements with a `-` in their name,
+ * - any non-Angular elements with a `-` in their name,
  * - any properties on elements with a `-` in their name which is the common rule for custom
  * elements.
  *
  * @stable
  */
-export var CUSTOM_ELEMENTS_SCHEMA = {
+export var /** @type {?} */ CUSTOM_ELEMENTS_SCHEMA = {
     name: 'custom-elements'
 };
 /**
@@ -22,16 +22,16 @@ export var CUSTOM_ELEMENTS_SCHEMA = {
  *
  * @experimental
  */
-export var NO_ERRORS_SCHEMA = {
+export var /** @type {?} */ NO_ERRORS_SCHEMA = {
     name: 'no-errors-schema'
 };
 /**
- * NgModule decorator and metadata
+ * NgModule decorator and metadata.
  *
  * @stable
  * @Annotation
  */
-export var NgModule = makeDecorator('NgModule', {
+export var /** @type {?} */ NgModule = (makeDecorator('NgModule', {
     providers: undefined,
     declarations: undefined,
     imports: undefined,
@@ -40,5 +40,5 @@ export var NgModule = makeDecorator('NgModule', {
     bootstrap: undefined,
     schemas: undefined,
     id: undefined,
-});
+}));
 //# sourceMappingURL=ng_module.js.map
