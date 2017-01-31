@@ -18,6 +18,7 @@
 /// <reference path="app/models/registermodel.js" />
 /// <reference path="app/navigation.module.js" />
 /// <reference path="app/services/alert.service.js" />
+/// <reference path="app/services/auth.service.js" />
 /// <reference path="app/services/authentication.service.js" />
 /// <reference path="app/services/services.js" />
 /// <reference path="app/services/user.service.js" />

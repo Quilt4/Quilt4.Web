@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var services_1 = require("../Services/services");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var services_1 = require('../Services/services');
 var LoginComponent = (function () {
     function LoginComponent(route, router, authenticationService, alertService) {
         this.route = route;
@@ -37,17 +37,14 @@ var LoginComponent = (function () {
             _this.loading = false;
         });
     };
+    LoginComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            templateUrl: './login.template.html'
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, services_1.AuthenticationService, services_1.AlertService])
+    ], LoginComponent);
     return LoginComponent;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        templateUrl: './login.template.html'
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router,
-        services_1.AuthenticationService,
-        services_1.AlertService])
-], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

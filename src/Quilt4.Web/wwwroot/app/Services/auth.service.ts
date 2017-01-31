@@ -1,0 +1,140 @@
+﻿import { Injectable } from '@angular/core';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+
+@Injectable()
+export class AuthenticationService {
+    public isLoggedIn: boolean;
+
+    constructor(public http: Http, public storage: Storage) {
+        this.isLoggedIn = false;
+
+    }
+
+    loggedIn() {
+
+        return new Promise<boolean>(resolve => {
+
+            this.storage.getItem('auth_token');
+
+            (data => {
+
+                let hasToken = data !== null;
+                if (hasToken) {
+
+                    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': data });
+                    let options = new RequestOptions({ headers: headers });
+
+                    setTimeout(() => {
+                        this.http.get('/api/authenitcate' + 'subject/getmysubject/', options).subscribe(data => {
+
+                            console.log("YAY user is actually logged in ...")
+                            resolve(true);
+                            this.isLoggedIn = true;
+
+                        }, error => {
+
+                            if (error.status === 401) {
+
+                                console.log("No! user is actually not logged in ...");
+                                this.storage.removeItem('auth_token');
+
+                                (() => {
+
+                                    this.isLoggedIn = false;
+                                    resolve(false);
+                                });
+                            } else {
+
+                                console.log("Something went wrong with connection to servers, assume user is logged in, Error: ", error);
+                                this.isLoggedIn = false;
+                                resolve(false);
+                            }
+
+                        });
+
+                    }, 500);
+
+
+                } else {
+
+                    this.isLoggedIn = false;
+                    resolve(false);
+                }
+
+            }, error => {
+                this.isLoggedIn = false;
+                resolve(false);
+            });
+        })
+    }
+
+    //login(email: string, password: string) {
+    //    return this.http.post('/api/authenticate', JSON.stringify({ email: email, password: password }))
+    //        .map((response: Response) => {
+    //            // login successful if there's a jwt token in the response
+    //            let user = response.json();
+    //            if (user && user.token) {
+    //                // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //                localStorage.setItem('currentUser', JSON.stringify(user));
+    //            }
+    //        });
+    //}
+
+    login(user) {
+        var creds = JSON.stringify({ email: user.email, password: user.password });
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({headers:headers});
+        return new Promise<boolean>((resolve => {
+
+            this.http.post('/api/authenitcate', creds, options).subscribe(data => {
+
+                    if (data.json()) {
+                        this.storage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+
+                        console.log(data.json().access_token);
+                        this.isLoggedIn = true;
+                        resolve(this.isLoggedIn);
+                    }
+
+
+                },
+                error => {
+                    this.isLoggedIn = false;
+                    this.storage.setItem('auth_token', null);
+
+                    resolve(this.isLoggedIn);
+                });
+
+        }));
+
+    }
+
+    getAuthToken() {
+
+        return new Promise<string>(resolve => {
+
+            this.storage.getItem('auth_token');
+
+            (data => {
+                resolve(<string>data);
+
+            }, error => {
+
+                resolve(null);
+
+            });
+        });
+
+    }
+
+    logout() {
+        // remove user from local storage to log user out
+        //localStorage.removeItem('currentUser');
+        this.isLoggedIn = false;
+        this.storage.setItem('auth_token', null);
+        this.storage.removeItem('auth_token');
+    }
+}
