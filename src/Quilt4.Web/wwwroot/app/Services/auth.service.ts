@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { AppSettings} from '../AppSettings';
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -27,9 +28,9 @@ export class AuthenticationService {
                     let options = new RequestOptions({ headers: headers });
 
                     setTimeout(() => {
-                        this.http.get('/api/authenitcate' + 'subject/getmysubject/', options).subscribe(data => {
+                        this.http.get(AppSettings.API_URL + 'subject/getmysubject/', options).subscribe(data => {
 
-                            console.log("YAY user is actually logged in ...")
+                            console.log("YAY user is actually logged in ...");
                             resolve(true);
                             this.isLoggedIn = true;
 
@@ -89,7 +90,7 @@ export class AuthenticationService {
         let options = new RequestOptions({headers:headers});
         return new Promise<boolean>((resolve => {
 
-            this.http.post('/api/authenitcate', creds, options).subscribe(data => {
+            this.http.post(AppSettings.API_URL + 'Account/Login', creds, options).subscribe(data => {
 
                     if (data.json()) {
                         this.storage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);

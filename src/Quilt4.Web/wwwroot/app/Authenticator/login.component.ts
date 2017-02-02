@@ -9,6 +9,7 @@ import { AlertService, AuthenticationService } from '../Services/services';
 })
 
 export class LoginComponent implements OnInit {
+
     model: any = {};
     loading = false;
     returnUrl: string;

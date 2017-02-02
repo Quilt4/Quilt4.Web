@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var AppSettings_1 = require('../AppSettings');
 require('rxjs/add/operator/map');
 var AuthenticationService = (function () {
     function AuthenticationService(http, storage) {
@@ -27,7 +28,7 @@ var AuthenticationService = (function () {
                     var headers = new http_1.Headers({ 'Content-Type': 'application/json', 'Authorization': data });
                     var options_1 = new http_1.RequestOptions({ headers: headers });
                     setTimeout(function () {
-                        _this.http.get('/api/authenitcate' + 'subject/getmysubject/', options_1).subscribe(function (data) {
+                        _this.http.get(AppSettings_1.AppSettings.API_URL + 'subject/getmysubject/', options_1).subscribe(function (data) {
                             console.log("YAY user is actually logged in ...");
                             resolve(true);
                             _this.isLoggedIn = true;
@@ -75,7 +76,7 @@ var AuthenticationService = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return new Promise((function (resolve) {
-            _this.http.post('/api/authenitcate', creds, options).subscribe(function (data) {
+            _this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Login', creds, options).subscribe(function (data) {
                 if (data.json()) {
                     _this.storage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
                     console.log(data.json().access_token);

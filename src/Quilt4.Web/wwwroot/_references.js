@@ -5,6 +5,7 @@
 /// <reference path="app/alert/alert.component.js" />
 /// <reference path="app/app.component.js" />
 /// <reference path="app/app.module.js" />
+/// <reference path="app/appsettings.js" />
 /// <reference path="app/authenticator/_loginpartial.component.js" />
 /// <reference path="app/authenticator/authenticator.component.js" />
 /// <reference path="app/authenticator/login.component.js" />
