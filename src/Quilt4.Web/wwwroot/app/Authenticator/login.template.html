@@ -4,20 +4,19 @@
             <h4>Login</h4>
             <hr/>
             <div class="text-danger"></div>
-            <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate></form>
-            <div class="form-group" [ngClass]="{'has-error': f.submitted && !email.vaild}">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required="" />
-                <div *ngIf="f.submitted && email.valid" class="help-block">Email is required</div>
-            </div>
-            <div class="form-group" [ngClass]="{'has-error': f.submitted && !password.valid}">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required=""/>
-                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <form name="form"></form>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" class="form-control" [(ngModel)]="user.username" />
+                <div class="help-block">Email is required</div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" (click)="login()">Login</button>
-                <img/>
+                <label>Password</label>
+                <input type="password" class="form-control" [(ngModel)]="user.password"/>
+                <div class="help-block">Password is required</div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="login(user)">Login</button>
             </div>
         </section>
     </div>

@@ -1,7 +1,8 @@
 ﻿//import {RegisterModel} from './RegisterModel'
 
-export class ApplicationUser {
-    id: number;
+export class User {
+    username: string;
     email: string;
+    fullname: string;
     password: string;
 }

@@ -12,53 +12,49 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var AppSettings_1 = require('../AppSettings');
 require('rxjs/add/operator/map');
-var AuthenticationService = (function () {
-    function AuthenticationService(http, storage) {
+var AuthService = (function () {
+    function AuthService(http) {
         this.http = http;
-        this.storage = storage;
         this.isLoggedIn = false;
     }
-    AuthenticationService.prototype.loggedIn = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            _this.storage.getItem('auth_token');
-            (function (data) {
-                var hasToken = data !== null;
-                if (hasToken) {
-                    var headers = new http_1.Headers({ 'Content-Type': 'application/json', 'Authorization': data });
-                    var options_1 = new http_1.RequestOptions({ headers: headers });
-                    setTimeout(function () {
-                        _this.http.get(AppSettings_1.AppSettings.API_URL + 'subject/getmysubject/', options_1).subscribe(function (data) {
-                            console.log("YAY user is actually logged in ...");
-                            resolve(true);
-                            _this.isLoggedIn = true;
-                        }, function (error) {
-                            if (error.status === 401) {
-                                console.log("No! user is actually not logged in ...");
-                                _this.storage.removeItem('auth_token');
-                                (function () {
-                                    _this.isLoggedIn = false;
-                                    resolve(false);
-                                });
-                            }
-                            else {
-                                console.log("Something went wrong with connection to servers, assume user is logged in, Error: ", error);
-                                _this.isLoggedIn = false;
-                                resolve(false);
-                            }
-                        });
-                    }, 500);
-                }
-                else {
-                    _this.isLoggedIn = false;
-                    resolve(false);
-                }
-            }, function (error) {
-                _this.isLoggedIn = false;
-                resolve(false);
-            });
-        });
-    };
+    //loggedIn() {
+    //    return new Promise<boolean>(resolve => {
+    //        this.storage.getItem('auth_token');
+    //        (data => {
+    //            let hasToken = data !== null;
+    //            if (hasToken) {
+    //                let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': data });
+    //                let options = new RequestOptions({ headers: headers });
+    //                setTimeout(() => {
+    //                    this.http.get(AppSettings.API_URL + 'subject/getmysubject/', options).subscribe(data => {
+    //                        console.log("YAY user is actually logged in ...");
+    //                        resolve(true);
+    //                        this.isLoggedIn = true;
+    //                    }, error => {
+    //                        if (error.status === 401) {
+    //                            console.log("No! user is actually not logged in ...");
+    //                            this.storage.removeItem('auth_token');
+    //                            (() => {
+    //                                this.isLoggedIn = false;
+    //                                resolve(false);
+    //                            });
+    //                        } else {
+    //                            console.log("Something went wrong with connection to servers, assume user is logged in, Error: ", error);
+    //                            this.isLoggedIn = false;
+    //                            resolve(false);
+    //                        }
+    //                    });
+    //                }, 500);
+    //            } else {
+    //                this.isLoggedIn = false;
+    //                resolve(false);
+    //            }
+    //        }, error => {
+    //            this.isLoggedIn = false;
+    //            resolve(false);
+    //        });
+    //    })
+    //}
     //login(email: string, password: string) {
     //    return this.http.post('/api/authenticate', JSON.stringify({ email: email, password: password }))
     //        .map((response: Response) => {
@@ -70,7 +66,7 @@ var AuthenticationService = (function () {
     //            }
     //        });
     //}
-    AuthenticationService.prototype.login = function (user) {
+    AuthService.prototype.login = function (user) {
         var _this = this;
         var creds = JSON.stringify({ email: user.email, password: user.password });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
@@ -78,22 +74,21 @@ var AuthenticationService = (function () {
         return new Promise((function (resolve) {
             _this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Login', creds, options).subscribe(function (data) {
                 if (data.json()) {
-                    _this.storage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+                    localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
                     console.log(data.json().access_token);
                     _this.isLoggedIn = true;
                     resolve(_this.isLoggedIn);
                 }
             }, function (error) {
                 _this.isLoggedIn = false;
-                _this.storage.setItem('auth_token', null);
+                localStorage.setItem('auth_token', null);
                 resolve(_this.isLoggedIn);
             });
         }));
     };
-    AuthenticationService.prototype.getAuthToken = function () {
-        var _this = this;
+    AuthService.prototype.getAuthToken = function () {
         return new Promise(function (resolve) {
-            _this.storage.getItem('auth_token');
+            localStorage.getItem('auth_token');
             (function (data) {
                 resolve(data);
             }, function (error) {
@@ -101,18 +96,18 @@ var AuthenticationService = (function () {
             });
         });
     };
-    AuthenticationService.prototype.logout = function () {
+    AuthService.prototype.logout = function () {
         // remove user from local storage to log user out
         //localStorage.removeItem('currentUser');
         this.isLoggedIn = false;
-        this.storage.setItem('auth_token', null);
-        this.storage.removeItem('auth_token');
+        localStorage.setItem('auth_token', null);
+        localStorage.removeItem('auth_token');
     };
-    AuthenticationService = __decorate([
+    AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, Storage])
-    ], AuthenticationService);
-    return AuthenticationService;
+        __metadata('design:paramtypes', [http_1.Http])
+    ], AuthService);
+    return AuthService;
 }());
-exports.AuthenticationService = AuthenticationService;
+exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

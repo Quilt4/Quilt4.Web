@@ -15,7 +15,7 @@ import { LoginPartial } from './Authenticator/_LoginPartial.component';
 import { AlertComponent } from './Alert/alert.component';
 import { LoginComponent } from './Authenticator/login.component';
 import { RegisterComponent } from './Authenticator/register.component';
-import { AlertService, AuthenticationService, UserService } from './Services/services';
+import { AlertService, AuthService, UserService } from './Services/services';
 import { AuthGuard } from './Guards/auth.guard';
 
 import { APP_BASE_HREF } from '@angular/common';
@@ -28,7 +28,7 @@ import { APP_BASE_HREF } from '@angular/common';
         { provide: APP_BASE_HREF, useValue: '/' },
         AuthGuard,
         AlertService,
-        AuthenticationService,
+        AuthService,
         UserService,
 
         BaseRequestOptions

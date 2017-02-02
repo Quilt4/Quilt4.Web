@@ -12,37 +12,42 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var services_1 = require('../Services/services');
 var LoginComponent = (function () {
-    function LoginComponent(route, router, authenticationService, alertService) {
+    function LoginComponent(route, router, authservice, alertService) {
         this.route = route;
         this.router = router;
-        this.authenticationService = authenticationService;
+        this.authservice = authservice;
         this.alertService = alertService;
-        this.model = {};
         this.loading = false;
     }
-    LoginComponent.prototype.ngOnInit = function () {
-        // reset login status
-        this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    };
-    LoginComponent.prototype.login = function () {
+    //ngOnInit() {
+    //    // reset login status
+    //    this.authservice.logout();
+    //    // get return url from route parameters or default to '/'
+    //    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    //}
+    LoginComponent.prototype.login = function (user) {
         var _this = this;
+        console.log("Logging in...");
         this.loading = true;
-        this.authenticationService.login(this.model.email, this.model.password)
-            .subscribe(function (data) {
-            _this.router.navigate([_this.returnUrl]);
-        }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
-        });
+        this.authservice.login(user).then(function (data) {
+            if (data) {
+                _this.router.navigateByUrl(_this.returnUrl);
+            }
+            else {
+                var alert_1 = _this.alertService.error("You entered wrong login or password");
+            }
+        }),
+            function (error) {
+                _this.alertService.error(error);
+                _this.loading = false;
+            };
     };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: './login.template.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, services_1.AuthenticationService, services_1.AlertService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, services_1.AuthService, services_1.AlertService])
     ], LoginComponent);
     return LoginComponent;
 }());

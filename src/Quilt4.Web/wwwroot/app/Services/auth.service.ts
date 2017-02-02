@@ -5,71 +5,71 @@ import { AppSettings} from '../AppSettings';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class AuthenticationService {
+export class AuthService {
     public isLoggedIn: boolean;
 
-    constructor(public http: Http, public storage: Storage) {
+    constructor(public http: Http) {
         this.isLoggedIn = false;
 
     }
 
-    loggedIn() {
+    //loggedIn() {
 
-        return new Promise<boolean>(resolve => {
+    //    return new Promise<boolean>(resolve => {
 
-            this.storage.getItem('auth_token');
+    //        this.storage.getItem('auth_token');
 
-            (data => {
+    //        (data => {
 
-                let hasToken = data !== null;
-                if (hasToken) {
+    //            let hasToken = data !== null;
+    //            if (hasToken) {
 
-                    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': data });
-                    let options = new RequestOptions({ headers: headers });
+    //                let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': data });
+    //                let options = new RequestOptions({ headers: headers });
 
-                    setTimeout(() => {
-                        this.http.get(AppSettings.API_URL + 'subject/getmysubject/', options).subscribe(data => {
+    //                setTimeout(() => {
+    //                    this.http.get(AppSettings.API_URL + 'subject/getmysubject/', options).subscribe(data => {
 
-                            console.log("YAY user is actually logged in ...");
-                            resolve(true);
-                            this.isLoggedIn = true;
+    //                        console.log("YAY user is actually logged in ...");
+    //                        resolve(true);
+    //                        this.isLoggedIn = true;
 
-                        }, error => {
+    //                    }, error => {
 
-                            if (error.status === 401) {
+    //                        if (error.status === 401) {
 
-                                console.log("No! user is actually not logged in ...");
-                                this.storage.removeItem('auth_token');
+    //                            console.log("No! user is actually not logged in ...");
+    //                            this.storage.removeItem('auth_token');
 
-                                (() => {
+    //                            (() => {
 
-                                    this.isLoggedIn = false;
-                                    resolve(false);
-                                });
-                            } else {
+    //                                this.isLoggedIn = false;
+    //                                resolve(false);
+    //                            });
+    //                        } else {
 
-                                console.log("Something went wrong with connection to servers, assume user is logged in, Error: ", error);
-                                this.isLoggedIn = false;
-                                resolve(false);
-                            }
+    //                            console.log("Something went wrong with connection to servers, assume user is logged in, Error: ", error);
+    //                            this.isLoggedIn = false;
+    //                            resolve(false);
+    //                        }
 
-                        });
+    //                    });
 
-                    }, 500);
+    //                }, 500);
 
 
-                } else {
+    //            } else {
 
-                    this.isLoggedIn = false;
-                    resolve(false);
-                }
+    //                this.isLoggedIn = false;
+    //                resolve(false);
+    //            }
 
-            }, error => {
-                this.isLoggedIn = false;
-                resolve(false);
-            });
-        })
-    }
+    //        }, error => {
+    //            this.isLoggedIn = false;
+    //            resolve(false);
+    //        });
+    //    })
+    //}
 
     //login(email: string, password: string) {
     //    return this.http.post('/api/authenticate', JSON.stringify({ email: email, password: password }))
@@ -93,7 +93,7 @@ export class AuthenticationService {
             this.http.post(AppSettings.API_URL + 'Account/Login', creds, options).subscribe(data => {
 
                     if (data.json()) {
-                        this.storage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+                        localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
 
                         console.log(data.json().access_token);
                         this.isLoggedIn = true;
@@ -104,7 +104,7 @@ export class AuthenticationService {
                 },
                 error => {
                     this.isLoggedIn = false;
-                    this.storage.setItem('auth_token', null);
+                    localStorage.setItem('auth_token', null);
 
                     resolve(this.isLoggedIn);
                 });
@@ -117,7 +117,7 @@ export class AuthenticationService {
 
         return new Promise<string>(resolve => {
 
-            this.storage.getItem('auth_token');
+            localStorage.getItem('auth_token');
 
             (data => {
                 resolve(<string>data);
@@ -135,7 +135,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         //localStorage.removeItem('currentUser');
         this.isLoggedIn = false;
-        this.storage.setItem('auth_token', null);
-        this.storage.removeItem('auth_token');
+        localStorage.setItem('auth_token', null);
+        localStorage.removeItem('auth_token');
     }
 }

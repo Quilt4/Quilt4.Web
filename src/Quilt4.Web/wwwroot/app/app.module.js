@@ -36,7 +36,7 @@ var AppModule = (function () {
                 { provide: common_1.APP_BASE_HREF, useValue: '/' },
                 auth_guard_1.AuthGuard,
                 services_1.AlertService,
-                services_1.AuthenticationService,
+                services_1.AuthService,
                 services_1.UserService,
                 http_2.BaseRequestOptions
             ]
