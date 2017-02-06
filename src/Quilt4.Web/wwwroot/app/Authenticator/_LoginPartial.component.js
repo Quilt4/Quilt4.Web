@@ -16,7 +16,7 @@ var LoginPartial = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'login-partial',
-            templateUrl: './authenticator.template.html'
+            templateUrl: './_LoginPartial.template.html'
         }), 
         __metadata('design:paramtypes', [])
     ], LoginPartial);

@@ -55,53 +55,27 @@ var AuthService = (function () {
     //        });
     //    })
     //}
-    //login(email: string, password: string) {
-    //    return this.http.post('/api/authenticate', JSON.stringify({ email: email, password: password }))
+    //login(username: string, password: string) {
+    //    return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({ username: username, password: password }))
     //        .map((response: Response) => {
     //            // login successful if there's a jwt token in the response
     //            let user = response.json();
     //            if (user && user.token) {
     //                // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //                localStorage.setItem('currentUser', JSON.stringify(user));
+    //                localStorage.setItem('auth_token', JSON.stringify(user));
     //            }
     //        });
     //}
-    AuthService.prototype.login = function (user) {
+    AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var creds = JSON.stringify({ email: user.email, password: user.password });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return new Promise((function (resolve) {
-            _this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Login', creds, options).subscribe(function (data) {
-                if (data.json()) {
-                    localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
-                    console.log(data.json().access_token);
-                    _this.isLoggedIn = true;
-                    resolve(_this.isLoggedIn);
-                }
-            }, function (error) {
-                _this.isLoggedIn = false;
-                localStorage.setItem('auth_token', null);
-                resolve(_this.isLoggedIn);
-            });
-        }));
-    };
-    AuthService.prototype.getAuthToken = function () {
-        return new Promise(function (resolve) {
-            localStorage.getItem('auth_token');
-            (function (data) {
-                resolve(data);
-            }, function (error) {
-                resolve(null);
-            });
+        return this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Login', JSON.stringify({ username: username, password: password }), { headers: headers }).subscribe(function (data) {
+            if (data.json()) {
+                localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+                _this.isLoggedIn = true;
+                console.log(data.json().access_token);
+            }
         });
-    };
-    AuthService.prototype.logout = function () {
-        // remove user from local storage to log user out
-        //localStorage.removeItem('currentUser');
-        this.isLoggedIn = false;
-        localStorage.setItem('auth_token', null);
-        localStorage.removeItem('auth_token');
     };
     AuthService = __decorate([
         core_1.Injectable(), 

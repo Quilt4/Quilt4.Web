@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var User_1 = require('../models/User');
 var services_1 = require('../Services/services');
 var LoginComponent = (function () {
     function LoginComponent(route, router, authservice, alertService) {
@@ -17,7 +18,10 @@ var LoginComponent = (function () {
         this.router = router;
         this.authservice = authservice;
         this.alertService = alertService;
+        this.model = {};
         this.loading = false;
+        this.model = {};
+        this.user = new User_1.User;
     }
     //ngOnInit() {
     //    // reset login status
@@ -25,22 +29,37 @@ var LoginComponent = (function () {
     //    // get return url from route parameters or default to '/'
     //    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     //}
-    LoginComponent.prototype.login = function (user) {
-        var _this = this;
+    //    login(user: User) {
+    //        console.log("Logging in...");
+    //        this.loading = true;
+    //        this.authservice.login(user).then(data => {
+    //                if (data) {
+    //                    this.router.navigateByUrl(this.returnUrl);
+    //                } else {
+    //                    let alert = this.alertService.error("You entered wrong login or password");
+    //                }
+    //            }),
+    //            error => {
+    //                this.alertService.error(error);
+    //                this.loading = false;
+    //            };
+    //    }
+    //@Input() username: string;
+    //@Input() password: string;
+    LoginComponent.prototype.login = function () {
+        //console.log(this.username);
         console.log("Logging in...");
         this.loading = true;
-        this.authservice.login(user).then(function (data) {
-            if (data) {
-                _this.router.navigateByUrl(_this.returnUrl);
-            }
-            else {
-                var alert_1 = _this.alertService.error("You entered wrong login or password");
-            }
-        }),
-            function (error) {
-                _this.alertService.error(error);
-                _this.loading = false;
-            };
+        this.authservice.login(this.user.username, this.user.password);
+        //.subscribe(
+        //data => {
+        //    //this.router.navigate([this.returnUrl]);
+        //    console.log("Logged In!");
+        //},
+        //error => {
+        //    this.alertService.error(error);
+        //    this.loading = false;
+        //});
     };
     LoginComponent = __decorate([
         core_1.Component({
