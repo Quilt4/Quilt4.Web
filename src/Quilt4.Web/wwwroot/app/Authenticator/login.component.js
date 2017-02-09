@@ -8,20 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var User_1 = require('../models/User');
-var services_1 = require('../Services/services');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var User_1 = require("../models/User");
+var services_1 = require("../Services/services");
 var LoginComponent = (function () {
     function LoginComponent(route, router, authservice, alertService) {
         this.route = route;
         this.router = router;
         this.authservice = authservice;
         this.alertService = alertService;
-        this.model = {};
         this.loading = false;
-        this.model = {};
-        this.user = new User_1.User;
+        this.submitted = false;
+        this.model = new User_1.User("", "", "", "");
+        //this.user = new User;
     }
     //ngOnInit() {
     //    // reset login status
@@ -50,7 +50,7 @@ var LoginComponent = (function () {
         //console.log(this.username);
         console.log("Logging in...");
         this.loading = true;
-        this.authservice.login(this.user.username, this.user.password);
+        this.authservice.login(this.model.username, this.model.password);
         //.subscribe(
         //data => {
         //    //this.router.navigate([this.returnUrl]);
@@ -61,14 +61,18 @@ var LoginComponent = (function () {
         //    this.loading = false;
         //});
     };
-    LoginComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: './login.template.html'
-        }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, services_1.AuthService, services_1.AlertService])
-    ], LoginComponent);
+    LoginComponent.prototype.onLogin = function () { this.submitted = true; };
     return LoginComponent;
 }());
+LoginComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: './login.template.html'
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        services_1.AuthService,
+        services_1.AlertService])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

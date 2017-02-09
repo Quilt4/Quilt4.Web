@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/User';
 
@@ -10,20 +10,22 @@ import { AlertService, AuthService } from '../Services/services';
 })
 export class LoginComponent {
 
-    model: any = {}
+    //model: any = {}
     public user: User;
     loading = false;
     returnUrl: string;
+    submitted = false;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authservice: AuthService,
         private alertService: AlertService) {
-
-        this.model = {};
-        this.user = new User;
+        
+        //this.user = new User;
     }
+
+    model = new User("","","","");
 
     //ngOnInit() {
     //    // reset login status
@@ -55,7 +57,7 @@ export class LoginComponent {
         //console.log(this.username);
         console.log("Logging in...");
         this.loading = true;
-        this.authservice.login(this.user.username, this.user.password);
+        this.authservice.login(this.model.username, this.model.password);
         //.subscribe(
         //data => {
         //    //this.router.navigate([this.returnUrl]);
@@ -66,4 +68,6 @@ export class LoginComponent {
         //    this.loading = false;
         //});
     }
+
+    onLogin() { this.submitted = true;}
 }

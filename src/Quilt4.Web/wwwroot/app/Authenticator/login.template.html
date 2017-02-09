@@ -1,23 +1,26 @@
-﻿<div class="row">
-    <div class="col-md-8">
-        <section>
-            <h4>Login</h4>
-            <hr/>
-            <div class="text-danger"></div>
-            <form name="form"></form>
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="text" class="form-control" {{username}} required/>
-                <div class="help-block">Email is required</div>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" {{password}} required/>
-                <div class="help-block">Password is required</div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" (click)="login()">Login</button>
-            </div>
-        </section>
+﻿<div class="container">
+    <div [hidden]="submitted">
+        <div class="col-md-8">
+            <section>
+                <h4>Login</h4>
+                <hr />
+                <div class="text-danger"></div>
+                <form name="form" (ngSubmit)="onLogin()" #loginForm="ngForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" [(ngModel)]="model.username" name="username" #username="ngModel" required />
+                        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">Username is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" [(ngModel)]="model.password" name="password" #password="ngModel" required />
+                        <div class="help-block">Password is required</div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="login()">Login</button>
+                    </div>
+                </form>
+            </section>
+        </div>
     </div>
 </div>
