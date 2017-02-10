@@ -18,16 +18,18 @@ export class RegisterComponent {
         private alertService: AlertService) { }
 
     register() {
-        this.loading = true;
-        this.userService.create(this.model)
-            .subscribe(
-            data => {
-                this.alertService.success('Registration successful', true);
-                this.router.navigate(['/login']);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
+        if ((this.model.password == this.model.confirmPassword) && this.model.password != "") {
+            this.loading = true;
+            this.userService.create(this.model)
+                .subscribe(
+                data => {
+                    this.alertService.success('Registration successful', true);
+                    this.router.navigate(['']);
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+        } else { this.alertService.error("Password is not correct!") }
     }
 }

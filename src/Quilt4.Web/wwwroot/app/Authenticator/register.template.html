@@ -3,25 +3,36 @@
         <section>
             <h4>Register</h4>
             <hr />
-            <form name="form">
+            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+                    <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                </div>
                 <div class="form-group">
                     <label>E-mail</label>
-                    <input type="email" class="form-control" [(ngModel)]="model.email"/>
-                    <div class="help-block">E-mail</div>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required/>
+                    <div *ngIf="f.submitted && !email.valid" class="help-block">E-mail</div>
+                </div>
+                <div class="form-group">
+                    <label>Fullname</label>
+                    <input type="text" class="form-control" name="fullname" [(ngModel)]="model.fullname" #fullname="ngModel" required/>
+                    <div *ngIf="f.submitted && !fullname.valid" class="help-block">Fullname</div>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" [(ngModel)]="model.password"/>
-                    <div class="help-block">Password is required</div>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" [(ngModel)]="model.confirmPassword" />
-                    <div class="help-block">Password is required</div>
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="model.confirmPassword" #confirmPassword="ngModel" required/>
+                    <div *ngIf="f.submitted && !confirmPassword.valid" class="help-block">Password is required</div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" (click)="register()">Register</button>
-                    <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+                    <button [disabled]="loading" class="btn btn-primary">Register</button>
+                    <img *ngIf="loading" src="../../images/loading-gear.gif"/>
+                    <a [routerLink]="['']" class="btn btn-link">Cancel</a>
                 </div>
             </form>
         </section>

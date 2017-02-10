@@ -3,6 +3,8 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { RegisterModel } from '../models/RegisterModel';
 
+import { AppSettings } from '../AppSettings';
+
 @Injectable()
 export class UserService {
     constructor(private http: Http) { }
@@ -16,7 +18,7 @@ export class UserService {
     }
 
     create(user: RegisterModel) {
-        return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(AppSettings.API_URL + 'api/Account/Register', user, this.jwt()).map((response: Response) => response.json());
     }
 
     //update(user: RegisterModel) {

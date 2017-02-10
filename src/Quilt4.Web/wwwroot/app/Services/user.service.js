@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var AppSettings_1 = require("../AppSettings");
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
@@ -21,7 +22,7 @@ var UserService = (function () {
         return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.create = function (user) {
-        return this.http.post('/api/users', user, this.jwt()).map(function (response) { return response.json(); });
+        return this.http.post(AppSettings_1.AppSettings.API_URL + 'api/Account/Register', user, this.jwt()).map(function (response) { return response.json(); });
     };
     //update(user: RegisterModel) {
     //    return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
@@ -38,11 +39,11 @@ var UserService = (function () {
             return new http_1.RequestOptions({ headers: headers });
         }
     };
-    UserService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], UserService);
     return UserService;
 }());
+UserService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

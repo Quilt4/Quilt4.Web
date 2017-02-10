@@ -8,21 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var home_component_1 = require('./home.component');
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var home_component_1 = require("./home.component");
 var AboutModule = (function () {
     function AboutModule() {
     }
-    AboutModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [home_component_1.HomeComponent],
-            bootstrap: [home_component_1.HomeComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AboutModule);
     return AboutModule;
 }());
+AboutModule = __decorate([
+    core_1.NgModule({
+        imports: [platform_browser_1.BrowserModule],
+        declarations: [home_component_1.HomeComponent],
+        bootstrap: [home_component_1.HomeComponent]
+    }),
+    __metadata("design:paramtypes", [])
+], AboutModule);
 exports.AboutModule = AboutModule;
 //# sourceMappingURL=home.module.js.map
