@@ -22,7 +22,9 @@ var UserService = (function () {
         return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.create = function (user) {
-        return this.http.post(AppSettings_1.AppSettings.API_URL + 'api/Account/Register', user, this.jwt()).map(function (response) { return response.json(); });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var body = JSON.stringify({ username: user.username, eMail: user.email, fullName: user.fullname, password: user.password, confirmPassword: user.confirmPassword });
+        return this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Register', body, { headers: headers });
     };
     //update(user: RegisterModel) {
     //    return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());

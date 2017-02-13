@@ -18,7 +18,12 @@ export class UserService {
     }
 
     create(user: RegisterModel) {
-        return this.http.post(AppSettings.API_URL + 'api/Account/Register', user, this.jwt()).map((response: Response) => response.json());
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let body = JSON.stringify({username:user.username, eMail:user.email, fullName:user.fullname, password:user.password, confirmPassword:user.confirmPassword  });
+
+
+        return this.http.post(AppSettings.API_URL + 'Account/Register', body, { headers });
+
     }
 
     //update(user: RegisterModel) {

@@ -26,16 +26,18 @@ export class RegisterComponent implements OnInit {
     register() {
         console.log("Registering...");
             this.loading = true;
-            //this.userService.create(this.user)
-            //    .subscribe(
-            //    data => {
-            //        console.log("Registered! Woohoo!");
-            //        this.alertService.success('Registration successful', true);
-            //        this.router.navigate(['/']);
-            //    },
-            //    error => {
-            //        this.alertService.error(error);
-            //        this.loading = false;
-            //    });
-        }
+            this.userService.create(this.user)
+                .subscribe(
+                data => {
+                    console.log("Registered! Woohoo!");
+                    this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/']);
+                    alert("Registration went successful! You can log in now by going on the login page.");
+                },
+                error => {
+                    alert(error.text());
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+    }
 }

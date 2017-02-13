@@ -23,19 +23,20 @@ var RegisterComponent = (function () {
         this.user = new RegisterModel_1.RegisterModel("", "", "", "", "");
     };
     RegisterComponent.prototype.register = function () {
+        var _this = this;
         console.log("Registering...");
         this.loading = true;
-        //this.userService.create(this.user)
-        //    .subscribe(
-        //    data => {
-        //        console.log("Registered! Woohoo!");
-        //        this.alertService.success('Registration successful', true);
-        //        this.router.navigate(['/']);
-        //    },
-        //    error => {
-        //        this.alertService.error(error);
-        //        this.loading = false;
-        //    });
+        this.userService.create(this.user)
+            .subscribe(function (data) {
+            console.log("Registered! Woohoo!");
+            _this.alertService.success('Registration successful', true);
+            _this.router.navigate(['/']);
+            alert("Registration went successful! You can log in now by going on the login page.");
+        }, function (error) {
+            alert(error.text());
+            _this.alertService.error(error);
+            _this.loading = false;
+        });
     };
     RegisterComponent = __decorate([
         core_1.Component({
