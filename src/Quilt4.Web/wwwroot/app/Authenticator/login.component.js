@@ -47,19 +47,18 @@ var LoginComponent = (function () {
     //@Input() username: string;
     //@Input() password: string;
     LoginComponent.prototype.login = function () {
+        var _this = this;
         //console.log(this.username);
         console.log("Logging in...");
         this.loading = true;
-        this.authservice.login(this.model.username, this.model.password);
-        //.subscribe(
-        //data => {
-        //    //this.router.navigate([this.returnUrl]);
-        //    console.log("Logged In!");
-        //},
-        //error => {
-        //    this.alertService.error(error);
-        //    this.loading = false;
-        //});
+        this.authservice.login(this.model.username, this.model.password).subscribe(function (data) {
+            console.log("Logged In!");
+            _this.router.navigateByUrl('/');
+        }, function (error) {
+            console.log("Login failed.");
+            _this.alertService.error(error);
+            _this.loading = false;
+        });
     };
     LoginComponent.prototype.onLogin = function () { this.submitted = true; };
     LoginComponent = __decorate([

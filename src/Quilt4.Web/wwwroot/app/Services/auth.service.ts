@@ -71,31 +71,33 @@ export class AuthService {
     //    })
     //}
 
-    //login(username: string, password: string) {
-    //    return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({ username: username, password: password }))
-    //        .map((response: Response) => {
-    //            // login successful if there's a jwt token in the response
-    //            let user = response.json();
-    //            if (user && user.token) {
-    //                // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //                localStorage.setItem('auth_token', JSON.stringify(user));
-    //            }
-    //        });
-    //}
-
     login(username: string, password: string) {
         let headers = new Headers({ 'Content-Type': 'application/json' });
 
-        return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({username, password}), {headers}).subscribe(data => {
-            if (data.json()) {
-                localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
-
-                this.isLoggedIn = true;
-
-                console.log(data.json().access_token);
-            }
-        });
+        return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({ username: username, password: password }), {headers})
+            .map((response: Response) => {
+                // login successful if there's a jwt token in the response
+                let user = response.json();
+                if (user && user.auth_token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('auth_token', response.json().token_type + "" + response.json().access_token);
+                }
+            });
     }
+
+    //login(username: string, password: string) {
+    //    let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    //    return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({username, password}), {headers}).subscribe(data => {
+    //        if (data.json()) {
+    //            localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+
+    //            this.isLoggedIn = true;
+
+    //            console.log(data.json().access_token);
+    //        }
+    //    });
+    //}
 
     //login(user) {
     //    var creds = JSON.stringify({ email: user.email, password: user.password });

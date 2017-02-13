@@ -21,11 +21,11 @@ export class LoginComponent {
         private router: Router,
         private authservice: AuthService,
         private alertService: AlertService) {
-        
+
         //this.user = new User;
     }
 
-    model = new User("","","","");
+    model = new User("", "", "", "");
 
     //ngOnInit() {
     //    // reset login status
@@ -57,17 +57,17 @@ export class LoginComponent {
         //console.log(this.username);
         console.log("Logging in...");
         this.loading = true;
-        this.authservice.login(this.model.username, this.model.password);
-        //.subscribe(
-        //data => {
-        //    //this.router.navigate([this.returnUrl]);
-        //    console.log("Logged In!");
-        //},
-        //error => {
-        //    this.alertService.error(error);
-        //    this.loading = false;
-        //});
+        this.authservice.login(this.model.username, this.model.password).subscribe(
+            data => {
+                console.log("Logged In!");
+                this.router.navigateByUrl('/');
+            },
+            error => {
+                console.log("Login failed.");
+                this.alertService.error(error);
+                this.loading = false;
+            });
     }
 
-    onLogin() { this.submitted = true;}
+    onLogin() { this.submitted = true; }
 }
