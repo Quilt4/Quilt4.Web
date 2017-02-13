@@ -8,44 +8,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var services_1 = require("../Services/services");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var RegisterModel_1 = require('../models/RegisterModel');
+var services_1 = require('../Services/services');
 var RegisterComponent = (function () {
     function RegisterComponent(router, userService, alertService) {
         this.router = router;
         this.userService = userService;
         this.alertService = alertService;
-        this.model = {};
         this.loading = false;
     }
-    RegisterComponent.prototype.register = function () {
-        var _this = this;
-        if ((this.model.password == this.model.confirmPassword) && this.model.password != "") {
-            this.loading = true;
-            this.userService.create(this.model)
-                .subscribe(function (data) {
-                _this.alertService.success('Registration successful', true);
-                _this.router.navigate(['']);
-            }, function (error) {
-                _this.alertService.error(error);
-                _this.loading = false;
-            });
-        }
-        else {
-            this.alertService.error("Password is not correct!");
-        }
+    RegisterComponent.prototype.ngOnInit = function () {
+        this.user = new RegisterModel_1.RegisterModel("", "", "", "", "");
     };
+    RegisterComponent.prototype.register = function () {
+        console.log("Registering...");
+        this.loading = true;
+        //this.userService.create(this.user)
+        //    .subscribe(
+        //    data => {
+        //        console.log("Registered! Woohoo!");
+        //        this.alertService.success('Registration successful', true);
+        //        this.router.navigate(['/']);
+        //    },
+        //    error => {
+        //        this.alertService.error(error);
+        //        this.loading = false;
+        //    });
+    };
+    RegisterComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            templateUrl: './register.template.html'
+        }), 
+        __metadata('design:paramtypes', [router_1.Router, services_1.UserService, services_1.AlertService])
+    ], RegisterComponent);
     return RegisterComponent;
 }());
-RegisterComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        templateUrl: './register.template.html'
-    }),
-    __metadata("design:paramtypes", [router_1.Router,
-        services_1.UserService,
-        services_1.AlertService])
-], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

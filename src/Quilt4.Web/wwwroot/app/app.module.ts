@@ -18,11 +18,13 @@ import { RegisterComponent } from './Authenticator/register.component';
 import { AlertService, AuthService, UserService } from './Services/services';
 import { AuthGuard } from './Guards/auth.guard';
 
+import { EqualValidator } from './Authenticator/equal-validator.directive';
+
 import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, NavigationModule, HttpModule],
-    declarations: [AppComponent, AboutComponent, HomeComponent, LoginComponent, RegisterComponent, LoginPartial, AlertComponent],
+    declarations: [AppComponent, AboutComponent, HomeComponent, LoginComponent, RegisterComponent, LoginPartial, AlertComponent, EqualValidator],
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },

@@ -1,5 +1,7 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import {RegisterModel} from '../models/RegisterModel';
 
 import { AlertService, UserService } from '../Services/services';
 
@@ -8,8 +10,8 @@ import { AlertService, UserService } from '../Services/services';
     templateUrl: './register.template.html'
 })
 
-export class RegisterComponent {
-    model: any = {};
+export class RegisterComponent implements OnInit {
+    public user: RegisterModel; 
     loading = false;
 
     constructor(
@@ -17,19 +19,23 @@ export class RegisterComponent {
         private userService: UserService,
         private alertService: AlertService) { }
 
-    register() {
-        if ((this.model.password == this.model.confirmPassword) && this.model.password != "") {
-            this.loading = true;
-            this.userService.create(this.model)
-                .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-        } else { this.alertService.error("Password is not correct!") }
+    ngOnInit() {
+        this.user = new RegisterModel("", "", "", "", "");
     }
+
+    register() {
+        console.log("Registering...");
+            this.loading = true;
+            //this.userService.create(this.user)
+            //    .subscribe(
+            //    data => {
+            //        console.log("Registered! Woohoo!");
+            //        this.alertService.success('Registration successful', true);
+            //        this.router.navigate(['/']);
+            //    },
+            //    error => {
+            //        this.alertService.error(error);
+            //        this.loading = false;
+            //    });
+        }
 }

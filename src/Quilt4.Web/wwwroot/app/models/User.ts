@@ -1,4 +1,11 @@
-﻿//import {RegisterModel} from './RegisterModel'
+﻿//export interface User {
+
+//    username: string; //Required
+//    email: string; //Required, must be valid email format
+//    fullname: string; //Required, must be 6-100 characters.
+//    password: string; //Required, value must be equal to confirm password
+
+//}
 
 export class User {
 
@@ -9,8 +16,4 @@ export class User {
         public password: string
     ) { 
     }
-    //username: string;
-    //email: string;
-    //fullname: string;
-    //password: string;
 }

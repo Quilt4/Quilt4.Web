@@ -8,6 +8,7 @@
 /// <reference path="app/appsettings.js" />
 /// <reference path="app/authenticator/_loginpartial.component.js" />
 /// <reference path="app/authenticator/authenticator.component.js" />
+/// <reference path="app/authenticator/equal-validator.directive.js" />
 /// <reference path="app/authenticator/login.component.js" />
 /// <reference path="app/authenticator/register.component.js" />
 /// <reference path="app/guards/auth.guard.js" />
