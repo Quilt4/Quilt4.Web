@@ -37,7 +37,7 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <button [hidden]="loading" class="btn btn-primary" (click)="register()">Register</button>
+                    <button *ngIf="!loading" class="btn btn-primary" (click)="register()">Register</button>
                     <img *ngIf="loading" src="../../images/loading.gif"/>
                     <a [routerLink]="['']" class="btn btn-link">Cancel</a>
                 </div>
