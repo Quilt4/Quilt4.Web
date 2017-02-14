@@ -1,16 +1,23 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AppSettings} from '../AppSettings';
+import { AppSettings } from '../AppSettings';
 import 'rxjs/add/operator/map'
+import { Subject } from 'rxjs/Subject';
+
+import {User} from '../models/User';
 
 @Injectable()
 export class AuthService {
     public isLoggedIn: boolean;
+    public currentUser: User;
+    public userChange = new Subject<User>();
+    public isLoggedInChange = new Subject<boolean>();
+
+
 
     constructor(public http: Http) {
         this.isLoggedIn = false;
-
     }
 
     //loggedIn() {
@@ -71,6 +78,14 @@ export class AuthService {
     //    })
     //}
 
+    public getUser()
+    {
+        this.currentUser = JSON.parse(localStorage.getItem('auth_token'));
+        this.userChange.next(this.currentUser);
+        this.isLoggedIn = true;
+        this.isLoggedInChange.next(this.isLoggedIn);
+    }
+
     login(username: string, password: string) {
         let headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -78,9 +93,12 @@ export class AuthService {
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
-                if (user && user.auth_token) {
+                if (user && user.access_token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('auth_token', response.json().token_type + "" + response.json().access_token);
+                  //  localStorage.setItem('auth_token', response.json().token_type + "" + response.json().access_token);
+                    localStorage.setItem('auth_token', JSON.stringify(user));
+                    this.getUser();
+                    console.log("Auth.service");
                 }
             });
     }
@@ -147,12 +165,11 @@ export class AuthService {
 
     //}
 
-    //logout() {
-    //    // remove user from local storage to log user out
-    //    //localStorage.removeItem('currentUser');
-    //    this.isLoggedIn = false;
-    //    localStorage.setItem('auth_token', null);
-    //    localStorage.removeItem('auth_token');
-    //}
+    logout() {
+        // remove user from local storage to log user out
+        this.isLoggedIn = false;
+        localStorage.setItem('auth_token', null);
+        localStorage.removeItem('auth_token');
+    }
 
 }

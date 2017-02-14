@@ -9,6 +9,6 @@
     </ul>
 </form>-->
 <ul class="nav navbar-nav navbar-right">
-    <li><a routerLink="/login">Log in</a></li>
-    <li><a routerLink="/register">Register</a></li>
+    <li><a *ngIf="!loggedIn" routerLink="/login">Log in</a><a *ngIf="loggedIn">{{currentUser.userName}}</a></li>
+    <li><a *ngIf="!loggedIn" routerLink="/register">Register</a><a style="cursor: pointer" *ngIf="loggedIn" (click)="logout($event)">Log out</a></li>
 </ul>

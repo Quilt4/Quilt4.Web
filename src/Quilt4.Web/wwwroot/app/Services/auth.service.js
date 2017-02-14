@@ -12,9 +12,12 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var AppSettings_1 = require('../AppSettings');
 require('rxjs/add/operator/map');
+var Subject_1 = require('rxjs/Subject');
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
+        this.userChange = new Subject_1.Subject();
+        this.isLoggedInChange = new Subject_1.Subject();
         this.isLoggedIn = false;
     }
     //loggedIn() {
@@ -55,17 +58,73 @@ var AuthService = (function () {
     //        });
     //    })
     //}
+    AuthService.prototype.getUser = function () {
+        this.currentUser = JSON.parse(localStorage.getItem('auth_token'));
+        this.userChange.next(this.currentUser);
+        this.isLoggedIn = true;
+        this.isLoggedInChange.next(this.isLoggedIn);
+    };
     AuthService.prototype.login = function (username, password) {
+        var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Login', JSON.stringify({ username: username, password: password }), { headers: headers })
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();
-            if (user && user.auth_token) {
+            if (user && user.access_token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('auth_token', response.json().token_type + "" + response.json().access_token);
+                //  localStorage.setItem('auth_token', response.json().token_type + "" + response.json().access_token);
+                localStorage.setItem('auth_token', JSON.stringify(user));
+                _this.getUser();
+                console.log("Auth.service");
             }
         });
+    };
+    //login(username: string, password: string) {
+    //    let headers = new Headers({ 'Content-Type': 'application/json' });
+    //    return this.http.post(AppSettings.API_URL + 'Account/Login', JSON.stringify({username, password}), {headers}).subscribe(data => {
+    //        if (data.json()) {
+    //            localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+    //            this.isLoggedIn = true;
+    //            console.log(data.json().access_token);
+    //        }
+    //    });
+    //}
+    //login(user) {
+    //    var creds = JSON.stringify({ email: user.email, password: user.password });
+    //    let headers = new Headers({ 'Content-Type': 'application/json' });
+    //    let options = new RequestOptions({headers:headers});
+    //    return new Promise<boolean>((resolve => {
+    //        this.http.post(AppSettings.API_URL + 'Account/Login', creds, options).subscribe(data => {
+    //                if (data.json()) {
+    //                    localStorage.setItem('auth_token', data.json().token_type + " " + data.json().access_token);
+    //                    console.log(data.json().access_token);
+    //                    this.isLoggedIn = true;
+    //                    resolve(this.isLoggedIn);
+    //                }
+    //            },
+    //            error => {
+    //                this.isLoggedIn = false;
+    //                localStorage.setItem('auth_token', null);
+    //                resolve(this.isLoggedIn);
+    //            });
+    //    }));
+    //}
+    //getAuthToken() {
+    //    return new Promise<string>(resolve => {
+    //        localStorage.getItem('auth_token');
+    //        (data => {
+    //            resolve(<string>data);
+    //        }, error => {
+    //            resolve(null);
+    //        });
+    //    });
+    //}
+    AuthService.prototype.logout = function () {
+        // remove user from local storage to log user out
+        this.isLoggedIn = false;
+        localStorage.setItem('auth_token', null);
+        localStorage.removeItem('auth_token');
     };
     AuthService = __decorate([
         core_1.Injectable(), 
