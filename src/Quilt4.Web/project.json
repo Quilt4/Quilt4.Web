@@ -93,9 +93,7 @@
     "precompile": [ "dotnet bundle" ],
     "prepublish": [
       "dotnet bundle",
-      "npm install",
-      "gulp clean",
-      "gulp min"
+      "npm install"
     ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }

@@ -6,6 +6,10 @@ gulp.task('default', function () {
     // place code for your default task here
 });
 
+gulp.task('clean', function () {
+    return del([libs + '*']);
+});
+
 gulp.task('restore:core-js', function () {
     gulp.src([
         'node_modules/core-js/client/*.js'
