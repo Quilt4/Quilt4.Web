@@ -1,5 +1,5 @@
 /**
- * @license Angular v2.4.6
+ * @license Angular v2.4.8
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -915,7 +915,7 @@
          * @param {?} id
          * @return {?}
          */
-        BrowserJsonp.prototype.requestCallback = function (id) { return "" + JSONP_HOME + id + "_finished"; };
+        BrowserJsonp.prototype.requestCallback = function (id) { return JSONP_HOME + "." + id + ".finished"; };
         /**
          * @param {?} id
          * @param {?} connection
@@ -2019,7 +2019,7 @@
     /**
      * @stable
      */
-    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.6');
+    var /** @type {?} */ VERSION = new _angular_core.Version('2.4.8');
 
     exports.BrowserXhr = BrowserXhr;
     exports.JSONPBackend = JSONPBackend;

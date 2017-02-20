@@ -8,7 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "rootDir": "app"
+    "rootDir": "app",
+    "typeRoots": ["node_modules/@types"]
   },
   "exclude": [
     "node_modules"

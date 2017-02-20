@@ -11,9 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
-var EqualValidator = (function () {
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
+var EqualValidator = EqualValidator_1 = (function () {
     function EqualValidator(validateEqual, reverse) {
         this.validateEqual = validateEqual;
         this.reverse = reverse;
@@ -50,18 +50,19 @@ var EqualValidator = (function () {
         }
         return null;
     };
-    EqualValidator = __decorate([
-        core_1.Directive({
-            selector: '[validateEqual][formControlName],[validateEqual][formControl],[validateEqual][ngModel]',
-            providers: [
-                { provide: forms_1.NG_VALIDATORS, useExisting: core_1.forwardRef(function () { return EqualValidator; }), multi: true }
-            ]
-        }),
-        __param(0, core_1.Attribute('validateEqual')),
-        __param(1, core_1.Attribute('reverse')), 
-        __metadata('design:paramtypes', [String, String])
-    ], EqualValidator);
     return EqualValidator;
 }());
+EqualValidator = EqualValidator_1 = __decorate([
+    core_1.Directive({
+        selector: '[validateEqual][formControlName],[validateEqual][formControl],[validateEqual][ngModel]',
+        providers: [
+            { provide: forms_1.NG_VALIDATORS, useExisting: core_1.forwardRef(function () { return EqualValidator_1; }), multi: true }
+        ]
+    }),
+    __param(0, core_1.Attribute('validateEqual')),
+    __param(1, core_1.Attribute('reverse')),
+    __metadata("design:paramtypes", [String, String])
+], EqualValidator);
 exports.EqualValidator = EqualValidator;
+var EqualValidator_1;
 //# sourceMappingURL=equal-validator.directive.js.map

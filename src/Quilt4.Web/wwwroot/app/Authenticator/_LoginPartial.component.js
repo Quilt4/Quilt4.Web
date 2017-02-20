@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var services_1 = require('../Services/services');
+var core_1 = require("@angular/core");
+var services_1 = require("../Services/services");
 var LoginPartial = (function () {
     function LoginPartial(authService) {
         var _this = this;
@@ -54,15 +54,15 @@ var LoginPartial = (function () {
         this.authService.logout();
         console.log("Logged out.");
     };
-    LoginPartial = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'login-partial',
-            templateUrl: './_LoginPartial.template.html'
-        }), 
-        __metadata('design:paramtypes', [services_1.AuthService])
-    ], LoginPartial);
     return LoginPartial;
 }());
+LoginPartial = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'login-partial',
+        templateUrl: './_LoginPartial.template.html'
+    }),
+    __metadata("design:paramtypes", [services_1.AuthService])
+], LoginPartial);
 exports.LoginPartial = LoginPartial;
 //# sourceMappingURL=_LoginPartial.component.js.map
