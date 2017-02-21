@@ -6,7 +6,7 @@ import { RegisterModel } from '../models/RegisterModel';
 import { AppSettings } from '../AppSettings';
 
 @Injectable()
-export class UserService {
+export class AccountService {
     constructor(private http: Http) { }
 
     getAll() {

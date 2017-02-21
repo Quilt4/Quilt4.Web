@@ -15,7 +15,7 @@ import { LoginPartial } from './Authenticator/_LoginPartial.component';
 import { AlertComponent } from './Alert/alert.component';
 import { LoginComponent } from './Authenticator/login.component';
 import { RegisterComponent } from './Authenticator/register.component';
-import { AlertService, AuthService, UserService } from './Services/services';
+import { AlertService, AuthService, AccountService } from './Services/services';
 import { AuthGuard } from './Guards/auth.guard';
 
 import { EqualValidator } from './Authenticator/equal-validator.directive';
@@ -31,7 +31,7 @@ import { APP_BASE_HREF } from '@angular/common';
         AuthGuard,
         AlertService,
         AuthService,
-        UserService,
+        AccountService,
 
         BaseRequestOptions
     ]

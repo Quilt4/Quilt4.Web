@@ -40,7 +40,7 @@ AppModule = __decorate([
             auth_guard_1.AuthGuard,
             services_1.AlertService,
             services_1.AuthService,
-            services_1.UserService,
+            services_1.AccountService,
             http_2.BaseRequestOptions
         ]
     }),

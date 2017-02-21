@@ -11,17 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var AppSettings_1 = require("../AppSettings");
-var UserService = (function () {
-    function UserService(http) {
+var AccountService = (function () {
+    function AccountService(http) {
         this.http = http;
     }
-    UserService.prototype.getAll = function () {
+    AccountService.prototype.getAll = function () {
         return this.http.get('/api/users', this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.getById = function (id) {
+    AccountService.prototype.getById = function (id) {
         return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.create = function (user) {
+    AccountService.prototype.create = function (user) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var body = JSON.stringify({ username: user.username, eMail: user.email, fullName: user.fullname, password: user.password, confirmPassword: user.confirmPassword });
         return this.http.post(AppSettings_1.AppSettings.API_URL + 'Account/Register', body, { headers: headers });
@@ -29,11 +29,11 @@ var UserService = (function () {
     //update(user: RegisterModel) {
     //    return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
     //}
-    UserService.prototype.delete = function (id) {
+    AccountService.prototype.delete = function (id) {
         return this.http.delete('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
     };
     // private helper methods
-    UserService.prototype.jwt = function () {
+    AccountService.prototype.jwt = function () {
         // create authorization header with jwt token
         var currentUser = JSON.parse(localStorage.getItem('auth_token'));
         if (currentUser && currentUser.token) {
@@ -41,11 +41,11 @@ var UserService = (function () {
             return new http_1.RequestOptions({ headers: headers });
         }
     };
-    return UserService;
+    return AccountService;
 }());
-UserService = __decorate([
+AccountService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], UserService);
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+], AccountService);
+exports.AccountService = AccountService;
+//# sourceMappingURL=account.service.js.map

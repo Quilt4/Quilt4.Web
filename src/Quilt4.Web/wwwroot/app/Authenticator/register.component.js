@@ -46,7 +46,7 @@ RegisterComponent = __decorate([
         templateUrl: './register.template.html'
     }),
     __metadata("design:paramtypes", [router_1.Router,
-        services_1.UserService,
+        services_1.AccountService,
         services_1.AlertService])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;

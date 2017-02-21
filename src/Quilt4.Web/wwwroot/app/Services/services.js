@@ -4,5 +4,5 @@ function __export(m) {
 }
 __export(require("./alert.service"));
 __export(require("./auth.service"));
-__export(require("./user.service"));
+__export(require("./account.service"));
 //# sourceMappingURL=services.js.map

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import {RegisterModel} from '../models/RegisterModel';
 
-import { AlertService, UserService } from '../Services/services';
+import { AlertService, AccountService } from '../Services/services';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private userService: UserService,
+        private userService: AccountService,
         private alertService: AlertService) { }
 
     ngOnInit() {
