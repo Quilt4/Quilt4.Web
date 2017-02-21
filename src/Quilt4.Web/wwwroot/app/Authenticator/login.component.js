@@ -61,7 +61,6 @@ var LoginComponent = (function () {
             _this.loading = false;
         });
     };
-    LoginComponent.prototype.onLogin = function () { this.submitted = true; };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

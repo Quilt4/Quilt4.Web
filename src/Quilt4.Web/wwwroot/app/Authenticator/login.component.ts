@@ -69,6 +69,4 @@ export class LoginComponent {
                 this.loading = false;
             });
     }
-
-    onLogin() { this.submitted = true; }
 }

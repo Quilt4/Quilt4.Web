@@ -1,11 +1,10 @@
-﻿<div class="container">
-    <div [hidden]="submitted">
+﻿<div class="row">
         <div class="col-md-8">
             <section>
                 <h4>Login</h4>
                 <hr />
                 <div class="text-danger"></div>
-                <form name="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
+                <form name="form" #f="ngForm" novalidate>
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" class="form-control" [(ngModel)]="model.username" name="username" #username="ngModel" required />
@@ -22,5 +21,4 @@
                 </form>
             </section>
         </div>
-    </div>
 </div>
