@@ -12,11 +12,11 @@ var core_1 = require("@angular/core");
 var services_1 = require("../Services/services");
 var HomeComponent = (function () {
     function HomeComponent(authService) {
-        var _this = this;
         this.authService = authService;
-        this.loggedInSubscription = this.authService.isLoggedInChange.subscribe(function (value) {
-            _this.loggedIn = value;
-        });
+        //this.loggedInSubscription = this.authService.isLoggedInChange.subscribe((value) => {
+        //    this.loggedIn = value;
+        //});
+        this.loggedIn = this.authService.isLoggedIn;
     }
     return HomeComponent;
 }());

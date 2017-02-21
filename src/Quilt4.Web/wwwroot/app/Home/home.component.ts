@@ -13,8 +13,9 @@ export class HomeComponent {
 
     constructor(private authService: AuthService) {
 
-        this.loggedInSubscription = this.authService.isLoggedInChange.subscribe((value) => {
-            this.loggedIn = value;
-        });
+        //this.loggedInSubscription = this.authService.isLoggedInChange.subscribe((value) => {
+        //    this.loggedIn = value;
+        //});
+        this.loggedIn = this.authService.isLoggedIn;
     }
 }
