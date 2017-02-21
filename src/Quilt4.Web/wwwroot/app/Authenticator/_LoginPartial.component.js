@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var services_1 = require("../Services/services");
+var router_1 = require("@angular/router");
 var LoginPartial = (function () {
-    function LoginPartial(authService) {
+    function LoginPartial(authService, router) {
         var _this = this;
         this.authService = authService;
+        this.router = router;
         this.loggedIn = true;
         this.userSubscription = this.authService.userChange.subscribe(function (value) {
             _this.currentUser = value;
@@ -52,6 +54,9 @@ var LoginPartial = (function () {
         this.currentUser = null;
         this.loggedIn = false;
         this.authService.logout();
+        //Reloading HomePage so the not logged user will not see its content.
+        //TODO:Try to find another way to hide HomePage. Not by reloading the entire website.
+        location.reload();
         console.log("Logged out.");
     };
     return LoginPartial;
@@ -62,7 +67,7 @@ LoginPartial = __decorate([
         selector: 'login-partial',
         templateUrl: './_LoginPartial.template.html'
     }),
-    __metadata("design:paramtypes", [services_1.AuthService])
+    __metadata("design:paramtypes", [services_1.AuthService, router_1.Router])
 ], LoginPartial);
 exports.LoginPartial = LoginPartial;
 //# sourceMappingURL=_LoginPartial.component.js.map

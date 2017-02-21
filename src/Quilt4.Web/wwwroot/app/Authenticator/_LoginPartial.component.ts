@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
 import { AuthService } from '../Services/services';
+import { Router } from '@angular/router';
 import { User } from '../models/User';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginPartial {
     private userSubscription;
     private loggedInSubscription;
 
-    constructor(private authService: AuthService)
+    constructor(private authService: AuthService, private router: Router,)
     {
         this.userSubscription = this.authService.userChange.subscribe((value) =>
         {
@@ -60,6 +61,10 @@ export class LoginPartial {
         this.currentUser = null;
         this.loggedIn = false;
         this.authService.logout();
+
+        //Reloading HomePage so the not logged user will not see its content.
+        //TODO:Try to find another way to hide HomePage. Not by reloading the entire website.
+        location.reload();
 
         console.log("Logged out.");
     }

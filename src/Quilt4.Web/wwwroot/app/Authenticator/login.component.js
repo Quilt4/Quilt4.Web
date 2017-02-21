@@ -56,6 +56,7 @@ var LoginComponent = (function () {
             _this.router.navigateByUrl('/');
         }, function (error) {
             console.log("Login failed.");
+            console.log(error);
             _this.alertService.error(error);
             _this.loading = false;
         });

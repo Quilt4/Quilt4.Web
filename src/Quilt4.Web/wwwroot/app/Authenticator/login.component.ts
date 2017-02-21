@@ -64,6 +64,7 @@ export class LoginComponent {
             },
             error => {
                 console.log("Login failed.");
+                console.log(error)
                 this.alertService.error(error);
                 this.loading = false;
             });
