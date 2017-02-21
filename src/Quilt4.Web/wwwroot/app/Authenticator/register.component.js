@@ -30,8 +30,8 @@ var RegisterComponent = (function () {
             .subscribe(function (data) {
             console.log("Registered! Woohoo!");
             _this.alertService.success('Registration successful', true);
-            _this.router.navigate(['/']);
-            alert("Registration went successful! You can log in now by going on the login page.");
+            _this.router.navigateByUrl('/');
+            // alert("Registration went successful! You can log in now by going on the login page.");
         }, function (error) {
             alert(error.text());
             _this.alertService.error(error);

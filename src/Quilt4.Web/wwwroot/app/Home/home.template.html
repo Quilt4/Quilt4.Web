@@ -1,25 +1,35 @@
-﻿<div class="jumbotron">
-    <h1>Quilt4.Web</h1>
-    <a href="/Platform/Net"><img src="../../images/VisualStudio.png" Title=".NET" /></a>
+﻿<!--When logged in-->
+<div *ngIf="loggedIn">
+    <div class="jumbotron">
+        <h1>Quilt4.Web</h1>
+        <a href="/Platform/Net"><img src="../../images/VisualStudio.png" Title=".NET" /></a>
 
 
 
-    <p class="lead">Missing support for your platform? Be the one to start a new open source GitHub project!</p>
-    <p>
-        <a href="/Home/Contribute" class="btn btn-primary btn-lg">How to &raquo;</a>
-    </p>
-</div>
-<p>
-    You have reached the Quilt4. This is what all clients and the web communicates with and where data is stored.
-    If you are a developer that works or want to work with the quilt4 platform, this is the site for you.
-    Otherwise you probably want to visit the Quilt4 Web instead.
-</p>
-<div class="row">
-
-    <div class="col-md-4">
-        <h2>WebAPI documentation</h2>
-        <p>The complete documentation for WebAPI.</p>
-        <p><a class="btn btn-default" href="/Help">Go there &raquo;</a></p>
+        <p class="lead">Missing support for your platform? Be the one to start a new open source GitHub project!</p>
+        <p>
+            <a href="/Home/Contribute" class="btn btn-primary btn-lg">How to &raquo;</a>
+        </p>
     </div>
+    <p>
+        You have reached the Quilt4. This is what all clients and the web communicates with and where data is stored.
+        If you are a developer that works or want to work with the quilt4 platform, this is the site for you.
+        Otherwise you probably want to visit the Quilt4 Web instead.
+    </p>
+    <div class="row">
 
+        <div class="col-md-4">
+            <h2>WebAPI documentation</h2>
+            <p>The complete documentation for WebAPI.</p>
+            <p><a class="btn btn-default" href="/Help">Go there &raquo;</a></p>
+        </div>
+    </div>
+</div>
+
+<!--When not logged in-->
+<div *ngIf="!loggedIn">
+    <div class="jumbotron">
+        <h1>Quilt4.Web</h1>
+        <h3>YOU ARE NOT LOGGED IN</h3>
+    </div>
 </div>
