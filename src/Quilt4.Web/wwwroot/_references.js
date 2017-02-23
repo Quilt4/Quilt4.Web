@@ -16,6 +16,7 @@
 /// <reference path="app/home/home.component.js" />
 /// <reference path="app/home/home.module.js" />
 /// <reference path="app/main.js" />
+/// <reference path="app/manage/manage.component.js" />
 /// <reference path="app/models/registermodel.js" />
 /// <reference path="app/models/user.js" />
 /// <reference path="app/navigation.module.js" />

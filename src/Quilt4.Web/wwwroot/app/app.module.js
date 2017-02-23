@@ -17,6 +17,7 @@ var app_component_1 = require("./app.component");
 var navigation_module_1 = require("./navigation.module");
 var about_component_1 = require("./About/about.component");
 var home_component_1 = require("./Home/home.component");
+var manage_component_1 = require("./Manage/manage.component");
 var _LoginPartial_component_1 = require("./Authenticator/_LoginPartial.component");
 var alert_component_1 = require("./Alert/alert.component");
 var login_component_1 = require("./Authenticator/login.component");
@@ -33,7 +34,17 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, navigation_module_1.NavigationModule, http_1.HttpModule],
-        declarations: [app_component_1.AppComponent, about_component_1.AboutComponent, home_component_1.HomeComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, _LoginPartial_component_1.LoginPartial, alert_component_1.AlertComponent, equal_validator_directive_1.EqualValidator],
+        declarations: [
+            app_component_1.AppComponent,
+            about_component_1.AboutComponent,
+            home_component_1.HomeComponent,
+            login_component_1.LoginComponent,
+            register_component_1.RegisterComponent,
+            _LoginPartial_component_1.LoginPartial,
+            alert_component_1.AlertComponent,
+            manage_component_1.ManageComponent,
+            equal_validator_directive_1.EqualValidator
+        ],
         bootstrap: [app_component_1.AppComponent],
         providers: [
             { provide: common_1.APP_BASE_HREF, useValue: '/' },

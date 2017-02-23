@@ -5,6 +5,8 @@ import { AboutComponent } from './About/about.component';
 import { HomeComponent } from './Home/home.component';
 import { LoginComponent } from './Authenticator/login.component';
 import { RegisterComponent } from './Authenticator/register.component';
+import { ManageComponent } from './Manage/manage.component';
+
 import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
@@ -12,6 +14,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'Manage', component: ManageComponent },
 
     { path: '**', redirectTo: '' }
 ];

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavigationModule } from './navigation.module';
 import { AboutComponent } from './About/about.component';
 import { HomeComponent } from './Home/home.component';
+import { ManageComponent } from './Manage/manage.component';
 
 import { LoginPartial } from './Authenticator/_LoginPartial.component';
 
@@ -24,7 +25,16 @@ import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, NavigationModule, HttpModule],
-    declarations: [AppComponent, AboutComponent, HomeComponent, LoginComponent, RegisterComponent, LoginPartial, AlertComponent, EqualValidator],
+    declarations: [
+        AppComponent,
+        AboutComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
+        LoginPartial,
+        AlertComponent,
+        ManageComponent,
+        EqualValidator],
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
